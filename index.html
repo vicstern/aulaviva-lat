@@ -2788,11 +2788,11 @@
       });
     }
 
-    // Mapa de las 14 llaves secretas (ortografía exacta, cero nombres propios)
-    const SECRET_KEY_MAP = {};
+    // What have I got in my pocket?
+    const WHAT_HAS_IT_GOT_IN_ITS_POCKETSES = {};
     DREAM_LANGUAGES.forEach(d => {
       d.keys.forEach(k => {
-        SECRET_KEY_MAP[k.toLowerCase()] = d.id;
+        WHAT_HAS_IT_GOT_IN_ITS_POCKETSES[k.toLowerCase()] = d.id;
       });
     });
 
@@ -2815,7 +2815,7 @@
 
       if (e.key && e.key.length === 1) {
         mellonBuffer = (mellonBuffer + e.key.toLowerCase()).slice(-24);
-        for (const [secret, langId] of Object.entries(SECRET_KEY_MAP)) {
+        for (const [secret, langId] of Object.entries(WHAT_HAS_IT_GOT_IN_ITS_POCKETSES)) {
           if (mellonBuffer.endsWith(secret)) {
             mellonBuffer = "";
             triggerMellonLore(langId);
