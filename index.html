@@ -623,12 +623,20 @@
     }
     #sandboxWhisperBtn svg,
     #sandboxWhisperBtn img.tengwar-img,
-    .dream-glyph-line img.tengwar-img {
+    .rosetta-whisper-line svg,
+    .rosetta-whisper-line img.tengwar-img {
       height: 16px;
       width: auto;
       overflow: visible;
       vertical-align: middle;
       display: inline-block;
+    }
+    /* Compensación óptica para las astas largas de la cursiva del Anillo */
+    #sandboxWhisperBtn img.tengwar-mordor {
+      height: 26px;
+    }
+    .rosetta-whisper-line img.tengwar-mordor {
+      height: 30px;
     }
     /* En modo oscuro invierte la tinta oscura de Tecendil a blanco luminoso */
     :root img.tengwar-img {
@@ -636,6 +644,33 @@
     }
     html[data-theme="light"] img.tengwar-img {
       filter: none;
+    }
+    /* Jerarquía de 5 niveles en el Códice y subtítulo en el Sueño */
+    .rosetta-whisper-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.76rem;
+      font-style: italic;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      opacity: 0.78;
+      margin: 4px 0 6px;
+    }
+    .rosetta-whisper-trans {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      line-height: 1.38;
+      margin-top: 4px;
+      font-style: italic;
+    }
+    .dream-sub-trans {
+      font-size: clamp(0.78rem, 0.95vw, 0.86rem);
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-top: 2px;
+      text-align: center;
     }
 
     @media (max-width: 960px) {
@@ -2019,7 +2054,7 @@
 // === GLIFOS CALIGRÁFICOS REALES Y LOS 7 IDIOMAS DEL SUEÑO ===
     const SVG_TENGWAR_ELVISH = `<img src="tengwar-elvish.png" class="tengwar-img" alt="Pedo mellon a minno" aria-hidden="true">`;
 
-    const SVG_TENGWAR_MORDOR = `<img src="tengwar-mordor.png" class="tengwar-img" alt="Ash nazg gimbatul" aria-hidden="true">`;
+    const SVG_TENGWAR_MORDOR = `<img src="tengwar-mordor.png" class="tengwar-img tengwar-mordor" alt="Ash nazg gimbatul" aria-hidden="true">`;
 
     const SVG_GOLDEN_SPIRAL = `<svg viewBox="0 0 36 23" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <rect x="1.5" y="1.5" width="33" height="20" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.15" opacity="0.55"/>
@@ -2044,77 +2079,84 @@
         id: "quenya",
         tag_en: "Quenya · Elvish",
         tag_es: "Quenya · Élfico",
-        glyph_html: SVG_TENGWAR_ELVISH,
-        text: "« Calima fëa ter i nolwehtar ar panyala i ilinquetar ohtariello lómenna. »",
-        en: "Shining radiant light through seekers of wisdom and projecting rainbow hues from twilight into awakening.",
-        es: "Hacer brillar luz radiante a través de quienes buscan sabiduría y proyectar los colores del arcoíris desde la penumbra hacia el despertar.",
+        text: "« Calima fána cálë ter i nolwi tana i tië tihtalëa. »",
+        en: "Brilliant radiant light through the minds reveals the path of growth.",
+        es: "Brillante luz radiante a través de las mentes revela el camino del crecimiento.",
         whisper_html: SVG_TENGWAR_ELVISH,
+        whisper_en: "“Pedo mellon a minno.” — Speak, friend, and enter.",
+        whisper_es: "«Pedo mellon a minno.» — Di, amigo, y entra.",
         keys: ["mellon", "earendil"]
       },
       {
         id: "khuzdul",
         tag_en: "Khuzdul · Dwarvish",
         tag_es: "Khuzdul · Enano",
-        glyph_html: `<span class="dream-cirth-runes">ᚲᛁᛒᛁᛚ ᛏᛖᚱ ᚲᚺᛖᛚᛖᛞ · ᛉᚨᚱᚨᛗ-ᚾᚨᛚᚨ ᚷᚢᚾᚢᛞ-ᚲᚺᚨᛉᚨᛞ</span>`,
-        text: "« Kibil ter kheled — zâram-nâla gunud-Khazâd. »",
-        en: "Silver light through crystal — reflecting the deep course of those who delve and learn.",
-        es: "Luz de plata a través del cristal — reflejando el curso profundo de quienes excavan y aprenden.",
-        whisper_html: `<span>ᚲᚺᚨᛉᚨᛞ ᚨᛁ-ᛗᛖᚾᚢ!</span>`,
+        text: "« Kibil-kheled — nâla zâram Khazâd gunud. »",
+        en: "Silver-glass — the deep course of the pool the Khazâd delve.",
+        es: "Cristal de plata — el curso profundo del espejo de agua que los Khazâd excavan.",
+        whisper_html: `<span style="font-style:normal; letter-spacing:0.12em;">ᚲᚺᚨᛉᚨᛞ ᚨᛁ-ᛗᛖᚾᚢ!</span>`,
+        whisper_en: "“Khazâd ai-mênu!” — The Dwarves are upon you!",
+        whisper_es: "«Khazâd ai-mênu!» — ¡Los Enanos están sobre vosotros!",
         keys: ["khazad", "mithril"]
       },
       {
         id: "blackspeech",
         tag_en: "Black Speech · Mordor",
         tag_es: "Lengua Negra · Mordor",
-        glyph_html: SVG_TENGWAR_MORDOR,
-        text: "« Ghash-bûrz agh nîn-gûl — ukh-shakh throqu-ishi gimb-at kul-dûm. »",
-        en: "Clear fire through shadow and crystal — projecting from within to reveal the deep path.",
-        es: "Fuego claro a través de la sombra y el cristal — proyectando desde el interior para revelar la senda profunda.",
+        text: "« Ghâsh burzum-ishi — gimbatul agh durbatul. »",
+        en: "Fire in the darkness — to find them and rule them.",
+        es: "Fuego en la oscuridad — para encontrarlos y gobernarlos.",
         whisper_html: SVG_TENGWAR_MORDOR,
+        whisper_en: "“Ash nazg gimbatul.” — One Ring to find them.",
+        whisper_es: "«Ash nazg gimbatul.» — Un Anillo para encontrarlos.",
         keys: ["ashnazg", "balrog"]
       },
       {
         id: "chakobsa",
-        tag_en: "Chakobsa · Fremen",
-        tag_es: "Chakobsa · Fremen",
-        glyph_html: "",
+        tag_en: "Fremen · Arrakis",
+        tag_es: "Fremen · Arrakis",
         text: "« Shada kashaf bi-la kaifa — alwanuha tazhar tariq al-mihna. »",
-        en: "Light unveiled without question — its colors reveal the path of growth and trial.",
-        es: "Luz desvelada sin cuestionamiento — sus colores revelan el camino del crecimiento y la prueba.",
+        en: "Intensity unveiled without question — its colors reveal the path of the trial.",
+        es: "Intensidad desvelada sin cuestionamiento — sus colores revelan el camino de la prueba.",
         whisper_html: `<span>I must not fear. Fear is the mind-killer.</span>`,
+        whisper_en: "Litany Against Fear — I must not fear. Fear is the mind-killer.",
+        whisper_es: "Letanía contra el miedo — «No debo tener miedo. El miedo es el asesino de la mente.»",
         keys: ["muaddib", "kwisatz haderach"]
       },
       {
         id: "valyrian",
         tag_en: "High Valyrian",
         tag_es: "Alto Valyrio",
-        glyph_html: "",
-        text: "« Qilōnȳti gēlȳn perzȳs rȳ bantis zālagon se kesanī seksos sȳz emagon istan. »",
-        en: "Radiating white fire through seekers and revealing the profound course of their transformation.",
-        es: "Irradiar fuego blanco a través de los buscadores y revelar el curso profundo de su transformación.",
+        text: "« Gēlenka perzȳs rȳ bantis zālas se pendosiot ryptes. »",
+        en: "Silver fire burns through the night and reveals the path.",
+        es: "El fuego plateado arde a través de la noche y revela el camino.",
         whisper_html: `<span>Valar morghulis...</span>`,
+        whisper_en: "“Valar morghulis...” — All men must die.",
+        whisper_es: "«Valar morghulis...» — Todos los hombres deben morir.",
         keys: ["valar dohaeris", "dracarys"]
       },
       {
         id: "navi",
         tag_en: "Na'vi",
         tag_es: "Na'vi",
-        glyph_html: "",
-        text: "« Oel ngati kameie — Tìtxurì atanä ftxozäfa ngal tìreyä fya'ot wìntxu. »",
-        en: "I see you deeply — Through the strength of light, you reveal the path of life and growth.",
-        es: "Te veo en profundidad — Mediante la fuerza de la luz, revelas el camino de la vida y del crecimiento.",
+        text: "« Oel ngati kameie — Tìtxurfa atanä fya'ot tiyawnä wìntxu ngal. »",
+        en: "I see you — Through the strength of light, you show the path of love.",
+        es: "Te veo — Mediante la fuerza de la luz, muestras el camino del amor.",
         whisper_html: `<span>Oel ngati kameie...</span>`,
+        whisper_en: "“Oel ngati kameie...” — I see you.",
+        whisper_es: "«Oel ngati kameie...» — Te veo.",
         keys: ["kameie", "eywa"]
       },
       {
         id: "fibonacci",
         tag_en: "Geometria Naturae · φ",
         tag_es: "Geometria Naturae · φ",
-        glyph_html: "",
         text: "« φ = (1 + √5) / 2 ≈ 1.618 »",
         en: "Organic growth unfolds in proportion — every step builds upon the whole that came before.",
         es: "El crecimiento orgánico se despliega en proporción — cada paso se construye sobre la totalidad que lo precedió.",
         whisper_html: `<span>1, 1, 2, 3, 5, 8, 13</span>${SVG_GOLDEN_SPIRAL}`,
+        whisper_en: "Fibonacci sequence and Golden Spiral.",
+        whisper_es: "Secuencia de Fibonacci y Espiral Áurea.",
         keys: ["phi", "1.618"]
       }
     ];
@@ -2426,16 +2468,18 @@
         sortedDream.forEach(d => {
           const label = (loc === "es") ? d.tag_es : d.tag_en;
           const trans = (loc === "es") ? d.es : d.en;
-          const glyphPart = d.glyph_html ? `<div class="dream-glyph-line" style="margin-bottom:4px;">${d.glyph_html}</div>` : "";
+          const wTrans = (loc === "es") ? d.whisper_es : d.whisper_en;
           html += `
             <div class="rosetta-entry">
               <div class="rosetta-lang-label">${label}</div>
-              ${glyphPart}
+              <div class="rosetta-whisper-line">${d.whisper_html}</div>
               <div class="rosetta-native-text">${d.text}</div>
               <div class="rosetta-trans-text">${trans}</div>
+              <div class="rosetta-whisper-trans">${wTrans}</div>
             </div>
           `;
         });
+        
         return html;
       }
 
@@ -2537,7 +2581,7 @@
       document.querySelectorAll(".mellon-beam-in, .mellon-beam-out").forEach(el => el.classList.remove("draw"));
     }
 
-    // Destrucción completa del nodo anterior y creación de uno nuevo desde cero (Cero texto fantasma)
+// Destrucción completa del nodo anterior y creación de uno nuevo desde cero (Cero texto fantasma)
     function mountCleanDreamQuote(langObj) {
       const qStage = document.getElementById("mellonQuoteStage");
       if (!qStage) return null;
@@ -2545,12 +2589,12 @@
         qStage.removeChild(qStage.firstChild);
       }
       const tagLabel = (currentLocale === "es") ? langObj.tag_es : langObj.tag_en;
+      const transText = (currentLocale === "es") ? langObj.es : langObj.en;
       const node = document.createElement("div");
       node.className = "dream-quote-node";
-      const glyphBlock = langObj.glyph_html ? `<div class="dream-glyph-line">${langObj.glyph_html}</div>` : "";
       node.innerHTML = `
-        ${glyphBlock}
         <p class="dream-main-line">${langObj.text} <span class="dream-tag">(${tagLabel})</span></p>
+        <p class="dream-sub-trans">${transText}</p>
       `;
       qStage.appendChild(node);
       void node.offsetWidth;
