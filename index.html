@@ -621,11 +621,21 @@
         filter: drop-shadow(0 0 8px rgba(88, 166, 255, 0.62)) drop-shadow(0 0 14px rgba(192, 132, 252, 0.38));
       }
     }
-    #sandboxWhisperBtn svg {
-      height: 13px;
+    #sandboxWhisperBtn svg,
+    #sandboxWhisperBtn img.tengwar-img,
+    .dream-glyph-line img.tengwar-img {
+      height: 16px;
       width: auto;
       overflow: visible;
       vertical-align: middle;
+      display: inline-block;
+    }
+    /* En modo oscuro invierte la tinta oscura de Tecendil a blanco luminoso */
+    :root img.tengwar-img {
+      filter: invert(1) brightness(1.6) contrast(1.2);
+    }
+    html[data-theme="light"] img.tengwar-img {
+      filter: none;
     }
 
     @media (max-width: 960px) {
@@ -2006,19 +2016,10 @@
       document.body.classList.remove("sandbox-focus");
     }
 
-    // === GLIFOS CALIGRÁFICOS ORIGINALES Y LOS 7 IDIOMAS DEL SUEÑO ===
-    const SVG_TENGWAR_ELVISH = `<svg viewBox="0 0 240 28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M12,21 C12,9 20,9 20,16 C20,21 12,21 12,21 M28,14 C33,8 40,14 36,21 M46,7 L46,22 C46,14 55,14 55,21 M66,15 C66,10 76,10 76,15 C76,21 66,21 66,15 M92,21 C92,11 100,11 100,21 C100,11 108,11 108,21 M118,16 C124,11 128,16 122,21 M134,6 L134,22 M142,6 L142,22 M152,15 C152,10 162,10 162,15 C162,21 152,21 152,15 M172,21 C172,11 181,11 181,21 M196,21 C196,11 204,11 204,21 C204,11 212,11 212,21 M222,15 C222,10 232,10 232,15 C232,21 222,21 222,15"
-            fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="33" cy="6" r="1.3" fill="currentColor"/><circle cx="122" cy="7" r="1.3" fill="currentColor"/>
-      <circle cx="190" cy="8" r="1.3" fill="currentColor"/><circle cx="204" cy="7" r="1.3" fill="currentColor"/>
-    </svg>`;
+// === GLIFOS CALIGRÁFICOS REALES Y LOS 7 IDIOMAS DEL SUEÑO ===
+    const SVG_TENGWAR_ELVISH = `<img src="tengwar-elvish.png" class="tengwar-img" alt="Pedo mellon a minno" aria-hidden="true">`;
 
-    const SVG_TENGWAR_MORDOR = `<svg viewBox="0 0 260 28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M8,22 Q18,5 24,22 T40,11 L34,24 M52,22 Q62,8 68,22 T84,12 M98,22 L106,6 Q116,12 112,22 M128,22 Q138,9 146,22 L154,8 M168,22 Q178,9 186,22 T202,11 L196,24 M214,22 Q224,8 232,22 T248,12"
-            fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M20,5 Q28,2 34,6 M134,5 Q142,2 148,6 M220,5 Q228,2 234,6" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-    </svg>`;
+    const SVG_TENGWAR_MORDOR = `<img src="tengwar-mordor.png" class="tengwar-img" alt="Ash nazg gimbatul" aria-hidden="true">`;
 
     const SVG_GOLDEN_SPIRAL = `<svg viewBox="0 0 36 23" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <rect x="1.5" y="1.5" width="33" height="20" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.15" opacity="0.55"/>
@@ -2058,7 +2059,7 @@
         text: "« Kibil ter kheled — zâram-nâla gunud-Khazâd. »",
         en: "Silver light through crystal — reflecting the deep course of those who delve and learn.",
         es: "Luz de plata a través del cristal — reflejando el curso profundo de quienes excavan y aprenden.",
-        whisper_html: `<span>ᛒᚨᚱᚢᚲ ᚲᚺᚨᛉᚨᛞ! ᚲᚺᚨᛉᚨᛞ ᚨᛁ-ᛗᛖᚾᚢ!</span>`,
+        whisper_html: `<span>ᚲᚺᚨᛉᚨᛞ ᚨᛁ-ᛗᛖᚾᚢ!</span>`,
         keys: ["khazad", "mithril"]
       },
       {
@@ -2069,7 +2070,7 @@
         text: "« Ghash-bûrz agh nîn-gûl — ukh-shakh throqu-ishi gimb-at kul-dûm. »",
         en: "Clear fire through shadow and crystal — projecting from within to reveal the deep path.",
         es: "Fuego claro a través de la sombra y el cristal — proyectando desde el interior para revelar la senda profunda.",
-        whisper_html: `${SVG_TENGWAR_MORDOR}<span>One Ring to enlight them all, and in the darkness find them.</span>`,
+        whisper_html: SVG_TENGWAR_MORDOR,
         keys: ["ashnazg", "balrog"]
       },
       {
@@ -2080,7 +2081,7 @@
         text: "« Shada kashaf bi-la kaifa — alwanuha tazhar tariq al-mihna. »",
         en: "Light unveiled without question — its colors reveal the path of growth and trial.",
         es: "Luz desvelada sin cuestionamiento — sus colores revelan el camino del crecimiento y la prueba.",
-        whisper_html: `<span>I must not fear.</span>`,
+        whisper_html: `<span>I must not fear. Fear is the mind-killer.</span>`,
         keys: ["muaddib", "kwisatz haderach"]
       },
       {
