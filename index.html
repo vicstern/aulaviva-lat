@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="pageTitle">Aula Viva®</title>
+  <title id="pageTitle">Aula Viva® — PRISMA™ &amp; ASPIRE® | Víctor Stern Rodríguez</title>
+  <meta name="description" content="Aula Viva® by Víctor Stern Rodríguez: PRISMA™ qualitative learning analytics in ℝ⁸ assisted by offline-first local AI, grounded in the ASPIRE® framework.">
+  <link rel="canonical" href="https://aulaviva.lat/">
   <meta property="og:title" content="Aula Viva® — PRISMA™">
   <meta property="og:description" content="Multidimensional illumination of human learning in ℝ⁸ assisted by local AI. Grounded in the ASPIRE® framework.">
   <meta property="og:image" content="https://aulaviva.lat/og-cover.png">
@@ -84,14 +86,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 16px 20px 10px;
+      padding: 10px 20px 8px;
       position: relative;
     }
 
     .top-bar {
       position: absolute;
-      top: 14px;
-      right: 24px;
+      top: 10px;
+      right: 22px;
       z-index: 20;
       display: flex;
       align-items: center;
@@ -101,8 +103,8 @@
       background: var(--card-bg);
       border: 1px solid var(--border);
       color: var(--text-muted);
-      padding: 5px 11px;
-      font-size: 0.75rem;
+      padding: 4px 10px;
+      font-size: 0.74rem;
       font-weight: 600;
       border-radius: 20px;
       cursor: pointer;
@@ -122,8 +124,8 @@
       background: transparent;
       border: none;
       color: var(--text-muted);
-      padding: 4px 11px;
-      font-size: 0.75rem;
+      padding: 3px 10px;
+      font-size: 0.74rem;
       font-weight: 600;
       border-radius: 14px;
       cursor: pointer;
@@ -147,22 +149,21 @@
     .header-zone {
       text-align: center;
       max-width: 800px;
-      padding-top: 6px;
+      padding-top: 0;
       width: 100%;
     }
     h1 {
-      font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+      font-size: clamp(1.35rem, 2.05vw, 1.75rem);
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: none;
       color: var(--text-main);
-      padding-top: 6px;
-      margin-top: 2px;
-      margin-bottom: 2px;
-      line-height: 1.35;
+      padding-top: 2px;
+      margin: 0 0 1px;
+      line-height: 1.25;
     }
     h1 span.reg {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       vertical-align: super;
       font-weight: 400;
       color: var(--text-muted);
@@ -175,18 +176,19 @@
       font-size: clamp(1.1rem, 1.7vw, 1.45rem);
     }
     p.descriptor {
-      font-size: clamp(0.85rem, 1.1vw, 0.94rem);
+      font-size: clamp(0.82rem, 1.02vw, 0.9rem);
       color: var(--accent-blue);
       letter-spacing: 0.015em;
-      margin-bottom: 0px;
+      margin-bottom: 0;
+      line-height: 1.3;
       font-weight: 500;
     }
 
-    /* Altura estrictamente fija para que nunca brinque el layout en ventanas estrechas */
+    /* Altura compacta y fija para no restar espacio vertical ni provocar saltos */
     .quote-box {
-      height: 76px;
-      min-height: 76px;
-      max-height: 76px;
+      height: 56px;
+      min-height: 56px;
+      max-height: 56px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -202,15 +204,15 @@
     }
     p.primary-quote {
       font-style: italic;
-      font-size: clamp(0.86rem, 1.05vw, 0.94rem);
-      line-height: 1.36;
+      font-size: clamp(0.84rem, 1.0vw, 0.92rem);
+      line-height: 1.32;
       color: var(--text-main);
       transition: opacity 0.65s var(--physio-curve), transform 0.65s var(--physio-curve);
       width: 100%;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans Egyptian Hieroglyphs", sans-serif;
     }
     .quote-sub {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-style: normal;
       opacity: 1;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -222,32 +224,32 @@
     .tabs-dock {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
       justify-content: center;
       background: var(--card-bg);
-      padding: 4px;
-      border-radius: 24px;
+      padding: 3px;
+      border-radius: 22px;
       border: 1px solid var(--border);
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
     .tab-btn {
       background: transparent;
       border: none;
       color: var(--text-muted);
-      padding: 7px 16px;
-      font-size: 0.82rem;
+      padding: 5px 14px;
+      font-size: 0.8rem;
       font-weight: 600;
-      border-radius: 18px;
+      border-radius: 17px;
       cursor: pointer;
       transition: all 0.2s;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 7px;
     }
     .tab-btn svg {
-      width: 22px;
-      height: 22px;
+      width: 19px;
+      height: 19px;
       flex-shrink: 0;
     }
     .tab-btn:hover { color: var(--text-main); }
@@ -263,10 +265,14 @@
       flex: 1;
       overflow-y: auto;
       padding-right: 6px;
-      padding-bottom: 16px;
+      padding-bottom: 14px;
       scrollbar-width: thin;
       scrollbar-color: var(--border) transparent;
       overflow-anchor: none;
+      transition: max-width 0.25s var(--physio-curve);
+    }
+    body.sandbox-wide .content-stage {
+      max-width: 1080px;
     }
     .content-stage::-webkit-scrollbar { width: 6px; }
     .content-stage::-webkit-scrollbar-thumb {
@@ -279,11 +285,11 @@
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 28px 32px;
+      padding: 24px 30px;
       line-height: 1.65;
       text-align: left;
       animation: fadeIn 0.25s var(--physio-curve);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
     .panel.active { display: block; }
     @keyframes fadeIn {
@@ -291,8 +297,8 @@
       to { opacity: 1; transform: translateY(0); }
     }
     .panel h2 {
-      font-size: 1.35rem;
-      margin-bottom: 16px;
+      font-size: 1.32rem;
+      margin-bottom: 14px;
       color: var(--text-main);
       font-weight: 600;
       display: flex;
@@ -300,8 +306,8 @@
       gap: 14px;
     }
     .panel h3 {
-      font-size: 1.05rem;
-      margin: 24px 0 14px;
+      font-size: 1.04rem;
+      margin: 22px 0 12px;
       color: var(--accent-blue);
       font-weight: 600;
       display: flex;
@@ -312,26 +318,26 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 68px;
-      height: 68px;
-      border-radius: 15px;
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
       background: var(--card-inner);
       border: 1px solid var(--border);
       color: var(--accent-blue);
       flex-shrink: 0;
     }
     .heading-icon svg {
-      width: 46px;
-      height: 46px;
+      width: 44px;
+      height: 44px;
     }
     .panel h3 .heading-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 13px;
+      width: 54px;
+      height: 54px;
+      border-radius: 12px;
     }
     .panel h3 .heading-icon svg {
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
     }
     .panel p {
       font-size: 0.94rem;
@@ -377,18 +383,19 @@
     }
     .somatic-factors {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin: 14px 0 16px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      margin: 14px 0 4px;
     }
     .somatic-item {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
     .somatic-icon {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 10px;
       background: var(--card-inner);
       border: 1px solid var(--border);
@@ -399,8 +406,46 @@
       flex-shrink: 0;
     }
     .somatic-icon svg {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
+    }
+
+    /* Leyenda pedagógica discreta al final de Ethos */
+    .scope-notice {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+    .scope-notice p {
+      margin-bottom: 0;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .scope-notice strong {
+      color: var(--text-body);
+    }
+    .scope-notice-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-blue);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .scope-notice-icon svg {
+      width: 23px;
+      height: 23px;
     }
 
     .callout {
@@ -408,7 +453,7 @@
       border-left: 3px solid var(--accent-blue);
       padding: 12px 16px;
       border-radius: 0 8px 8px 0;
-      margin: 16px 0;
+      margin: 14px 0;
       font-size: 0.88rem;
       color: var(--text-body);
     }
@@ -429,8 +474,8 @@
       background: var(--card-inner);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 20px 20px 14px;
-      margin-bottom: 24px;
+      padding: 18px 20px 14px;
+      margin-bottom: 20px;
     }
     .sandbox-header {
       display: flex;
@@ -439,6 +484,9 @@
       align-items: center;
       gap: 12px;
       margin-bottom: 14px;
+    }
+    .sandbox-container.sim-active .sandbox-header {
+      display: none;
     }
     .btn-action {
       background: #238636;
@@ -467,33 +515,142 @@
       display: block;
       width: 100%;
     }
+    .radar-sticky-deck {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+    .sandbox-container.sim-active .radar-sticky-deck {
+      position: sticky;
+      top: 0;
+      z-index: 15;
+      background: var(--card-inner);
+      padding-top: 2px;
+      padding-bottom: 8px;
+    }
     .radar-svg-box {
       width: 100%;
       max-width: 480px;
-      margin: 0 auto 18px;
+      margin: 0 auto;
       background: var(--surface-deep);
-      border-radius: 8px;
+      border-radius: 10px;
       border: 1px solid var(--border);
-      padding: 8px 4px;
+      padding: 8px 6px 6px;
       display: flex;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
       overflow: visible;
     }
+    .sandbox-container.sim-active .radar-svg-box {
+      max-width: 100%;
+      box-shadow: 0 8px 22px var(--pill-shadow);
+    }
+    .radar-svg-box svg {
+      width: 100%;
+      max-width: 440px;
+      height: auto;
+      display: block;
+    }
+    .sandbox-sticky-bar {
+      display: none;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+    .sandbox-container.sim-active .sandbox-sticky-bar {
+      display: flex;
+    }
+    .sticky-menu-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 4px 11px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .sticky-menu-btn:hover {
+      color: var(--text-main);
+    }
+
+    /* Dos columnas en pantallas anchas cuando la simulación está activa */
+    @media (min-width: 900px) {
+      .sandbox-container.sim-active .sandbox-viz {
+        display: grid;
+        grid-template-columns: minmax(0, 1.12fr) minmax(350px, 0.88fr);
+        gap: 20px;
+        align-items: start;
+      }
+      .sandbox-container.sim-active .sandbox-table-box {
+        grid-column: 1;
+        grid-row: 1;
+        min-width: 0;
+      }
+      .sandbox-container.sim-active .radar-sticky-deck {
+        grid-column: 2;
+        grid-row: 1;
+        margin-bottom: 0;
+        position: sticky;
+        top: 0;
+        background: transparent;
+        padding: 0;
+      }
+      .sandbox-container.sim-active .radar-svg-box svg {
+        max-height: 300px;
+      }
+    }
+
     .sandbox-table-box {
       width: 100%;
+      min-width: 0;
     }
     .delta-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 0.84rem;
+      table-layout: fixed;
     }
     .delta-table th, .delta-table td {
-      padding: 8px 10px;
+      padding: 9px 10px;
       border-bottom: 1px solid var(--border);
       text-align: left;
+      vertical-align: top;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
     .delta-table th { color: var(--text-dim); font-size: 0.74rem; letter-spacing: 0.03em; }
-    .delta-val { color: var(--delta-green); font-weight: 600; font-family: monospace; white-space: nowrap; }
+    .delta-table .col-axis { width: 38%; }
+    .delta-table .col-evidence { width: 62%; }
+    .axis-cell-name {
+      display: block;
+      color: var(--text-main);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .delta-val {
+      display: block;
+      margin-top: 3px;
+      color: var(--delta-green);
+      font-weight: 600;
+      font-family: monospace;
+      font-size: 0.82rem;
+    }
+    .delta-adj-note {
+      display: block;
+      margin-top: 2px;
+      color: #a855f7;
+      font-size: 0.72rem;
+      font-family: monospace;
+      line-height: 1.3;
+    }
     .table-idle {
       color: var(--text-dim);
       font-style: italic;
@@ -515,18 +672,18 @@
       flex-shrink: 0;
       width: 100%;
       max-width: 920px;
-      padding: 6px 0 8px;
+      padding: 6px 0 6px;
       font-size: 0.72rem;
       color: var(--text-muted);
       text-align: center;
-      line-height: 1.35;
+      line-height: 1.4;
       border-top: 1px solid var(--border);
       margin-top: auto;
     }
     footer a { color: var(--accent-blue); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
-    /* Enlace minimalista del Códice Rosetta en el Footer (sin fondo, pequeño, legible en Light/Dark) */
+    /* Enlace minimalista del Códice Rosetta en el Footer */
     #rosettaFooterBtn {
       background: transparent !important;
       border: none !important;
@@ -578,9 +735,10 @@
       color: transparent;
     }
 
-    /* Susurro en el Sandbox: siempre visible abajo, más pequeño, sin línea punteada y con luminiscencia */
+    /* Susurro en el Sandbox: centrado a todo lo ancho (tanto en 1 como en 2 columnas) */
     #sandboxWhisperWrap {
-      margin-top: 12px;
+      width: 100%;
+      margin-top: 14px;
       padding-top: 4px;
       border: none !important;
       text-align: center;
@@ -673,15 +831,65 @@
       text-align: center;
     }
 
+    /* Sliders docentes: columna limpia y acotada que jamás se desborda en ningún ancho */
+    #sliderControls {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 12px;
+      width: 100%;
+    }
+    .slider-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 100%;
+      min-width: 0;
+    }
+    .slider-item-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      width: 100%;
+      min-width: 0;
+    }
+    .slider-item-name {
+      font-size: 0.8rem;
+      color: var(--text-body);
+      font-weight: 500;
+      min-width: 0;
+      overflow-wrap: break-word;
+    }
+    .slider-item-val {
+      font-size: 0.78rem;
+      font-family: monospace;
+      color: #a855f7;
+      font-weight: 600;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .slider-item input[type="range"] {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+      margin: 0;
+      accent-color: #a855f7;
+      cursor: pointer;
+    }
+
     @media (max-width: 960px) {
       .quote-box {
-        height: 86px;
-        min-height: 86px;
-        max-height: 86px;
+        height: 68px;
+        min-height: 68px;
+        max-height: 68px;
       }
-      #sliderControls {
-        grid-template-columns: 1fr;
-        gap: 10px;
+    }
+
+    @media (max-width: 899px) {
+      .sandbox-container.sim-active .radar-svg-box svg {
+        max-height: 215px;
+        width: auto;
+        max-width: 100%;
       }
     }
 
@@ -701,23 +909,24 @@
         top: 0;
         z-index: 25;
         background: var(--bg);
-        padding: 8px 12px;
+        padding: 6px 12px;
         border-bottom: 1px solid var(--border);
-        height: 98px !important;
-        min-height: 98px !important;
-        max-height: 98px !important;
-        margin-bottom: 10px;
+        height: 82px !important;
+        min-height: 82px !important;
+        max-height: 82px !important;
+        margin-bottom: 8px;
       }
-      body.sandbox-focus .quote-box {
+      body.sandbox-focus .quote-box,
+      body.sandbox-wide .quote-box {
         position: static;
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
         border-bottom: none;
-        height: 98px !important;
-        min-height: 98px !important;
-        max-height: 98px !important;
+        height: 82px !important;
+        min-height: 82px !important;
+        max-height: 82px !important;
       }
-      body { padding: 14px 12px 20px; }
+      body { padding: 12px 12px 18px; }
       .top-bar {
         position: static;
         width: 100%;
@@ -731,18 +940,18 @@
         gap: 6px;
         width: 100%;
         border-radius: 14px;
-        margin-bottom: 14px;
+        margin-bottom: 12px;
       }
       .tab-btn {
-        padding: 8px 6px;
+        padding: 7px 6px;
         font-size: 0.76rem;
         text-align: center;
         border-radius: 10px;
         gap: 6px;
       }
       .tab-btn svg {
-        width: 19px;
-        height: 19px;
+        width: 18px;
+        height: 18px;
       }
       #tab-btn-vision {
         grid-column: span 2;
@@ -753,6 +962,7 @@
         padding-bottom: 12px;
       }
       .panel { padding: 18px 14px; border-radius: 12px; }
+      .sandbox-container { padding: 14px 12px 12px; }
       .panel ul.icon-list > li {
         padding-left: 66px;
         min-height: 54px;
@@ -766,8 +976,12 @@
         width: 36px;
         height: 36px;
       }
+      .somatic-factors {
+        flex-direction: column;
+        gap: 10px;
+      }
       .radar-svg-box svg { max-width: 100%; height: auto; }
-      footer { margin-top: auto; padding: 14px 0 8px; }
+      footer { margin-top: auto; padding: 12px 0 8px; }
     }
   
     /* Arcoíris sólo en Hero (#primaryQuote) y en la despedida Namárië (#mellonFarewellText) */
@@ -816,44 +1030,17 @@
       background-clip: text !important;
       color: transparent !important;
     }
-    #sliderControls {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px 24px;
-    }
-    .focus-exit-bar {
-      display: none;
-      width: 100%;
-      max-width: 920px;
-      justify-content: flex-end;
-      margin-bottom: 4px;
-    }
+
     body.sandbox-focus #mainHeading,
     body.sandbox-focus #appDescriptor,
     body.sandbox-focus .tabs-dock {
       display: none !important;
     }
-    body.sandbox-focus .focus-exit-bar {
-      display: flex;
-    }
     body.sandbox-focus .quote-box {
-      height: 68px;
-      min-height: 68px;
-      max-height: 68px;
-      margin-bottom: 6px;
-    }
-    body.sandbox-focus .radar-svg-box {
-      position: sticky;
-      top: 0;
-      z-index: 15;
-      max-width: 100%;
-      background: var(--surface-deep);
-      box-shadow: 0 10px 24px var(--pill-shadow);
-      padding: 6px 4px;
-    }
-    body.sandbox-focus .radar-svg-box svg {
-      max-height: 225px;
-      width: auto;
+      height: 50px;
+      min-height: 50px;
+      max-height: 50px;
+      margin-bottom: 4px;
     }
 
     /* === EL SUEÑO (PORTAL 3D EN HEARTBEATS) === */
@@ -971,7 +1158,7 @@
       stroke-dashoffset: 0;
     }
 
-    /* Escenario minimalista de las frases del sueño (SIN arcoíris, centrado, limpio como el hero) */
+    /* Escenario minimalista de las frases del sueño */
     .mellon-quote-stage {
       width: 100%;
       max-width: 840px;
@@ -1043,7 +1230,7 @@
       vertical-align: baseline;
     }
 
-    /* Despedida Namárië (con arcoíris y su caligrafía original) */
+    /* Despedida Namárië */
     #mellonFarewellWrap {
       position: absolute;
       inset: 0;
@@ -1080,7 +1267,7 @@
       text-align: center !important;
     }
 
-    /* === MODAL CÓDICE ROSETTA (ADAPTATIVO LIGHT/DARK, CENTRADO, MITAD DE VELOCIDAD, INFINITO) === */
+    /* === MODAL CÓDICE ROSETTA (ADAPTATIVO LIGHT/DARK, CENTRADO, VELOCIDAD CONSTANTE, INFINITO) === */
     #rosettaModal {
       position: fixed;
       inset: 0;
@@ -1103,16 +1290,25 @@
       width: 100%;
       max-width: 780px;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      padding: 18px 20px 12px;
+      gap: 8px 12px;
+      padding: 14px 20px 10px;
       border-bottom: 1px solid var(--border);
       flex-shrink: 0;
+    }
+    .rosetta-controls {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
     .rosetta-title {
       font-size: 0.8rem;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       color: var(--text-main);
       display: inline-flex;
       align-items: center;
@@ -1197,6 +1393,7 @@
       "name": "Víctor Stern Rodríguez",
       "alternateName": ["Víctor Stern", "Victor Stern Rodriguez"],
       "url": "https://aulaviva.lat",
+      "email": "mailto:victor@aulaviva.lat",
       "jobTitle": "Founder & Systems Architect",
       "worksFor": {
         "@id": "https://aulaviva.lat/#organization"
@@ -1205,7 +1402,8 @@
         "https://doi.org/10.2139/ssrn.7310080",
         "https://github.com/vicstern",
         "https://www.linkedin.com/in/victorsternr",
-        "https://www.linkedin.com/company/aulaviva-lat"
+        "https://www.linkedin.com/company/aulaviva-lat",
+        "https://www.facebook.com/aulaviva.lat"
       ]
     },
     {
@@ -1213,20 +1411,40 @@
       "@id": "https://aulaviva.lat/#organization",
       "name": "Aula Viva®",
       "legalName": "Sistemas Educativos para el Florecimiento Humano, S.A.S.",
+      "alternateName": ["Grupo SiEFH S.A.S.", "Aula Viva con IA"],
       "url": "https://aulaviva.lat",
+      "email": "mailto:victor@aulaviva.lat",
       "founder": {
         "@id": "https://aulaviva.lat/#victor-stern"
       },
       "sameAs": [
         "https://www.linkedin.com/company/aulaviva-lat",
+        "https://www.facebook.com/aulaviva.lat",
         "https://doi.org/10.2139/ssrn.7310080"
       ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://aulaviva.lat/#prisma",
+      "name": "PRISMA™",
+      "alternateName": "Plataforma de Reflexión e Interpretación para el Seguimiento Multidimensional del Aprendizaje",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "macOS, Windows, Linux",
+      "license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "url": "https://aulaviva.lat",
+      "description": "Offline-first local AI pedagogical reflection and qualitative learning-analytics engine projecting multidimensional student growth onto an eight-dimensional vector space (ℝ⁸), grounded in the ASPIRE® framework. Strictly an educational instrument, not a medical or clinical diagnostic tool.",
+      "author": {
+        "@id": "https://aulaviva.lat/#victor-stern"
+      },
+      "publisher": {
+        "@id": "https://aulaviva.lat/#organization"
+      }
     },
     {
       "@type": "WebSite",
       "@id": "https://aulaviva.lat/#website",
       "url": "https://aulaviva.lat",
-      "name": "Aula Viva® | PRISMA™ & ASPIRE®",
+      "name": "Aula Viva® — PRISMA™ & ASPIRE® | Víctor Stern Rodríguez",
       "author": {
         "@id": "https://aulaviva.lat/#victor-stern"
       },
@@ -1259,9 +1477,6 @@
     </div>
 
     <!-- Navegación de 5 botones canónicos -->
-    <div class="focus-exit-bar">
-      <button class="lang-btn" id="btnExitFocus" onclick="exitFocusMode()" style="background:var(--card-bg); border:1px solid var(--border); padding:4px 12px;">← Menu</button>
-    </div>
     <div class="tabs-dock">
       <button class="tab-btn" id="tab-btn-vision" onclick="switchTab('vision')">Vision</button>
       <button class="tab-btn" id="tab-btn-architecture" onclick="switchTab('architecture')">Architecture</button>
@@ -1292,7 +1507,7 @@
     <div id="prototype" class="panel">
       <div id="sandbox-intro"></div>
 
-      <div class="sandbox-container">
+      <div id="sandboxContainer" class="sandbox-container">
         <div class="sandbox-header">
           <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
             <span style="font-size:0.82rem; font-weight:600; color:var(--text-muted);" id="lblState">Educability condition:</span>
@@ -1307,36 +1522,45 @@
         <div id="sandboxNoteBox" class="sandbox-note"></div>
 
         <div class="sandbox-viz">
-          <div class="radar-svg-box">
-            <svg id="radarSvg" width="460" height="300" viewBox="0 0 460 300"></svg>
+          <div class="radar-sticky-deck">
+            <div class="radar-svg-box">
+              <svg id="radarSvg" width="460" height="300" viewBox="0 0 460 300"></svg>
+              <div class="sandbox-sticky-bar">
+                <div class="lang-switcher" style="background:var(--card-bg);">
+                  <button class="lang-btn active" id="btn-sticky-opt" onclick="setEducabilityState('optimal')">Optimal</button>
+                  <button class="lang-btn" id="btn-sticky-comp" onclick="setEducabilityState('compromised')">Compromised</button>
+                </div>
+                <button type="button" class="sticky-menu-btn" id="btnStickyMenu" onclick="toggleFocusMode()">← Menu</button>
+              </div>
+            </div>
           </div>
+
           <div class="sandbox-table-box">
             <div id="sandboxStatusBox" style="display:none; margin-bottom:14px; background:var(--surface-deep); padding:10px 14px; border-radius:8px; border:1px solid var(--border);"></div>
 
             <table class="delta-table">
               <thead>
                 <tr>
-                  <th id="th-axis">Dimension (ℝ⁸)</th>
-                  <th id="th-delta">Δ (dB)</th>
-                  <th id="th-citation">Traceable evidence</th>
+                  <th id="th-axis" class="col-axis">Dimension (ℝ⁸) · Δ (dB)</th>
+                  <th id="th-citation" class="col-evidence">Traceable evidence</th>
                 </tr>
               </thead>
               <tbody id="deltaTableBody"></tbody>
             </table>
 
             <!-- DIALS DOCENTES RECUPERADOS (CALIBRACIÓN SOBERANA) -->
-            <div id="teacherAdjustBox" style="display:none; margin-top:20px; background:var(--surface-deep); padding:16px 20px; border-radius:10px; border:1px solid var(--border);">
+            <div id="teacherAdjustBox" style="display:none; margin-top:20px; background:var(--surface-deep); padding:16px 18px; border-radius:10px; border:1px solid var(--border);">
               <div style="font-size:0.78rem; letter-spacing:0.04em; color:var(--accent-blue); font-weight:600; margin-bottom:12px;" id="teacherAdjustTitle">
-                Teacher calibration & sovereign override
+                Teacher calibration &amp; sovereign override
               </div>
               <div id="sliderControls"></div>
             </div>
-
-            <!-- Susurro siempre visible al pie del Sandbox (comienza en Élfico y rota en cada visualización/reload) -->
-            <div id="sandboxWhisperWrap">
-              <button type="button" id="sandboxWhisperBtn" aria-label="Portal whisper"></button>
-            </div>
           </div>
+        </div>
+
+        <!-- Susurro siempre visible y centrado al pie del Sandbox (tanto en 1 como en 2 columnas) -->
+        <div id="sandboxWhisperWrap">
+          <button type="button" id="sandboxWhisperBtn" aria-label="Portal whisper"></button>
         </div>
       </div>
     </div>
@@ -1355,18 +1579,22 @@
 
   </div>
 
-  <footer id="siteFooter" style="padding: 8px 10px; font-size: 0.74rem; opacity: 0.88; line-height: 1.45; text-align: center;">
+  <footer id="siteFooter">
     <div id="footerText"></div>
   </footer>
 
-  <!-- Modal Códice Rosetta (Con epígrafe sticky tipo Hero y selector Light/Dark) -->
+  <!-- Modal Códice Rosetta (Con epígrafe sticky tipo Hero y selectores EN/ES + Light/Dark sin saltar posición) -->
   <div id="rosettaModal" aria-hidden="true">
     <div class="rosetta-header">
       <div class="rosetta-title">
         <span class="scarab-rainbow">𓆣</span>
         <span id="rosettaModalTitleText">PRISMA™ Rosetta Codex · 23+7 Languages</span>
       </div>
-      <div style="display:inline-flex; align-items:center; gap:8px;">
+      <div class="rosetta-controls">
+        <div class="lang-switcher">
+          <button type="button" class="lang-btn active" id="btn-codex-en" onclick="setLocale('en')">EN</button>
+          <button type="button" class="lang-btn" id="btn-codex-es" onclick="setLocale('es')">ES</button>
+        </div>
         <button type="button" class="theme-toggle" id="btnCodexTheme" onclick="toggleTheme()">☀ Light</button>
         <button type="button" class="rosetta-close" onclick="closeRosettaCodex()">✕ ESC</button>
       </div>
@@ -1473,7 +1701,7 @@
     const liIcon = (name) => `<span class="li-icon">${ICONS[name]}</span>`;
     const somIcon = (name) => `<span class="somatic-icon">${ICONS[name]}</span>`;
 
-    // Las 23 Lenguas Humanas Canónicas exactas de SPECTRUMbak.md
+    // Las 23 Lenguas Humanas Canónicas
     const QUOTES = {
       en: {
         text: "“Shining white light through learners and projecting its refracted colors to reveal the profound journey of their growth.”",
@@ -1558,7 +1786,7 @@
       pt: {
         text: "« Irradiar luz branca através dos estudantes e projetar suas cores refratadas para revelar a profunda jornada de seu crescimento. »",
         en: "Radiating white light through students and projecting its refracted colors to reveal the profound journey of their growth.",
-        es: "Irradiar luz blanca a través de los estudiantes y proyectar sus colores refractados para revelar la profunda jornada de su crecimiento."
+        es: "Irradiar luz blanca a través de los estudiantes y proyectar sus colores refractados para revelar el profundo viaje de su crecimiento."
       },
       ko: {
         text: "« 학습자를 통해 백색광을 비추고 그 굴절된 색채를 투영하여 그들 성장의 심오한 여정을 밝혀냅니다. »",
@@ -1653,14 +1881,16 @@
         <span style="font-size:0.75rem; color:var(--text-dim); margin-top:2px;">Espacio topológico inicial en ℝ⁸</span>
       </div>`
     };
+
     const CONTENT = {
       en: {
-        pageTitle: "Aula Viva®",
+        pageTitle: "Aula Viva® — PRISMA™ & ASPIRE® | Víctor Stern Rodríguez",
         heading: `Aula Viva<span class="reg">®</span>`,
         descriptor: "PRISMA™ — Multidimensional illumination of human learning assisted by local AI",
         tabs: { vision: "Vision", architecture: "Architecture", ethos: "Ethos", prototype: "Interactive sandbox", interface: "On-device interface" },
         lblState: "Educability condition:",
         exitFocus: "← Menu",
+        enterFocus: "⤢ Focus",
         vision: `
           <div class="callout" style="border-left-color: #58a6ff; margin-bottom: 24px;">
             <p style="margin-bottom: 8px;"><strong>Vision:</strong> To restore human and planetary flourishing as the fundamental principle and supreme purpose of education, and build a better and more peaceful world where every individual can fulfill their potential by freely developing their individuality.</p>
@@ -1688,7 +1918,7 @@
             <li>${liIcon('logCurve')}<strong>Logarithmic decibel calibration:</strong> Learning does not advance in a flat, linear progression from 0 to 100. Overcoming initial friction to take the very first step demands colossal effort, while refining technical mastery at advanced stages requires subtle precision. PRISMA expresses transformation deltas in decibels (dB): mirroring human sensory perception, each logarithmic step measures authentic relative effort and qualitative impact in context, replacing arbitrary additive points.</li>
             <li>${liIcon('auditTrail')}<strong>100% auditable evidence trails:</strong> Every coordinate in ℝ⁸ links directly to the raw narrative observation, educability baseline, and human adjustments—preventing algorithmic automation drift and eliminating black-box opacity.</li>
             <li>${liIcon('growthArrow')}<strong>Cumulative growth &amp; non-regression by omission:</strong> Traditional grades act as volatile snapshots—a single bad day can overwrite or drag down prior achievement. In PRISMA, demonstrated competencies accumulate structurally in ℝ⁸ rather than being erased by a rough session, while any dimension not observed in a given note remains strictly at <code>0.0 dB</code> (epistemic silence), never penalized for omission.</li>
-            <li>${liIcon('pencil')}<strong>Analog-first scale invariance:</strong> The eight-axis vector topology works even without electricity or computers, using physical logs and radial graphs hand-drawn together by teacher and student, a laboratory mathematics practice that helps learners understand how their own learning evolves, while on local hardware PRISMA™ autonomously suggests vector coordinates completely offline.</li>
+            <li>${liIcon('pencil')}<strong>Analog-first scale invariance:</strong> The eight-axis vector topology works even without electricity or computers, using physical logs and radial graphs hand-drawn together by teacher and student—a laboratory mathematics practice that helps learners understand how their own learning evolves—while on local hardware PRISMA™ autonomously suggests vector coordinates completely offline.</li>
           </ul>
           <h3>${hIcon('radarWeb')}<span>How the ℝ⁸ vector space is constructed</span></h3>
           <p>PRISMA's eight dimensions were constructed through an analytical synthesis of <strong>19 international educational attributes and competencies</strong>—integrating the five International Baccalaureate (IB) Approaches to Learning (ATL) categories, ten Learner Profile attributes, and four Career-related Programme (CP) core competencies—woven together with community-rooted pedagogical principles such as Mexico's <em>Nueva Escuela Mexicana</em> (NEM). Rather than acting as a rigid mandate, this topology serves as an adaptable starting template that each educational community can rename or tailor through participatory co-design, incorporating local agricultural competencies, Indigenous community knowledge, or context-specific socio-emotional projects.</p>
@@ -1725,6 +1955,10 @@
               <p style="margin-bottom:0;">By recognizing and validating biopsychosocial or emotional fatigue as a condition to be supported rather than a personal shortcoming, PRISMA exposes systemic gender inequality, driving transformation across the educational community that provides women and girls with much-needed, long-overdue relief.</p>
             </li>
           </ul>
+          <div class="scope-notice">
+            <span class="scope-notice-icon">${ICONS.shieldCheck}</span>
+            <p><strong>Pedagogical scope notice:</strong> PRISMA™ is strictly an educational reflection and learning-analytics instrument designed to strengthen teaching quality and holistic student growth. It is not a medical, clinical, or psychological diagnostic tool, nor a substitute for qualified healthcare or mental-health professionals.</p>
+          </div>
         `,
         sandboxIntro: `
           <h2>${hIcon('sliders')}<span>Interactive architectural sandbox</span></h2>
@@ -1733,24 +1967,24 @@
           </div>
         `,
         btnRun: "Visualize projection",
-        thAxis: "Dimension (ℝ⁸)",
-        thDelta: "Δ (dB)",
+        thAxis: "Dimension (ℝ⁸) · Δ (dB)",
         thCitation: "Traceable evidence",
         idleText: "Click &ldquo;Visualize projection&rdquo; to project the vector coordinates.",
         interfaceTitle: "On-device capture interface",
         interfaceDesc: "Local Streamlit execution environment running offline SLM qualitative inference directly on educator hardware, ensuring zero cloud dependency and strict student data sovereignty.",
         interfaceStatus: "Coming soon for local download and deployment · Apache 2.0",
-        footer: `<strong>Aula Viva®</strong> by Víctor Stern Rodríguez &nbsp;·&nbsp; <button type="button" id="rosettaFooterBtn" onclick="openRosettaCodex()"><span class="scarab-rainbow">𓆣</span><span>PRISMA™ Rosetta Codex · 23+7 Languages</span></button><br>ASPIRE® · PRISMA™ · SSRN: <a href="https://doi.org/10.2139/ssrn.7310080" target="_blank" rel="noopener noreferrer">10.2139/ssrn.7310080</a> · INDAUTOR 03-2026-040710022300-01 · © 2026 Grupo SiEFH S.A.S.`,
+        footer: `<strong>Aula Viva®</strong> by Víctor Stern Rodríguez &nbsp;·&nbsp; <a href="mailto:victor@aulaviva.lat">victor@aulaviva.lat</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/company/aulaviva-lat" target="_blank" rel="noopener noreferrer">LinkedIn</a> &nbsp;·&nbsp; <a href="https://www.facebook.com/aulaviva.lat" target="_blank" rel="noopener noreferrer">Facebook</a> &nbsp;·&nbsp; <button type="button" id="rosettaFooterBtn" onclick="openRosettaCodex()"><span class="scarab-rainbow">𓆣</span><span>PRISMA™ Rosetta Codex · 23+7 Languages</span></button><br>ASPIRE® · PRISMA™ · SSRN: <a href="https://doi.org/10.2139/ssrn.7310080" target="_blank" rel="noopener noreferrer">10.2139/ssrn.7310080</a> · INDAUTOR 03-2026-040710022300-01 · © 2026 Grupo SiEFH S.A.S.`,
         codexBtnLabel: "PRISMA™ Rosetta Codex · 23+7 Languages",
         codexRiddle: "Twenty-three visible human tongues and one master key hidden in plain sight at the portal. Seven hidden tongues, each with two secret keys. Can you find them?"        
       },
       es: {
-        pageTitle: "Aula Viva®",
+        pageTitle: "Aula Viva® — PRISMA™ y ASPIRE® | Víctor Stern Rodríguez",
         heading: `Aula Viva<span class="reg">®</span>`,
         descriptor: "PRISMA™ — Iluminación multidimensional del aprendizaje humano asistida por IA local",
         tabs: { vision: "Visión", architecture: "Arquitectura", ethos: "Ethos", prototype: "Sandbox interactivo", interface: "Interfaz en dispositivo" },
         lblState: "Condición de educabilidad:",
         exitFocus: "← Menú",
+        enterFocus: "⤢ Enfoque",
         vision: `
           <div class="callout" style="border-left-color: #58a6ff; margin-bottom: 24px;">
             <p style="margin-bottom: 8px;"><strong>Visión:</strong> Restablecer el florecimiento humano y planetario como el principio fundamental y fin supremo de la educación, y construir un mundo mejor y más pacífico en el que cada persona pueda alcanzar su potencial desarrollando libremente su individualidad.</p>
@@ -1778,7 +2012,7 @@
             <li>${liIcon('logCurve')}<strong>Calibración logarítmica en decibeles:</strong> El aprendizaje no avanza como una regla fija de centímetros de 0 a 100. Pasar del desconocimiento al primer destello de autonomía exige una energía colosal, mientras que afinar un detalle en etapas avanzadas requiere precisión quirúrgica. PRISMA mide las transformaciones en decibeles (dB): al igual que la percepción sensorial de la luz o el sonido, cada incremento relativo refleja el esfuerzo formativo real y el impacto cualitativo en su contexto, erradicando la suma mecánica de puntos arbitrarios.</li>
             <li>${liIcon('auditTrail')}<strong>Trazabilidad y transparencia absoluta:</strong> Cada coordenada en ℝ⁸ está vinculada directamente con la observación narrativa original, el registro de educabilidad y los ajustes humanos, evitando la opacidad algorítmica y la deriva hacia la automatización.</li>
             <li>${liIcon('growthArrow')}<strong>Crecimiento acumulativo y no-retroceso por omisión:</strong> Las calificaciones tradicionales funcionan como fotos volátiles: un solo mal día puede promediar hacia abajo o borrar un logro previo. En PRISMA, las competencias demostradas se acumulan estructuralmente en ℝ⁸ sin que un tropiezo aislado anule lo ya consolidado, y toda dimensión no observada en una nota permanece estrictamente en <code>0.0 dB</code> (silencio epistémico), jamás penalizada por omisión.</li>
-            <li>${liIcon('pencil')}<strong>Invarianza de escala (primero analógico):</strong> La topología vectorial de ocho ejes funciona incluso sin electricidad ni computadoras, mediante bitácoras físicas y gráficas radiales trazadas a mano entre docente y estudiante, una práctica de matemáticas de laboratorio que ayuda al aprendiz a comprender cómo evoluciona su propio aprendizaje, mientras que, al disponer de equipo local, PRISMA™ sugiere las coordenadas de forma autónoma sin conexión a internet.</li>
+            <li>${liIcon('pencil')}<strong>Invarianza de escala (primero analógico):</strong> La topología vectorial de ocho ejes funciona incluso sin electricidad ni computadoras, mediante bitácoras físicas y gráficas radiales trazadas a mano entre docente y estudiante —una práctica de matemáticas de laboratorio que ayuda al aprendiz a comprender cómo evoluciona su propio aprendizaje—, mientras que, al disponer de equipo local, PRISMA™ sugiere las coordenadas de forma autónoma sin conexión a internet.</li>
           </ul>
           <h3>${hIcon('radarWeb')}<span>Cómo se construye el espacio vectorial ℝ⁸</span></h3>
           <p>Las ocho dimensiones de PRISMA nacen de una síntesis analítica de <strong>19 atributos y competencias educativas internacionales</strong> —integrando las cinco categorías de Enfoques del Aprendizaje (ATL), los diez atributos del Perfil de la Comunidad de Aprendizaje y las cuatro competencias troncales del Programa de Orientación Profesional (CP) del Bachillerato Internacional (IB)— articuladas con principios pedagógicos comunitarios como los de la <em>Nueva Escuela Mexicana</em> (NEM). Más que una imposición rígida, esta matriz es una plantilla inicial adaptable que cada comunidad educativa puede renombrar o rediseñar de forma participativa, integrando competencias técnicas agrícolas, saberes comunitarios indígenas o proyectos socioemocionales propios de su entorno.</p>
@@ -1815,6 +2049,10 @@
               <p style="margin-bottom:0;">Al reconocer y validar el agotamiento biopsicosocial o emocional como una condición que requiere acompañamiento y no como una falla personal, PRISMA visibiliza la desigualdad sistémica de género, impulsando una transformación en el clima institucional que brinda a las mujeres y niñas de la comunidad educativa un alivio muy necesario y pendiente desde hace tiempo.</p>
             </li>
           </ul>
+          <div class="scope-notice">
+            <span class="scope-notice-icon">${ICONS.shieldCheck}</span>
+            <p><strong>Alcance pedagógico:</strong> PRISMA™ es estrictamente un instrumento educativo de reflexión y analítica formativa diseñado para potenciar el aprendizaje y la calidad de la educación. No es una herramienta médica ni de diagnóstico clínico o psicológico, ni sustituye la valoración de profesionales de la salud.</p>
+          </div>
         `,
         sandboxIntro: `
           <h2>${hIcon('sliders')}<span>Sandbox de demostración arquitectónica</span></h2>
@@ -1823,14 +2061,13 @@
           </div>
         `,
         btnRun: "Visualizar proyección",
-        thAxis: "Dimensión (ℝ⁸)",
-        thDelta: "Δ (dB)",
+        thAxis: "Dimensión (ℝ⁸) · Δ (dB)",
         thCitation: "Evidencia trazable",
         idleText: "Presiona &ldquo;Visualizar proyección&rdquo; para proyectar las coordenadas vectoriales.",
         interfaceTitle: "Interfaz de captura en el dispositivo",
         interfaceDesc: "Entorno local Streamlit ejecutando inferencia cualitativa con SLMs directamente en el equipo del educador, garantizando cero dependencia de la nube y soberanía total de datos.",
         interfaceStatus: "Próximamente disponible para descarga y despliegue local · Apache 2.0",
-        footer: `<strong>Aula Viva®</strong> por Víctor Stern Rodríguez &nbsp;·&nbsp; <button type="button" id="rosettaFooterBtn" onclick="openRosettaCodex()"><span class="scarab-rainbow">𓆣</span><span>Códice Rosetta PRISMA™ · 23+7 Idiomas</span></button><br>ASPIRE® · PRISMA™ · SSRN: <a href="https://doi.org/10.2139/ssrn.7310080" target="_blank" rel="noopener noreferrer">10.2139/ssrn.7310080</a> · INDAUTOR 03-2026-040710022300-01 · © 2026 Grupo SiEFH S.A.S.`,
+        footer: `<strong>Aula Viva®</strong> por Víctor Stern Rodríguez &nbsp;·&nbsp; <a href="mailto:victor@aulaviva.lat">victor@aulaviva.lat</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/company/aulaviva-lat" target="_blank" rel="noopener noreferrer">LinkedIn</a> &nbsp;·&nbsp; <a href="https://www.facebook.com/aulaviva.lat" target="_blank" rel="noopener noreferrer">Facebook</a> &nbsp;·&nbsp; <button type="button" id="rosettaFooterBtn" onclick="openRosettaCodex()"><span class="scarab-rainbow">𓆣</span><span>Códice Rosetta PRISMA™ · 23+7 Idiomas</span></button><br>ASPIRE® · PRISMA™ · SSRN: <a href="https://doi.org/10.2139/ssrn.7310080" target="_blank" rel="noopener noreferrer">10.2139/ssrn.7310080</a> · INDAUTOR 03-2026-040710022300-01 · © 2026 Grupo SiEFH S.A.S.`,
         codexBtnLabel: "Códice Rosetta PRISMA™ · 23+7 Idiomas",
         codexRiddle: "«Veintitrés lenguas humanas visibles y una llave maestra escondida a plena luz en el portal. Siete lenguas escondidas, cada una con dos llaves secretas. ¿Puedes encontrarlas?»"        
       }
@@ -1914,6 +2151,7 @@
     };
 
     let currentLocale = "en";
+    let codexSortLocale = "en";
     let educabilityState = "optimal";
     let isSimulationActive = false;
     let currentDeltas = [];
@@ -2049,11 +2287,24 @@
       });
     }
 
-    function exitFocusMode() {
-      document.body.classList.remove("sandbox-focus");
+    function updateStickyMenuLabel() {
+      const btn = document.getElementById("btnStickyMenu");
+      if (!btn) return;
+      const isFocused = document.body.classList.contains("sandbox-focus");
+      btn.textContent = isFocused ? CONTENT[currentLocale].exitFocus : CONTENT[currentLocale].enterFocus;
     }
 
-// === GLIFOS CALIGRÁFICOS REALES Y LOS 7 IDIOMAS DEL SUEÑO ===
+    function exitFocusMode() {
+      document.body.classList.remove("sandbox-focus");
+      updateStickyMenuLabel();
+    }
+
+    function toggleFocusMode() {
+      document.body.classList.toggle("sandbox-focus");
+      updateStickyMenuLabel();
+    }
+
+    // === GLIFOS CALIGRÁFICOS REALES Y LOS 7 IDIOMAS DEL SUEÑO ===
     const SVG_TENGWAR_ELVISH = `<img src="tengwar-elvish.png" class="tengwar-img" alt="Pedo mellon a minno" aria-hidden="true">`;
 
     const SVG_TENGWAR_MORDOR = `<img src="tengwar-mordor.png" class="tengwar-img tengwar-mordor" alt="Ash nazg gimbatul" aria-hidden="true">`;
@@ -2202,11 +2453,15 @@
       document.documentElement.setAttribute("lang", loc);
       document.getElementById("btn-en").classList.toggle("active", loc === "en");
       document.getElementById("btn-es").classList.toggle("active", loc === "es");
+      const codexEnBtn = document.getElementById("btn-codex-en");
+      const codexEsBtn = document.getElementById("btn-codex-es");
+      if (codexEnBtn) codexEnBtn.classList.toggle("active", loc === "en");
+      if (codexEsBtn) codexEsBtn.classList.toggle("active", loc === "es");
       const data = CONTENT[loc];
       document.getElementById("pageTitle").textContent = data.pageTitle;
       document.getElementById("mainHeading").innerHTML = data.heading;
       document.getElementById("appDescriptor").textContent = data.descriptor;
-      document.getElementById("btnExitFocus").textContent = data.exitFocus;
+      updateStickyMenuLabel();
       document.getElementById("tab-btn-vision").innerHTML = `${ICONS.prism}<span>${data.tabs.vision}</span>`;
       document.getElementById("tab-btn-architecture").innerHTML = `${ICONS.building}<span>${data.tabs.architecture}</span>`;
       document.getElementById("tab-btn-ethos").innerHTML = `${ICONS.atomHeart}<span>${data.tabs.ethos}</span>`;
@@ -2218,7 +2473,6 @@
       document.getElementById("sandbox-intro").innerHTML = data.sandboxIntro;
       document.getElementById("btnRunSandbox").textContent = data.btnRun;
       document.getElementById("th-axis").textContent = data.thAxis;
-      document.getElementById("th-delta").textContent = data.thDelta;
       document.getElementById("th-citation").textContent = data.thCitation;
       document.getElementById("lblState").textContent = data.lblState;
       document.getElementById("interfaceTitle").innerHTML = `${hIcon('camera')}<span>${data.interfaceTitle}</span>`;
@@ -2228,8 +2482,14 @@
       document.getElementById("rosettaModalTitleText").textContent = data.codexBtnLabel;
       const riddleEl = document.getElementById("rosettaStickyRiddle");
       if (riddleEl) riddleEl.textContent = data.codexRiddle;
-      document.getElementById("btn-state-opt").textContent = (loc === "en") ? "Optimal" : "Óptimo";
-      document.getElementById("btn-state-comp").textContent = (loc === "en") ? "Compromised" : "Comprometido";
+      const optLabel = (loc === "en") ? "Optimal" : "Óptimo";
+      const compLabel = (loc === "en") ? "Compromised" : "Comprometido";
+      document.getElementById("btn-state-opt").textContent = optLabel;
+      document.getElementById("btn-state-comp").textContent = compLabel;
+      const sOptBtn = document.getElementById("btn-sticky-opt");
+      const sCompBtn = document.getElementById("btn-sticky-comp");
+      if (sOptBtn) sOptBtn.textContent = optLabel;
+      if (sCompBtn) sCompBtn.textContent = compLabel;
       renderImmediateQuote(activeQuoteKey);
       updateThemeBtnLabel();
       if (isSimulationActive) {
@@ -2239,7 +2499,18 @@
       }
       const rModal = document.getElementById("rosettaModal");
       if (rModal && rModal.classList.contains("open")) {
+        const scroller = document.getElementById("rosettaScroller");
+        const prevCycle = scroller ? scroller.querySelector(".rosetta-cycle") : null;
+        const prevRatio = (scroller && prevCycle && prevCycle.offsetHeight > 0)
+          ? (scroller.scrollTop / prevCycle.offsetHeight)
+          : 0;
         populateRosettaCodex();
+        const nextCycle = scroller ? scroller.querySelector(".rosetta-cycle") : null;
+        if (scroller && nextCycle && nextCycle.offsetHeight > 0) {
+          rosettaScrollPos = prevRatio * nextCycle.offsetHeight;
+          scroller.scrollTop = Math.floor(rosettaScrollPos);
+          rosettaLastTime = null;
+        }
       }
     }
 
@@ -2253,30 +2524,72 @@
       if (!isAlreadyActive && activeBtn && activePanel) {
         activeBtn.classList.add("active");
         activePanel.classList.add("active");
+        document.body.classList.toggle("sandbox-wide", tabId === "prototype" && isSimulationActive);
         const stage = document.querySelector(".content-stage");
         if (stage) stage.scrollTop = 0;
         window.scrollTo(0, 0);
         if (tabId === "prototype" && !isSimulationActive) {
           renderSandbox();
         }
+      } else {
+        document.body.classList.remove("sandbox-wide");
       }
     }
 
     function drawRadar(activeDeltas) {
       const svg = document.getElementById("radarSvg");
       if (!svg) return;
-      const cx = 230, cy = 150, r = 92;
+      const cx = 230, cy = 152, r = 92;
       const axesCount = 8;
       const names = AXIS_NAMES[currentLocale];
+
+      // Auto-range: arranca en ±3.0 dB (zoom-in) y se expande a ±6.0 dB si algún eje supera ±3.0 dB
+      let maxAbsDb = 0;
+      if (activeDeltas) {
+        activeDeltas.forEach(d => {
+          const val = Math.abs((d.baseVal || 0) + (d.adjVal || 0));
+          if (val > maxAbsDb) maxAbsDb = val;
+        });
+      }
+      const maxRange = maxAbsDb > 3.0 ? 6.0 : 3.0;
+      const stepDb = 1.5;
+
       let out = "";
-      [0.5, 1.0].forEach(factor => {
+
+      // Etiqueta discreta de rango activo en la esquina superior izquierda
+      const scalePrefix = (currentLocale === "es") ? "Escala" : "Scale";
+      out += `<text x="14" y="18" fill="var(--text-dim)" font-size="8.5" font-family="monospace">${scalePrefix}: ±${maxRange.toFixed(1)} dB</text>`;
+
+      // Octágonos concéntricos cada 1.5 dB
+      for (let db = -maxRange + stepDb; db <= maxRange + 0.001; db += stepDb) {
+        const factor = (db + maxRange) / (2 * maxRange);
+        const isBaseline = Math.abs(db) < 0.01;
+        const isOuter = Math.abs(db - maxRange) < 0.01;
         let pts = [];
         for (let i = 0; i < axesCount; i++) {
           const angle = (Math.PI * 2 / axesCount) * i - Math.PI / 2;
           pts.push(`${cx + Math.cos(angle) * r * factor},${cy + Math.sin(angle) * r * factor}`);
         }
-        out += `<polygon points="${pts.join(" ")}" fill="none" stroke="var(--radar-grid)" stroke-width="1.2"/>`;
-      });
+        if (isBaseline) {
+          out += `<polygon points="${pts.join(" ")}" fill="none" stroke="#4f46e5" stroke-width="1.9"/>`;
+        } else if (isOuter) {
+          out += `<polygon points="${pts.join(" ")}" fill="none" stroke="var(--radar-grid)" stroke-width="1.3"/>`;
+        } else {
+          out += `<polygon points="${pts.join(" ")}" fill="none" stroke="var(--radar-grid)" stroke-width="0.95" stroke-dasharray="3,3"/>`;
+        }
+
+        // Marcas discretas de escala en dB sobre el eje superior derecho (45°)
+        if (db >= -0.01) {
+          const diagAngle = -Math.PI / 4;
+          const tx = cx + Math.cos(diagAngle) * r * factor + 3;
+          const ty = cy + Math.sin(diagAngle) * r * factor - 2;
+          const labelTxt = isBaseline ? "0.0" : `+${db.toFixed(1)}`;
+          const labelColor = isBaseline ? "#6366f1" : "var(--text-dim)";
+          out += `<text x="${tx}" y="${ty}" fill="${labelColor}" font-size="7" font-family="monospace">${labelTxt}</text>`;
+        }
+      }
+
+      // Ejes radiales y etiquetas de las 8 dimensiones
       for (let i = 0; i < axesCount; i++) {
         const angle = (Math.PI * 2 / axesCount) * i - Math.PI / 2;
         const x2 = cx + Math.cos(angle) * r;
@@ -2289,18 +2602,14 @@
         else if (Math.cos(angle) < -0.3) anchor = "end";
         out += `<text x="${lx}" y="${ly}" fill="var(--text-muted)" font-size="9" text-anchor="${anchor}" alignment-baseline="middle" font-family="-apple-system, sans-serif">${names[i]}</text>`;
       }
-      let basePts = [];
-      for (let i = 0; i < axesCount; i++) {
-        const angle = (Math.PI * 2 / axesCount) * i - Math.PI / 2;
-        basePts.push(`${cx + Math.cos(angle) * r * 0.5},${cy + Math.sin(angle) * r * 0.5}`);
-      }
-      out += `<polygon points="${basePts.join(" ")}" fill="none" stroke="#4f46e5" stroke-width="2"/>`;
+
+      // Polígono de proyección activa
       if (activeDeltas) {
         let activePts = [];
         for (let i = 0; i < axesCount; i++) {
           const angle = (Math.PI * 2 / axesCount) * i - Math.PI / 2;
           const totalDb = (activeDeltas[i].baseVal || 0) + (activeDeltas[i].adjVal || 0);
-          const normRadius = Math.max(0.05, Math.min(1.0, (totalDb + 6.0) / 12.0));
+          const normRadius = Math.max(0.04, Math.min(1.0, (totalDb + maxRange) / (2 * maxRange)));
           activePts.push(`${cx + Math.cos(angle) * r * normRadius},${cy + Math.sin(angle) * r * normRadius}`);
         }
         out += `<polygon points="${activePts.join(" ")}" fill="rgba(168, 85, 247, 0.22)" stroke="#a855f7" stroke-width="2.2" stroke-dasharray="4,3"/>`;
@@ -2316,6 +2625,10 @@
       educabilityState = state;
       document.getElementById("btn-state-opt").classList.toggle("active", state === "optimal");
       document.getElementById("btn-state-comp").classList.toggle("active", state === "compromised");
+      const sOptBtn = document.getElementById("btn-sticky-opt");
+      const sCompBtn = document.getElementById("btn-sticky-comp");
+      if (sOptBtn) sOptBtn.classList.toggle("active", state === "optimal");
+      if (sCompBtn) sCompBtn.classList.toggle("active", state === "compromised");
       if (isSimulationActive) {
         updateSimulationVisuals();
       } else {
@@ -2329,18 +2642,23 @@
       const lines = MARIA_NOTE[currentLocale].split("\n");
       noteBox.innerHTML = `<strong>${lines[0]}</strong><br><span style="color:var(--text-dim); font-size:0.82rem;">${data.triage}</span><br><br><span style="color:var(--text-muted); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em;">${lines[1]}</span><br><span style="font-style:italic;">${lines[2]}</span>`;
       const tbody = document.getElementById("deltaTableBody");
-      tbody.innerHTML = `<tr><td colspan="3" class="table-idle">${CONTENT[currentLocale].idleText}</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="2" class="table-idle">${CONTENT[currentLocale].idleText}</td></tr>`;
       const statusBox = document.getElementById("sandboxStatusBox");
       if (statusBox) statusBox.style.display = "none";
       const adjustBox = document.getElementById("teacherAdjustBox");
       if (adjustBox) adjustBox.style.display = "none";
+      const sContainer = document.getElementById("sandboxContainer");
+      if (sContainer) sContainer.classList.remove("sim-active");
       drawRadar(null);
     }
 
     function runSandboxSimulation() {
       const wasActive = isSimulationActive;
       isSimulationActive = true;
-      document.body.classList.add("sandbox-focus");
+      const sContainer = document.getElementById("sandboxContainer");
+      if (sContainer) sContainer.classList.add("sim-active");
+      document.body.classList.add("sandbox-focus", "sandbox-wide");
+      updateStickyMenuLabel();
       updateSimulationVisuals();
       if (wasActive) {
         updateSandboxWhisper(selectWhisperIndex(false));
@@ -2358,9 +2676,11 @@
       tbody.innerHTML = "";
       currentDeltas.forEach(d => {
         const total = d.baseVal + d.adjVal;
-        const adjNote = Math.abs(d.adjVal) > 0.01 ? ` <span style="color:#a855f7; font-size:0.74rem;">(${formatSignedDb(d.baseVal)} PRISMA ${d.adjVal >= 0 ? "+" : ""}${d.adjVal.toFixed(1)})</span>` : "";
+        const adjNote = Math.abs(d.adjVal) > 0.01
+          ? `<span class="delta-adj-note">(${formatSignedDb(d.baseVal)} PRISMA ${d.adjVal >= 0 ? "+" : ""}${d.adjVal.toFixed(1)})</span>`
+          : "";
         const tr = document.createElement("tr");
-        tr.innerHTML = `<td><strong>${d.axis}</strong></td><td class="delta-val">${formatSignedDb(total)}${adjNote}</td><td style="color:var(--text-muted)"><em>“${d.quote}”</em></td>`;
+        tr.innerHTML = `<td><span class="axis-cell-name">${d.axis}</span><span class="delta-val">${formatSignedDb(total)}</span>${adjNote}</td><td style="color:var(--text-muted)"><em>“${d.quote}”</em></td>`;
         tbody.appendChild(tr);
       });
     }
@@ -2372,14 +2692,13 @@
       container.innerHTML = "";
       currentDeltas.forEach((d, idx) => {
         const row = document.createElement("div");
-        row.style.display = "flex";
-        row.style.justifyContent = "space-between";
-        row.style.alignItems = "center";
-        row.style.gap = "10px";
+        row.className = "slider-item";
         row.innerHTML = `
-          <span style="font-size:0.78rem; color:var(--text-body); flex:1.3; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${d.axis}</span>
-          <input type="range" min="-30" max="30" value="${Math.round(d.adjVal * 10)}" style="flex:1; min-width:80px; accent-color:#a855f7; cursor:pointer;" oninput="updateTeacherDelta(${idx}, this.value)">
-          <span id="slider-val-${idx}" style="font-size:0.78rem; font-family:monospace; color:#a855f7; width:64px; flex-shrink:0; white-space:nowrap; text-align:right;">${formatSignedDb(d.adjVal)}</span>
+          <div class="slider-item-head">
+            <span class="slider-item-name">${d.axis}</span>
+            <span id="slider-val-${idx}" class="slider-item-val">${formatSignedDb(d.adjVal)}</span>
+          </div>
+          <input type="range" min="-30" max="30" value="${Math.round(d.adjVal * 10)}" oninput="updateTeacherDelta(${idx}, this.value)">
         `;
         container.appendChild(row);
       });
@@ -2414,41 +2733,43 @@
       }
     }
 
-    // === ROSETTA CODEX (Orden: 1. Activo, 2. Alternativo, 3. Humanos A-Z, 4. Sueño A-Z; sin números; centrado; mitad de velocidad; clic pausa/continúa; infinito) ===
+    // === ROSETTA CODEX (Orden alfabético según idioma de entrada, fijo al alternar EN/ES adentro, velocidad constante) ===
     let rosettaRaf = null;
     let rosettaPaused = false;
     let rosettaScrollPos = 0;
+    let rosettaLastTime = null;
 
     function populateRosettaCodex() {
       const track = document.getElementById("rosettaTrack");
       if (!track) return;
-      const loc = currentLocale;
-      const firstKey = (loc === "es") ? "es" : "en";
-      const secondKey = (loc === "es") ? "en" : "es";
+      const displayLoc = currentLocale;
+      const sortLoc = codexSortLocale;
+      const firstKey = (sortLoc === "es") ? "es" : "en";
+      const secondKey = (sortLoc === "es") ? "en" : "es";
 
       const otherHumanKeys = Object.keys(QUOTES).filter(k => k !== firstKey && k !== secondKey);
       otherHumanKeys.sort((a, b) => {
-        const la = (LANG_LABELS[loc][a] || a).toLowerCase();
-        const lb = (LANG_LABELS[loc][b] || b).toLowerCase();
-        return la.localeCompare(lb, loc);
+        const la = (LANG_LABELS[sortLoc][a] || a).toLowerCase();
+        const lb = (LANG_LABELS[sortLoc][b] || b).toLowerCase();
+        return la.localeCompare(lb, sortLoc);
       });
       const orderedHumanKeys = [firstKey, secondKey, ...otherHumanKeys];
 
       const sortedDream = [...DREAM_LANGUAGES].sort((a, b) => {
-        const la = (loc === "es" ? a.tag_es : a.tag_en).toLowerCase();
-        const lb = (loc === "es" ? b.tag_es : b.tag_en).toLowerCase();
-        return la.localeCompare(lb, loc);
+        const la = (sortLoc === "es" ? a.tag_es : a.tag_en).toLowerCase();
+        const lb = (sortLoc === "es" ? b.tag_es : b.tag_en).toLowerCase();
+        return la.localeCompare(lb, sortLoc);
       });
 
-      const sec1Title = (loc === "es") ? "Veintitrés Lenguas Humanas" : "Twenty-Three Human Tongues";
-      const sec2Title = (loc === "es") ? "Siete Lenguas Escondidas" : "Seven Hidden Tongues";
+      const sec1Title = (displayLoc === "es") ? "Veintitrés Lenguas Humanas" : "Twenty-Three Human Tongues";
+      const sec2Title = (displayLoc === "es") ? "Siete Lenguas Escondidas" : "Seven Hidden Tongues";
 
       function buildSingleCycleHTML() {
         let html = `<div class="rosetta-section-heading">${sec1Title}</div>`;
         orderedHumanKeys.forEach(k => {
           const q = QUOTES[k];
-          const label = LANG_LABELS[loc][k] || k;
-          const trans = (loc === "es") ? q.es : q.en;
+          const label = LANG_LABELS[displayLoc][k] || k;
+          const trans = (displayLoc === "es") ? q.es : q.en;
           const isRtl = (k === "ar" || k === "he" || k === "fa");
           html += `
             <div class="rosetta-entry">
@@ -2461,9 +2782,9 @@
 
         html += `<div class="rosetta-section-heading">${sec2Title}</div>`;
         sortedDream.forEach(d => {
-          const label = (loc === "es") ? d.tag_es : d.tag_en;
-          const trans = (loc === "es") ? d.es : d.en;
-          const wTrans = (loc === "es") ? d.whisper_es : d.whisper_en;
+          const label = (displayLoc === "es") ? d.tag_es : d.tag_en;
+          const trans = (displayLoc === "es") ? d.es : d.en;
+          const wTrans = (displayLoc === "es") ? d.whisper_es : d.whisper_en;
           html += `
             <div class="rosetta-entry">
               <div class="rosetta-lang-label">${label}</div>
@@ -2479,23 +2800,27 @@
       }
 
       const cycleHTML = buildSingleCycleHTML();
-      // Duplicamos el ciclo para que el scroll sea verdaderamente infinito sin salto al llegar al final
       track.innerHTML = `<div class="rosetta-cycle">${cycleHTML}</div><div class="rosetta-cycle">${cycleHTML}</div>`;
     }
 
-    function stepRosettaScroll() {
+    function stepRosettaScroll(timestamp) {
       const modal = document.getElementById("rosettaModal");
       const scroller = document.getElementById("rosettaScroller");
       const firstCycle = scroller ? scroller.querySelector(".rosetta-cycle") : null;
       if (!modal || !modal.classList.contains("open") || !scroller || !firstCycle) return;
 
+      if (rosettaLastTime === null) rosettaLastTime = timestamp;
+      const dt = Math.min(timestamp - rosettaLastTime, 100);
+      rosettaLastTime = timestamp;
+
       if (!rosettaPaused) {
-        rosettaScrollPos += 0.27; // Mitad de velocidad, suave y constante
+        const pxPerSecond = 32;
+        rosettaScrollPos += (pxPerSecond * dt) / 1000;
         const cycleHeight = firstCycle.offsetHeight;
         if (cycleHeight > 0 && rosettaScrollPos >= cycleHeight) {
           rosettaScrollPos -= cycleHeight;
         }
-        scroller.scrollTop = rosettaScrollPos;
+        scroller.scrollTop = Math.floor(rosettaScrollPos);
       } else {
         rosettaScrollPos = scroller.scrollTop;
       }
@@ -2503,12 +2828,14 @@
     }
 
     function openRosettaCodex() {
+      codexSortLocale = currentLocale;
       populateRosettaCodex();
       const modal = document.getElementById("rosettaModal");
       const scroller = document.getElementById("rosettaScroller");
       if (!modal || !scroller) return;
       rosettaPaused = false;
       rosettaScrollPos = 0;
+      rosettaLastTime = null;
       scroller.scrollTop = 0;
       modal.classList.add("open");
       modal.setAttribute("aria-hidden", "false");
@@ -2522,21 +2849,23 @@
       modal.classList.remove("open");
       modal.setAttribute("aria-hidden", "true");
       cancelAnimationFrame(rosettaRaf);
+      rosettaLastTime = null;
     }
 
     const rosettaScrollerEl = document.getElementById("rosettaScroller");
     if (rosettaScrollerEl) {
-      // Un clic pausa, otro clic continúa
       rosettaScrollerEl.addEventListener("click", function() {
         rosettaPaused = !rosettaPaused;
         rosettaScrollPos = rosettaScrollerEl.scrollTop;
+        rosettaLastTime = null;
       });
-      // Sincronizar posición cuando el usuario mueve con dos dedos o touch
       rosettaScrollerEl.addEventListener("wheel", function() {
         rosettaScrollPos = rosettaScrollerEl.scrollTop;
+        rosettaLastTime = null;
       }, { passive: true });
       rosettaScrollerEl.addEventListener("touchmove", function() {
         rosettaScrollPos = rosettaScrollerEl.scrollTop;
+        rosettaLastTime = null;
       }, { passive: true });
     }
 
@@ -2576,7 +2905,6 @@
       document.querySelectorAll(".mellon-beam-in, .mellon-beam-out").forEach(el => el.classList.remove("draw"));
     }
 
-// Destrucción completa del nodo anterior y creación de uno nuevo desde cero (Cero texto fantasma)
     function mountCleanDreamQuote(langObj) {
       const qStage = document.getElementById("mellonQuoteStage");
       if (!qStage) return null;
@@ -2649,30 +2977,25 @@
       document.body.classList.add("mellon-locked");
       overlay.style.display = "flex";
 
-      // Acto I: Fade a velo en 2 heartbeats (1.8s)
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           overlay.classList.add("visible");
         });
       });
 
-      // Acto II: Aparece el Prisma 3D angulado + destello en su contorno en 2 heartbeats (1.8s)
       scheduleMellon(() => {
         if (prism) prism.classList.add("show");
       }, TWO_BEATS);
 
-      // Acto III: Entra el haz blanco (Latido 1: 0.9s) -> penetra y sale refractado en 7 rayos (Latido 2: 0.9s)
       scheduleMellon(() => {
         document.querySelectorAll(".mellon-beam-in").forEach(el => el.classList.add("draw"));
         scheduleMellon(() => {
           if (wedge) wedge.classList.add("show");
           document.querySelectorAll(".mellon-beam-out").forEach(el => el.classList.add("draw"));
-          // Protección contra doble toque accidental inicial: salida táctil activa a partir de aquí
           mellonCanTapExit = true;
         }, BEAT_MS);
       }, TWO_BEATS * 2);
 
-      // Acto IV: Los 7 textos del sueño en ciclo 2 beats entrada + 2 beats permanencia + 2 beats salida
       const orderedDeck = buildDreamSequenceOrder(priorityLangId || "quenya");
       let idx = 0;
 
@@ -2685,7 +3008,6 @@
         const currentItem = orderedDeck[idx];
         const node = mountCleanDreamQuote(currentItem);
 
-        // 2 beats de entrada (1.8s) + 2 beats de permanencia (1.8s) = 3.6s
         scheduleMellon(() => {
           if (!isMellonActive) return;
           if (mellonIsHolding) {
@@ -2704,7 +3026,6 @@
           node.classList.remove("in");
           node.classList.add("out");
         }
-        // 2 beats de salida (1.8s), destrucción total del nodo y paso al siguiente
         scheduleMellon(() => {
           if (!isMellonActive) return;
           if (qStage) qStage.innerHTML = "";
@@ -2715,7 +3036,6 @@
 
       scheduleMellon(runDreamQuoteCycle, TWO_BEATS * 3);
 
-      // Acto V y VI: Fade out del prisma en 2 beats -> Namárië en arcoíris + glifo Tengwar (permanece el triple: 6 beats) -> salida en 2 beats
       function runDreamFinale() {
         if (!isMellonActive) return;
         if (stageWrap) stageWrap.style.opacity = 0;
@@ -2731,7 +3051,6 @@
           }
           if (fWrap) fWrap.classList.add("show");
 
-          // 2 beats de entrada + 6 beats de lectura (triple permanencia) = 8 beats (7.2s)
           scheduleMellon(() => {
             if (!isMellonActive) return;
             if (fWrap) fWrap.classList.remove("show");
@@ -2743,7 +3062,6 @@
       }
     }
 
-    // Controles táctiles y de mouse en el Sueño: Press-and-Hold en la franja horizontal pausa; toque fuera de la franja sale
     const overlayEl = document.getElementById("mellonOverlay");
     const stageWrapEl = document.getElementById("mellonStageWrap");
     if (overlayEl && stageWrapEl) {
@@ -2778,7 +3096,6 @@
       window.addEventListener("touchend", releaseHold, { passive: true });
       window.addEventListener("touchcancel", releaseHold, { passive: true });
 
-      // Salir del sueño tocando fuera de la franja horizontal central
       overlayEl.addEventListener("click", function(e) {
         if (!isMellonActive || !mellonCanTapExit) return;
         const rect = stageWrapEl.getBoundingClientRect();
@@ -2788,7 +3105,6 @@
       });
     }
 
-    // What have I got in my pocket?
     const WHAT_HAS_IT_GOT_IN_ITS_POCKETSES = {};
     DREAM_LANGUAGES.forEach(d => {
       d.keys.forEach(k => {
@@ -2825,7 +3141,6 @@
       }
     });
 
-    // Inicializar página y susurro en Élfico (o rotado si fue reload)
     setLocale("en");
     updateSandboxWhisper(selectWhisperIndex(true));
   </script>
