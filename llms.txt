@@ -1,0 +1,58 @@
+# Aula Viva® — PRISMA™ & ASPIRE®
+
+> Aula Viva® is an educational research and technology platform founded by Víctor Stern Rodríguez under Sistemas Educativos para el Florecimiento Humano, S.A.S. (Grupo SiEFH S.A.S.). Its flagship engine, PRISMA™, provides offline-first, local-AI qualitative learning analytics in an eight-dimensional vector space (ℝ⁸), grounded in the ASPIRE® framework.
+
+## Core Identity & Authorship
+
+- **Platform:** Aula Viva®
+- **Founder & Systems Architect:** Víctor Stern Rodríguez
+- **Legal Entity:** Sistemas Educativos para el Florecimiento Humano, S.A.S. (Grupo SiEFH S.A.S.)
+- **Framework:** ASPIRE® (AI-Synthesised Portal for Integrated Readiness & Excellence)
+- **Qualitative Engine:** PRISMA™ (Plataforma de Reflexión e Interpretación para el Seguimiento Multidimensional del Aprendizaje / Platform for Reflection and Interpretation in Multidimensional Assessment of Learning)
+- **License (On-device interface):** Apache 2.0 (upcoming local download)
+- **Research Publication (SSRN):** https://doi.org/10.2139/ssrn.7310080
+- **Copyright Registration:** INDAUTOR 03-2026-040710022300-01
+
+## Vision & Purpose
+
+Aula Viva® seeks to restore human and planetary flourishing as the fundamental purpose of education. Rather than compressing student development into a single scalar grade (0–100 or GPA), PRISMA™ operates as a qualitative companion layer alongside statutory institutional grading, illuminating multidimensional growth from unstructured teacher narrative observations.
+
+## Technical Architecture
+
+- **Offline-First Edge AI:** Runs entirely on local educator hardware using quantized Small Language Models (1.5B–7B parameters at 4-bit quantization) via open local runtimes (Ollama, llama.cpp, PocketPal), eliminating cloud dependency, recurring API costs, and data-center footprints.
+- **Data Sovereignty:** Student records, identifiers, and qualitative observations remain strictly on-device and inside the school; no minor data is transmitted to third-party cloud servers.
+- **Logarithmic Decibel Calibration (dB):** Transformation deltas are expressed in decibels (dB) to reflect relative formative effort and qualitative impact rather than flat linear point addition.
+- **Cumulative Growth & Non-Regression by Omission:** Demonstrated competencies accumulate structurally in ℝ⁸. Dimensions not observed in a given note remain at 0.0 dB (epistemic silence) and are never penalized for omission.
+- **Analog-First Scale Invariance:** The eight-axis vector topology works both on paper (hand-drawn logs and radial graphs co-constructed by teacher and student) and offline on local hardware.
+- **100% Auditable Evidence Trails:** Every vector coordinate links directly to raw narrative evidence, educability context, and sovereign human adjustments.
+
+## The ℝ⁸ Vector Space (Four Cybernetic Quadrants & 180° Polar Symmetry)
+
+Synthesized from 19 international educational attributes and competencies (IB ATL, Learner Profile, Career-related Programme core) interwoven with community-rooted standards such as Mexico's *Nueva Escuela Mexicana* (NEM), adaptable by each school community:
+
+1. **Northeast Quadrant (Inquiring mind):** Inquiry & research; Critical & analytical thinking.
+2. **Southeast Quadrant (Contextual gaze):** Ethical reasoning; Intercultural agency.
+3. **Southwest Quadrant (Collective action):** Collaborative leadership; Technical mastery.
+4. **Northwest Quadrant (Inner equilibrium & autopoiesis):** Resilience & self-management; Metacognitive reflection.
+
+**Dialectical polar pairs (180°):**
+- Inquiry & research ↔ Collaborative leadership
+- Critical thinking ↔ Technical mastery
+- Ethical reasoning ↔ Resilience & self-management
+- Intercultural agency ↔ Metacognitive reflection
+
+## Ethos, Human Sovereignty & Pedagogical Scope
+
+- **Human Sovereignty:** PRISMA™ suggests; the educator decides. The AI never grades, judges, or replaces human pedagogical authority; educators can accept, calibrate, or override every suggested delta.
+- **Conditions of Educability:** Allows non-punitive contextual logging of sleep/rest, food/nutrition, and holistic well-being so biopsychosocial fatigue or somatic distress (including unpaid domestic care burdens and acute dysmenorrhea disproportionately affecting girls and women) is recognized as a condition requiring support rather than misattributed to lack of capacity.
+- **Pedagogical Scope Notice (Non-Medical Disclaimer):** PRISMA™ is strictly an educational reflection and learning-analytics instrument designed to strengthen teaching quality and holistic student growth. It is not a medical, clinical, or psychological diagnostic tool, nor a substitute for qualified healthcare or mental-health professionals.
+
+## Official Links & Contact
+
+- **Website & Interactive Sandbox:** https://aulaviva.lat/
+- **Direct Contact:** victor@aulaviva.lat
+- **SSRN Paper:** https://doi.org/10.2139/ssrn.7310080
+- **LinkedIn (Organization):** https://www.linkedin.com/company/aulaviva-lat
+- **LinkedIn (Founder):** https://www.linkedin.com/in/victorsternr
+- **Facebook:** https://www.facebook.com/aulaviva.lat
+- **GitHub:** https://github.com/vicstern
