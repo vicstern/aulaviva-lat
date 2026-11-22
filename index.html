@@ -71,6 +71,7 @@
       --radar-circle: #afb8c1;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    #btnTopSandboxToggle { display: none; }
     
     html, body {
       height: 100%;
@@ -931,8 +932,13 @@
         position: static;
         width: 100%;
         display: flex;
+        flex-wrap: wrap
         justify-content: flex-end;
         margin-bottom: 4px;
+      }
+      body.sandbox-wide #btnTopSandboxToggle {
+        display: inline-flex;
+        align-items: center;
       }
       .tabs-dock {
         display: grid;
@@ -1459,13 +1465,14 @@
 <body>
 
   <div class="top-bar">
+    <button type="button" class="theme-toggle" id="btnTopSandboxToggle" onclick="toggleFocusMode()">← Back to menu</button>
     <button class="theme-toggle" id="btnTheme" onclick="toggleTheme()">☀ Light</button>
     <div class="lang-switcher">
       <button class="lang-btn active" id="btn-en" onclick="setLocale('en')">EN</button>
       <button class="lang-btn" id="btn-es" onclick="setLocale('es')">ES</button>
     </div>
   </div>
-
+  
   <div class="header-wrapper">
     <div class="header-zone">
       <h1 id="mainHeading">Aula Viva<span class="reg">®</span></h1>
@@ -1889,8 +1896,8 @@
         descriptor: "PRISMA™ — Multidimensional illumination of human learning assisted by local AI",
         tabs: { vision: "Vision", architecture: "Architecture", ethos: "Ethos", prototype: "Interactive sandbox", interface: "On-device interface" },
         lblState: "Educability condition:",
-        exitFocus: "← Menu",
-        enterFocus: "⤢ Focus",
+        exitFocus: "← Back to menu",
+        enterFocus: "⤢ Back to visualization",
         vision: `
           <div class="callout" style="border-left-color: #58a6ff; margin-bottom: 24px;">
             <p style="margin-bottom: 8px;"><strong>Vision:</strong> To restore human and planetary flourishing as the fundamental principle and supreme purpose of education, and build a better and more peaceful world where every individual can fulfill their potential by freely developing their individuality.</p>
@@ -1915,7 +1922,7 @@
             <li>${liIcon('cloudOff')}<strong>Air-gapped inferences &amp; local adaptability:</strong> Powered by lightweight Small Language Models (SLMs: 1.5B to 7B parameters at 4-bit quantization) running entirely on-device via open local runtimes (such as Ollama, llama.cpp, or PocketPal), PRISMA bridges the connectivity divide, eliminates cloud water and electricity footprints, and allows communities to adapt the open-source prompt and ℝ⁸ developmental anchors to their local cultural and curricular context.</li>
             <li>${liIcon('zeroCost')}<strong>Zero recurring API cost:</strong> Eliminates SaaS operational expenses and per-token fees, democratizing advanced qualitative analytics for resource-constrained community schools.</li>
             <li>${liIcon('shieldCheck')}<strong>Absolute child data sovereignty:</strong> Observations, student IDs, and developmental evaluations never cross an internet connection or touch corporate cloud servers. Data stays permanently inside the school.</li>
-            <li>${liIcon('logCurve')}<strong>Logarithmic decibel calibration:</strong> Learning does not advance in a flat, linear progression from 0 to 100. Overcoming initial friction to take the very first step demands colossal effort, while refining technical mastery at advanced stages requires subtle precision. PRISMA expresses transformation deltas in decibels (dB): mirroring human sensory perception, each logarithmic step measures authentic relative effort and qualitative impact in context, replacing arbitrary additive points.</li>
+            <li>${liIcon('logCurve')}<strong>Logarithmic decibel calibration:</strong> The human mind naturally works by proportions, not linear increments—we sense the world logarithmically! People intuitively know that going from 1 to 2 is a far bigger leap than going from 10 to 11; in reality, doubling from 1 to 2 is equivalent to jumping from 10 to 20. Traditional grading scales (0–10 or 0–100) distort learning by treating +10 points the same anywhere on the scale. PRISMA™ expresses transformations in decibels (dB) relative to each learner’s own baseline: in decibels, every time prior capability doubles, +6 dB is added. In this way, authentic proportional growth is measured and illustrated rather than adding arbitrary points.</li>
             <li>${liIcon('auditTrail')}<strong>100% auditable evidence trails:</strong> Every coordinate in ℝ⁸ links directly to the raw narrative observation, educability baseline, and human adjustments—preventing algorithmic automation drift and eliminating black-box opacity.</li>
             <li>${liIcon('growthArrow')}<strong>Cumulative growth &amp; non-regression by omission:</strong> Traditional grades act as volatile snapshots—a single bad day can overwrite or drag down prior achievement. In PRISMA, demonstrated competencies accumulate structurally in ℝ⁸ rather than being erased by a rough session, while any dimension not observed in a given note remains strictly at <code>0.0 dB</code> (epistemic silence), never penalized for omission.</li>
             <li>${liIcon('pencil')}<strong>Analog-first scale invariance:</strong> The eight-axis vector topology works even without electricity or computers, using physical logs and radial graphs hand-drawn together by teacher and student—a laboratory mathematics practice that helps learners understand how their own learning evolves—while on local hardware PRISMA™ autonomously suggests vector coordinates completely offline.</li>
@@ -1950,11 +1957,11 @@
                 <div class="somatic-item">${somIcon('nutritionLeaf')}<strong>Food / nutrition</strong></div>
                 <div class="somatic-item">${somIcon('heartClean')}<strong>Holistic well-being</strong></div>
               </div>
-              <p style="margin-top:10px; margin-bottom:10px;">Traditionally, manifestations of personal struggle are routinely attributed to a lack of capacity, intellect, or character, when, more often than not, they are due to biopsychosocial or emotional fatigue.</p>
-              <p style="margin-bottom:10px;">Globally, girls and women disproportionately shoulder the “invisible” burden of unpaid domestic care, forced to carry this extreme exhaustion alongside severe somatic distress, such as acute dysmenorrhea, as if they didn't exist.</p>
-              <p style="margin-bottom:0;">By recognizing and validating biopsychosocial or emotional fatigue as a condition to be supported rather than a personal shortcoming, PRISMA exposes systemic gender inequality, driving transformation across the educational community that provides women and girls with much-needed, long-overdue relief.</p>
             </li>
           </ul>
+          <p style="margin-top:14px; margin-bottom:10px;">Traditionally, manifestations of personal struggle are routinely attributed to a lack of capacity, intellect, or character, when, more often than not, they are due to biopsychosocial or emotional fatigue.</p>
+          <p style="margin-bottom:10px;">Globally, girls and women disproportionately shoulder the “invisible” burden of unpaid domestic care, forced to carry this extreme exhaustion alongside severe somatic distress, such as acute dysmenorrhea, as if they didn't exist.</p>
+          <p style="margin-bottom:0;">By recognizing and validating biopsychosocial or emotional fatigue as a condition to be supported rather than a personal shortcoming, PRISMA exposes systemic gender inequality, driving transformation across the educational community that provides women and girls with much-needed, long-overdue relief.</p>
           <div class="scope-notice">
             <span class="scope-notice-icon">${ICONS.shieldCheck}</span>
             <p><strong>Pedagogical scope notice:</strong> PRISMA™ is strictly an educational reflection and learning-analytics instrument designed to strengthen teaching quality and holistic student growth. It is not a medical, clinical, or psychological diagnostic tool, nor a substitute for qualified healthcare or mental-health professionals.</p>
@@ -1983,8 +1990,8 @@
         descriptor: "PRISMA™ — Iluminación multidimensional del aprendizaje humano asistida por IA local",
         tabs: { vision: "Visión", architecture: "Arquitectura", ethos: "Ethos", prototype: "Sandbox interactivo", interface: "Interfaz en dispositivo" },
         lblState: "Condición de educabilidad:",
-        exitFocus: "← Menú",
-        enterFocus: "⤢ Enfoque",
+        exitFocus: "← Volver al menú",
+        enterFocus: "⤢ Volver a la visualización",
         vision: `
           <div class="callout" style="border-left-color: #58a6ff; margin-bottom: 24px;">
             <p style="margin-bottom: 8px;"><strong>Visión:</strong> Restablecer el florecimiento humano y planetario como el principio fundamental y fin supremo de la educación, y construir un mundo mejor y más pacífico en el que cada persona pueda alcanzar su potencial desarrollando libremente su individualidad.</p>
@@ -2009,7 +2016,7 @@
             <li>${liIcon('cloudOff')}<strong>Inferencias aisladas (<em>air-gapped</em>) y adaptación local:</strong> Impulsado por modelos de lenguaje pequeños (SLM: 1.5B a 7B parámetros cuantizados a 4 bits) ejecutados enteramente en el equipo local mediante entornos abiertos (como Ollama, llama.cpp o PocketPal), PRISMA cierra la brecha de conectividad, elimina el gasto hídrico y eléctrico de la nube y permite que cada comunidad adapte el motor abierto y los anclajes formativos en ℝ⁸ a su propio contexto cultural y curricular.</li>
             <li>${liIcon('zeroCost')}<strong>Cero costo operativo de API:</strong> Elimina pagos de suscripción SaaS o cobros por consulta, democratizando la analítica cualitativa para escuelas comunitarias y entornos de recursos limitados.</li>
             <li>${liIcon('shieldCheck')}<strong>Soberanía absoluta de datos del menor:</strong> Las observaciones, identificadores y evaluaciones formativas jamás cruzan una conexión a internet ni tocan servidores corporativos. Los datos permanecen permanentemente en el aula.</li>
-            <li>${liIcon('logCurve')}<strong>Calibración logarítmica en decibeles:</strong> El aprendizaje no avanza como una regla fija de centímetros de 0 a 100. Pasar del desconocimiento al primer destello de autonomía exige una energía colosal, mientras que afinar un detalle en etapas avanzadas requiere precisión quirúrgica. PRISMA mide las transformaciones en decibeles (dB): al igual que la percepción sensorial de la luz o el sonido, cada incremento relativo refleja el esfuerzo formativo real y el impacto cualitativo en su contexto, erradicando la suma mecánica de puntos arbitrarios.</li>
+            <li>${liIcon('logCurve')}<strong>Calibración logarítmica en decibeles:</strong> La mente humana funciona naturalmente por proporciones, no por incrementos lineales: ¡sentimos de forma logarítmica! Las personas sabemos en forma intuitiva que pasar de 1 a 2 es un salto mucho mayor que pasar de 10 a 11; en realidad, duplicar de 1 a 2 equivale a saltar de 10 a 20. Las escalas escolares tradicionales (0–10 o 0–100) distorsionan el aprendizaje porque tratan +10 puntos exactamente igual en cualquier posición dentro de la escala. PRISMA™ expresa las transformaciones en decibeles (dB) respecto a la propia línea base de cada estudiante: en decibeles, cada vez que se duplica la capacidad previa, se suman +6 dB. De esta forma se mide y se ilustra la relación en crecimiento proporcional real en vez de sumar puntos arbitrarios.</li>
             <li>${liIcon('auditTrail')}<strong>Trazabilidad y transparencia absoluta:</strong> Cada coordenada en ℝ⁸ está vinculada directamente con la observación narrativa original, el registro de educabilidad y los ajustes humanos, evitando la opacidad algorítmica y la deriva hacia la automatización.</li>
             <li>${liIcon('growthArrow')}<strong>Crecimiento acumulativo y no-retroceso por omisión:</strong> Las calificaciones tradicionales funcionan como fotos volátiles: un solo mal día puede promediar hacia abajo o borrar un logro previo. En PRISMA, las competencias demostradas se acumulan estructuralmente en ℝ⁸ sin que un tropiezo aislado anule lo ya consolidado, y toda dimensión no observada en una nota permanece estrictamente en <code>0.0 dB</code> (silencio epistémico), jamás penalizada por omisión.</li>
             <li>${liIcon('pencil')}<strong>Invarianza de escala (primero analógico):</strong> La topología vectorial de ocho ejes funciona incluso sin electricidad ni computadoras, mediante bitácoras físicas y gráficas radiales trazadas a mano entre docente y estudiante —una práctica de matemáticas de laboratorio que ayuda al aprendiz a comprender cómo evoluciona su propio aprendizaje—, mientras que, al disponer de equipo local, PRISMA™ sugiere las coordenadas de forma autónoma sin conexión a internet.</li>
@@ -2044,11 +2051,11 @@
                 <div class="somatic-item">${somIcon('nutritionLeaf')}<strong>Alimentación / nutrición</strong></div>
                 <div class="somatic-item">${somIcon('heartClean')}<strong>Bienestar integral</strong></div>
               </div>
-              <p style="margin-top:10px; margin-bottom:10px;">Tradicionalmente, cualquier señal de dificultad personal suele atribuirse a falta de capacidad, intelecto o carácter, cuando la mayoría de las veces responde a agotamiento biopsicosocial o emocional.</p>
-              <p style="margin-bottom:10px;">A nivel global, las niñas y las mujeres cargan de forma desproporcionada con el «invisible» peso del trabajo doméstico y de cuidados no remunerado, obligadas a sobrellevar ese agotamiento extremo sumado al desgaste profundo provocado por malestares somáticos, como la dismenorrea severa, como si no existieran.</p>
-              <p style="margin-bottom:0;">Al reconocer y validar el agotamiento biopsicosocial o emocional como una condición que requiere acompañamiento y no como una falla personal, PRISMA visibiliza la desigualdad sistémica de género, impulsando una transformación en el clima institucional que brinda a las mujeres y niñas de la comunidad educativa un alivio muy necesario y pendiente desde hace tiempo.</p>
             </li>
           </ul>
+          <p style="margin-top:14px; margin-bottom:10px;">Tradicionalmente, cualquier señal de dificultad personal suele atribuirse a falta de capacidad, intelecto o carácter, cuando la mayoría de las veces responde a agotamiento biopsicosocial o emocional.</p>
+          <p style="margin-bottom:10px;">A nivel global, las niñas y las mujeres cargan de forma desproporcionada con el «invisible» peso del trabajo doméstico y de cuidados no remunerado, obligadas a sobrellevar ese agotamiento extremo sumado al desgaste profundo provocado por malestares somáticos, como la dismenorrea severa, como si no existieran.</p>
+          <p style="margin-bottom:0;">Al reconocer y validar el agotamiento biopsicosocial o emocional como una condición que requiere acompañamiento y no como una falla personal, PRISMA visibiliza la desigualdad sistémica de género, impulsando una transformación en el clima institucional que brinda a las mujeres y niñas de la comunidad educativa un alivio muy necesario y pendiente desde hace tiempo.</p>
           <div class="scope-notice">
             <span class="scope-notice-icon">${ICONS.shieldCheck}</span>
             <p><strong>Alcance pedagógico:</strong> PRISMA™ es estrictamente un instrumento educativo de reflexión y analítica formativa diseñado para potenciar el aprendizaje y la calidad de la educación. No es una herramienta médica ni de diagnóstico clínico o psicológico, ni sustituye la valoración de profesionales de la salud.</p>
@@ -2288,12 +2295,14 @@
     }
 
     function updateStickyMenuLabel() {
-      const btn = document.getElementById("btnStickyMenu");
-      if (!btn) return;
       const isFocused = document.body.classList.contains("sandbox-focus");
-      btn.textContent = isFocused ? CONTENT[currentLocale].exitFocus : CONTENT[currentLocale].enterFocus;
+      const label = isFocused ? CONTENT[currentLocale].exitFocus : CONTENT[currentLocale].enterFocus;
+      const btn = document.getElementById("btnStickyMenu");
+      if (btn) btn.textContent = label;
+      const topBtn = document.getElementById("btnTopSandboxToggle");
+      if (topBtn) topBtn.textContent = label;
     }
-
+    
     function exitFocusMode() {
       document.body.classList.remove("sandbox-focus");
       updateStickyMenuLabel();
@@ -3121,6 +3130,10 @@
         const rModal = document.getElementById("rosettaModal");
         if (rModal && rModal.classList.contains("open")) {
           closeRosettaCodex();
+          return;
+        }
+        if (document.body.classList.contains("sandbox-focus")) {
+          exitFocusMode();
           return;
         }
       }
