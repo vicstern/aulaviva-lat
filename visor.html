@@ -80,52 +80,77 @@
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html, body {
-      height: 100%;
-      overflow: hidden;
+    html {
+      min-height: 100%;
       background-color: var(--bg);
       color: var(--text-main);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       -webkit-text-size-adjust: 100%;
+      overflow-x: clip;
       transition: background-color 0.2s ease, color 0.2s ease;
     }
     body {
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 10px 20px 8px;
+      background-color: var(--bg);
+      color: var(--text-main);
+      padding: 0 24px calc(14px + env(safe-area-inset-bottom));
       position: relative;
+      overflow-x: clip;
+      transition: background-color 0.2s ease, color 0.2s ease;
     }
 
-    /* === STICKY HEADER SHELL (IDENTICAL ARCHITECTURE TO index.html) === */
-    .sticky-header-shell {
-      width: 100%;
-      max-width: 920px;
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: var(--bg);
-      position: relative;
+    /* === SLIM STICKY TOP BAR (ZERO CLOCK OVERLAP ON IPHONE, MAX SPACE ON LAPTOP) === */
+    .sticky-top-bar {
+      position: sticky;
+      top: 0;
       z-index: 30;
+      width: calc(100% + 48px);
+      margin: 0 -24px;
+      padding: calc(10px + env(safe-area-inset-top)) 24px 8px;
+      background: rgba(9, 13, 19, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      display: flex;
+      justify-content: center;
+      transition: border-color 0.2s ease;
+    }
+    html[data-theme="light"] .sticky-top-bar {
+      background: rgba(255, 255, 255, 0.94);
+    }
+    body.is-scrolled .sticky-top-bar {
+      border-bottom-color: var(--border);
     }
     .top-bar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 20;
+      width: 100%;
+      max-width: 1080px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 8px;
-      pointer-events: none;
     }
     .top-bar-left, .top-bar-right {
       display: flex;
       align-items: center;
       gap: 8px;
-      pointer-events: auto;
+    }
+    .sticky-mini-brand {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--text-main);
+      opacity: 0;
+      transform: translateY(-2px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    body.is-scrolled .sticky-mini-brand {
+      opacity: 0.92;
+      transform: translateY(0);
     }
     .theme-toggle, .pill-link {
       background: var(--card-bg);
@@ -168,24 +193,26 @@
       box-shadow: 0 1px 3px var(--pill-shadow);
     }
 
+    /* === BRAND HEADER (SCROLLS AWAY NATURALLY) === */
     .header-zone {
       text-align: center;
       width: 100%;
-      max-width: 800px;
-      padding-bottom: 10px;
+      max-width: 920px;
+      padding: 2px 0 12px;
+      flex-shrink: 0;
     }
     h1 {
-      font-size: clamp(1.35rem, 2.05vw, 1.75rem);
+      font-size: clamp(1.38rem, 2.05vw, 1.78rem);
       font-weight: 700;
       letter-spacing: 0.08em;
       color: var(--text-main);
-      padding-top: 2px;
-      margin: 0 0 1px;
+      padding-top: 0;
+      margin: 0 0 2px;
       line-height: 1.25;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 7px;
     }
     h1 span.reg {
       font-size: 0.72rem;
@@ -193,16 +220,16 @@
       font-weight: 400;
       color: var(--text-muted);
     }
-    .kheper-svg { display: inline-block; flex-shrink: 0; vertical-align: middle; }
-    .kheper-hdr { width: 1.08em; height: 1.08em; }
-    .kheper-inline { width: 15px; height: 15px; }
+    .kheper-svg { display: inline-block; flex-shrink: 0; }
+    .kheper-hdr { height: 1.24em; width: auto; vertical-align: -0.14em; }
+    .kheper-inline { height: 1.26em; width: auto; vertical-align: -0.22em; margin-right: 4px; }
     p.descriptor {
       font-size: clamp(0.82rem, 1.02vw, 0.9rem);
       color: var(--accent-blue);
       letter-spacing: 0.015em;
       line-height: 1.3;
       font-weight: 500;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
     }
     p.primary-quote {
       font-style: italic;
@@ -240,22 +267,13 @@
       background: rgba(88, 166, 255, 0.28);
     }
 
-    /* === SCROLLABLE CONTENT STAGE (EXACTLY LIKE index.html) === */
+    /* === FULL-FLOW CONTENT STAGE (WIDER ON DESKTOP) === */
     .content-stage {
-      max-width: 920px;
+      max-width: 1080px;
       width: 100%;
       flex: 1;
-      overflow-y: auto;
-      padding-right: 6px;
-      padding-bottom: 12px;
-      scrollbar-width: thin;
-      scrollbar-color: var(--border) transparent;
-      -webkit-overflow-scrolling: touch;
-    }
-    .content-stage::-webkit-scrollbar { width: 6px; }
-    .content-stage::-webkit-scrollbar-thumb {
-      background: var(--border);
-      border-radius: 4px;
+      overflow: visible;
+      padding-bottom: 16px;
     }
 
     .panel-card {
@@ -625,27 +643,23 @@
       height: 23px;
     }
 
-    /* === FOOTER (CLONED FROM index.html) === */
+    /* === FOOTER (BASELINE-ALIGNED LIKE index.html) === */
     footer {
       flex-shrink: 0;
       width: 100%;
-      max-width: 920px;
-      padding: 6px 0 6px;
-      font-size: 0.72rem;
+      max-width: 1080px;
+      padding: 10px 0 8px;
+      font-size: 0.73rem;
       color: var(--text-muted);
       text-align: center;
-      line-height: 1.4;
+      line-height: 1.55;
       border-top: 1px solid var(--border);
       margin-top: auto;
     }
     footer a { color: var(--accent-blue); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
     .footer-brand-line {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 5px;
+      display: inline;
     }
 
     /* === SHARE / OFFLINE QR MODAL === */
@@ -732,38 +746,21 @@
     }
     .share-actions button { width: 100%; }
 
-    /* === MOBILE RESPONSIVE (STICKY HEADER SHELL + SAFE AREA) === */
+    /* === MOBILE RESPONSIVE === */
     @media (max-width: 768px) {
-      html, body, .content-stage {
-        height: auto !important;
-        min-height: 100%;
-        overflow-x: clip !important;
-        overflow-y: visible !important;
-      }
       body {
         padding: 0 12px calc(16px + env(safe-area-inset-bottom));
       }
-      .sticky-header-shell {
-        position: sticky;
-        top: 0;
+      .sticky-top-bar {
         width: calc(100% + 24px);
-        max-width: none;
-        margin: 0 -12px 10px;
-        padding: calc(10px + env(safe-area-inset-top)) 12px 8px;
-        border-bottom: 1px solid var(--border);
+        margin: 0 -12px;
+        padding: calc(8px + env(safe-area-inset-top)) 12px 7px;
       }
-      .top-bar {
-        position: static;
-        width: 100%;
-        margin-bottom: 4px;
-        pointer-events: auto;
+      .sticky-mini-brand {
+        display: none;
       }
       .header-zone {
-        padding-bottom: 0;
-      }
-      .content-stage {
-        padding-right: 0;
-        padding-bottom: 8px;
+        padding: 2px 0 10px;
       }
       .panel-card {
         padding: 15px 14px;
@@ -774,7 +771,7 @@
       }
     }
     @media (max-height: 500px) {
-      .sticky-header-shell {
+      .sticky-top-bar {
         position: static !important;
       }
     }
@@ -786,7 +783,7 @@
         overflow: visible !important;
       }
       body { background: #fff; color: #1f2328; padding: 0; }
-      .sticky-header-shell { position: static; border: none; padding: 0 0 8px; margin: 0; width: 100%; }
+      .sticky-top-bar { position: static; border: none; padding: 0 0 8px; margin: 0; width: 100%; }
       .panel-card, .radar-svg-box, .semaforo-box { border-color: #d0d7de; background: #fff; }
       p.primary-quote { -webkit-text-fill-color: #1f2328; color: #1f2328; background: none; }
     }
@@ -794,11 +791,12 @@
 </head>
 <body>
 
-  <div class="sticky-header-shell">
-    <div class="top-bar no-print">
+  <div class="sticky-top-bar no-print">
+    <div class="top-bar">
       <div class="top-bar-left">
         <a class="pill-link" id="btnBackHome" href="index.html">← Aula Viva®</a>
       </div>
+      <span class="sticky-mini-brand" aria-hidden="true">PRISMA™ Visor · ℝ⁸</span>
       <div class="top-bar-right">
         <button type="button" class="theme-toggle" id="btnShare" onclick="openShareModal()">↗ Compartir</button>
         <button type="button" class="theme-toggle" id="btnTheme" onclick="toggleTheme()">☀ Claro</button>
@@ -808,13 +806,13 @@
         </div>
       </div>
     </div>
-
-    <header class="header-zone">
-      <h1><svg class="kheper-svg kheper-hdr" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="kheperGrad_visorHdr" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse"><stop offset="0%" style="stop-color:var(--kheper-1)"/><stop offset="20%" style="stop-color:var(--kheper-2)"/><stop offset="38%" style="stop-color:var(--kheper-3)"/><stop offset="56%" style="stop-color:var(--kheper-4)"/><stop offset="74%" style="stop-color:var(--kheper-5)"/><stop offset="88%" style="stop-color:var(--kheper-6)"/><stop offset="100%" style="stop-color:var(--kheper-7)"/></linearGradient></defs><circle cx="32" cy="7.5" r="3.1" fill="url(#kheperGrad_visorHdr)"/><path d="M24.2 19.2 C23.8 15.4 26.8 12.6 32 12.6 C37.2 12.6 40.2 15.4 39.8 19.2 C37.4 18.2 34.8 17.8 32 17.8 C29.2 17.8 26.6 18.2 24.2 19.2 Z" fill="url(#kheperGrad_visorHdr)"/><path d="M19.2 28.4 C19.2 22.8 24.4 19.8 32 19.8 C39.6 19.8 44.8 22.8 44.8 28.4 C44.8 30.2 43.9 31.6 42.6 32.4 C39.4 31.2 35.8 30.7 32 30.7 C28.2 30.7 24.6 31.2 21.4 32.4 C20.1 31.6 19.2 30.2 19.2 28.4 Z" fill="url(#kheperGrad_visorHdr)"/><polygon points="29.4,33.1 34.6,33.1 32,37.2" fill="url(#kheperGrad_visorHdr)"/><path d="M21.0 34.4 C23.8 33.4 26.6 33.1 28.2 33.4 L30.9 38.2 L30.9 56.2 C24.6 55.6 19.4 49.4 19.2 41.2 C19.1 38.2 19.8 35.8 21.0 34.4 Z" fill="url(#kheperGrad_visorHdr)"/><path d="M43.0 34.4 C40.2 33.4 37.4 33.1 35.8 33.4 L33.1 38.2 L33.1 56.2 C39.4 55.6 44.6 49.4 44.8 41.2 C44.9 38.2 44.2 35.8 43.0 34.4 Z" fill="url(#kheperGrad_visorHdr)"/><path d="M20.6 24.2 C14.6 23.0 11.0 18.6 12.6 13.0 C13.8 9.2 17.8 7.6 22.2 8.2" stroke="url(#kheperGrad_visorHdr)" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.2 17.2 L9.0 16.0 M12.8 13.4 L10.0 11.4" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.1" stroke-linecap="round"/><path d="M43.4 24.2 C49.4 23.0 53.0 18.6 51.4 13.0 C50.2 9.2 46.2 7.6 41.8 8.2" stroke="url(#kheperGrad_visorHdr)" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/><path d="M51.8 17.2 L55.0 16.0 M51.2 13.4 L54.0 11.4" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.1" stroke-linecap="round"/><path d="M18.6 34.8 C12.4 34.4 8.2 37.2 7.6 42.2 C7.3 44.6 8.4 46.8 10.6 48.2" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M45.4 34.8 C51.6 34.4 55.8 37.2 56.4 42.2 C56.7 44.6 55.6 46.8 53.4 48.2" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M21.0 46.2 C15.2 48.8 12.8 53.4 15.2 57.6 C16.8 60.0 19.8 60.6 23.0 59.6" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M43.0 46.2 C48.8 48.8 51.2 53.4 48.8 57.6 C47.2 60.0 44.2 60.6 41.0 59.6" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Aula Viva<span class="reg">®</span></span></h1>
-      <p class="descriptor" id="appDescriptor">PRISMA™ Visor — Proyección móvil 100 % offline en ℝ⁸</p>
-      <p class="primary-quote" id="primaryQuote"></p>
-    </header>
   </div>
+
+  <header class="header-zone">
+    <h1><svg class="kheper-svg kheper-hdr" viewBox="0 0 44 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="kheperGrad_visorHdr" x1="4" y1="4" x2="40" y2="60" gradientUnits="userSpaceOnUse"><stop offset="0%" style="stop-color:var(--kheper-1)"/><stop offset="20%" style="stop-color:var(--kheper-2)"/><stop offset="38%" style="stop-color:var(--kheper-3)"/><stop offset="56%" style="stop-color:var(--kheper-4)"/><stop offset="74%" style="stop-color:var(--kheper-5)"/><stop offset="88%" style="stop-color:var(--kheper-6)"/><stop offset="100%" style="stop-color:var(--kheper-7)"/></linearGradient></defs><g transform="translate(4.1, 0) skewX(-7.5)"><circle cx="22" cy="6.2" r="2.2" fill="url(#kheperGrad_visorHdr)"/><path d="M16.8 16.4 C16.6 13.0 18.8 10.6 22 10.6 C25.2 10.6 27.4 13.0 27.2 16.4 C25.5 15.6 23.8 15.3 22 15.3 C20.2 15.3 18.5 15.6 16.8 16.4 Z" fill="url(#kheperGrad_visorHdr)"/><path d="M13.4 25.4 C13.5 19.6 16.8 16.8 22 16.8 C27.2 16.8 30.5 19.6 30.6 25.4 C30.6 27.0 29.9 28.2 28.8 28.9 C26.6 27.9 24.4 27.5 22 27.5 C19.6 27.5 17.4 27.9 15.2 28.9 C14.1 28.2 13.4 27.0 13.4 25.4 Z" fill="url(#kheperGrad_visorHdr)"/><polygon points="20.1,29.4 23.9,29.4 22,33.2" fill="url(#kheperGrad_visorHdr)"/><path d="M14.8 30.4 C16.9 29.6 18.6 29.4 19.6 29.7 L21.2 34.0 L21.2 55.6 C16.4 54.6 13.2 47.8 13.3 38.6 C13.4 35.0 13.9 32.0 14.8 30.4 Z" fill="url(#kheperGrad_visorHdr)"/><path d="M29.2 30.4 C27.1 29.6 25.4 29.4 24.4 29.7 L22.8 34.0 L22.8 55.6 C27.6 54.6 30.8 47.8 30.7 38.6 C30.6 35.0 30.1 32.0 29.2 30.4 Z" fill="url(#kheperGrad_visorHdr)"/><path d="M14.6 21.0 C9.6 19.2 7.8 14.2 10.2 8.8 C11.5 6.0 14.4 4.8 17.4 5.5" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.1 14.4 L6.7 13.4 M9.8 10.8 L7.6 9.2" stroke="url(#kheperGrad_visorHdr)" stroke-width="1.6" stroke-linecap="round"/><path d="M29.4 21.0 C34.4 19.2 36.2 14.2 33.8 8.8 C32.5 6.0 29.6 4.8 26.6 5.5" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/><path d="M34.9 14.4 L37.3 13.4 M34.2 10.8 L36.4 9.2" stroke="url(#kheperGrad_visorHdr)" stroke-width="1.6" stroke-linecap="round"/><path d="M13.2 31.6 C8.4 32.2 6.8 36.2 7.8 41.6 C8.3 44.0 9.4 45.6 10.8 46.8" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/><path d="M30.8 31.6 C35.6 32.2 37.2 36.2 36.2 41.6 C35.7 44.0 34.6 45.6 33.2 46.8" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.4 45.4 C10.4 48.6 9.8 54.0 12.2 58.2 C13.6 60.2 16.0 60.8 18.4 59.8" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/><path d="M29.6 45.4 C33.6 48.6 34.2 54.0 31.8 58.2 C30.4 60.2 28.0 60.8 25.6 59.8" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/></g></svg><span>Aula Viva<span class="reg">®</span></span></h1>
+    <p class="descriptor" id="appDescriptor">PRISMA™ Visor — Proyección móvil 100 % offline en ℝ⁸</p>
+    <p class="primary-quote" id="primaryQuote"></p>
+  </header>
 
   <main class="content-stage">
     <section class="panel-card no-print collapsed-input" id="inputCard">
@@ -910,8 +908,8 @@
   <script>
     function kheperSvg(uid, cls = "kheper-svg") {
       const gid = "kheperGrad_" + uid;
-      return `<svg class="${cls}" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">`
-        + `<defs><linearGradient id="${gid}" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">`
+      return `<svg class="${cls}" viewBox="0 0 44 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">`
+        + `<defs><linearGradient id="${gid}" x1="4" y1="4" x2="40" y2="60" gradientUnits="userSpaceOnUse">`
         + `<stop offset="0%" style="stop-color:var(--kheper-1)"/>`
         + `<stop offset="20%" style="stop-color:var(--kheper-2)"/>`
         + `<stop offset="38%" style="stop-color:var(--kheper-3)"/>`
@@ -920,21 +918,22 @@
         + `<stop offset="88%" style="stop-color:var(--kheper-6)"/>`
         + `<stop offset="100%" style="stop-color:var(--kheper-7)"/>`
         + `</linearGradient></defs>`
-        + `<circle cx="32" cy="7.5" r="3.1" fill="url(#${gid})"/>`
-        + `<path d="M24.2 19.2 C23.8 15.4 26.8 12.6 32 12.6 C37.2 12.6 40.2 15.4 39.8 19.2 C37.4 18.2 34.8 17.8 32 17.8 C29.2 17.8 26.6 18.2 24.2 19.2 Z" fill="url(#${gid})"/>`
-        + `<path d="M19.2 28.4 C19.2 22.8 24.4 19.8 32 19.8 C39.6 19.8 44.8 22.8 44.8 28.4 C44.8 30.2 43.9 31.6 42.6 32.4 C39.4 31.2 35.8 30.7 32 30.7 C28.2 30.7 24.6 31.2 21.4 32.4 C20.1 31.6 19.2 30.2 19.2 28.4 Z" fill="url(#${gid})"/>`
-        + `<polygon points="29.4,33.1 34.6,33.1 32,37.2" fill="url(#${gid})"/>`
-        + `<path d="M21.0 34.4 C23.8 33.4 26.6 33.1 28.2 33.4 L30.9 38.2 L30.9 56.2 C24.6 55.6 19.4 49.4 19.2 41.2 C19.1 38.2 19.8 35.8 21.0 34.4 Z" fill="url(#${gid})"/>`
-        + `<path d="M43.0 34.4 C40.2 33.4 37.4 33.1 35.8 33.4 L33.1 38.2 L33.1 56.2 C39.4 55.6 44.6 49.4 44.8 41.2 C44.9 38.2 44.2 35.8 43.0 34.4 Z" fill="url(#${gid})"/>`
-        + `<path d="M20.6 24.2 C14.6 23.0 11.0 18.6 12.6 13.0 C13.8 9.2 17.8 7.6 22.2 8.2" stroke="url(#${gid})" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/>`
-        + `<path d="M12.2 17.2 L9.0 16.0 M12.8 13.4 L10.0 11.4" stroke="url(#${gid})" stroke-width="2.1" stroke-linecap="round"/>`
-        + `<path d="M43.4 24.2 C49.4 23.0 53.0 18.6 51.4 13.0 C50.2 9.2 46.2 7.6 41.8 8.2" stroke="url(#${gid})" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/>`
-        + `<path d="M51.8 17.2 L55.0 16.0 M51.2 13.4 L54.0 11.4" stroke="url(#${gid})" stroke-width="2.1" stroke-linecap="round"/>`
-        + `<path d="M18.6 34.8 C12.4 34.4 8.2 37.2 7.6 42.2 C7.3 44.6 8.4 46.8 10.6 48.2" stroke="url(#${gid})" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>`
-        + `<path d="M45.4 34.8 C51.6 34.4 55.8 37.2 56.4 42.2 C56.7 44.6 55.6 46.8 53.4 48.2" stroke="url(#${gid})" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>`
-        + `<path d="M21.0 46.2 C15.2 48.8 12.8 53.4 15.2 57.6 C16.8 60.0 19.8 60.6 23.0 59.6" stroke="url(#${gid})" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>`
-        + `<path d="M43.0 46.2 C48.8 48.8 51.2 53.4 48.8 57.6 C47.2 60.0 44.2 60.6 41.0 59.6" stroke="url(#${gid})" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>`
-        + `</svg>`;
+        + `<g transform="translate(4.1, 0) skewX(-7.5)">`
+        + `<circle cx="22" cy="6.2" r="2.2" fill="url(#${gid})"/>`
+        + `<path d="M16.8 16.4 C16.6 13.0 18.8 10.6 22 10.6 C25.2 10.6 27.4 13.0 27.2 16.4 C25.5 15.6 23.8 15.3 22 15.3 C20.2 15.3 18.5 15.6 16.8 16.4 Z" fill="url(#${gid})"/>`
+        + `<path d="M13.4 25.4 C13.5 19.6 16.8 16.8 22 16.8 C27.2 16.8 30.5 19.6 30.6 25.4 C30.6 27.0 29.9 28.2 28.8 28.9 C26.6 27.9 24.4 27.5 22 27.5 C19.6 27.5 17.4 27.9 15.2 28.9 C14.1 28.2 13.4 27.0 13.4 25.4 Z" fill="url(#${gid})"/>`
+        + `<polygon points="20.1,29.4 23.9,29.4 22,33.2" fill="url(#${gid})"/>`
+        + `<path d="M14.8 30.4 C16.9 29.6 18.6 29.4 19.6 29.7 L21.2 34.0 L21.2 55.6 C16.4 54.6 13.2 47.8 13.3 38.6 C13.4 35.0 13.9 32.0 14.8 30.4 Z" fill="url(#${gid})"/>`
+        + `<path d="M29.2 30.4 C27.1 29.6 25.4 29.4 24.4 29.7 L22.8 34.0 L22.8 55.6 C27.6 54.6 30.8 47.8 30.7 38.6 C30.6 35.0 30.1 32.0 29.2 30.4 Z" fill="url(#${gid})"/>`
+        + `<path d="M14.6 21.0 C9.6 19.2 7.8 14.2 10.2 8.8 C11.5 6.0 14.4 4.8 17.4 5.5" stroke="url(#${gid})" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>`
+        + `<path d="M9.1 14.4 L6.7 13.4 M9.8 10.8 L7.6 9.2" stroke="url(#${gid})" stroke-width="1.6" stroke-linecap="round"/>`
+        + `<path d="M29.4 21.0 C34.4 19.2 36.2 14.2 33.8 8.8 C32.5 6.0 29.6 4.8 26.6 5.5" stroke="url(#${gid})" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>`
+        + `<path d="M34.9 14.4 L37.3 13.4 M34.2 10.8 L36.4 9.2" stroke="url(#${gid})" stroke-width="1.6" stroke-linecap="round"/>`
+        + `<path d="M13.2 31.6 C8.4 32.2 6.8 36.2 7.8 41.6 C8.3 44.0 9.4 45.6 10.8 46.8" stroke="url(#${gid})" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>`
+        + `<path d="M30.8 31.6 C35.6 32.2 37.2 36.2 36.2 41.6 C35.7 44.0 34.6 45.6 33.2 46.8" stroke="url(#${gid})" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>`
+        + `<path d="M14.4 45.4 C10.4 48.6 9.8 54.0 12.2 58.2 C13.6 60.2 16.0 60.8 18.4 59.8" stroke="url(#${gid})" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>`
+        + `<path d="M29.6 45.4 C33.6 48.6 34.2 54.0 31.8 58.2 C30.4 60.2 28.0 60.8 25.6 59.8" stroke="url(#${gid})" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>`
+        + `</g></svg>`;
     }
 
     const VISOR_SHARE_URL = "https://aulaviva.lat/visor.html";
@@ -1459,6 +1458,10 @@
       btn.textContent = UI[currentLocale].copiedUrl;
       setTimeout(() => { btn.textContent = UI[currentLocale].btnCopyUrl; }, 1800);
     }
+
+    window.addEventListener("scroll", function() {
+      document.body.classList.toggle("is-scrolled", window.scrollY > 28);
+    }, { passive: true });
 
     window.addEventListener("keydown", function(e) {
       if (e.key === "Escape") closeShareModal();

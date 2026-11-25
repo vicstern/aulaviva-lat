@@ -87,22 +87,27 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     #btnTopSandboxToggle { display: none; }
     
-    html, body {
-      height: 100%;
-      overflow: hidden;
+    html {
+      min-height: 100%;
       background-color: var(--bg);
       color: var(--text-main);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       -webkit-text-size-adjust: 100%;
+      overflow-x: clip;
       transition: background-color 0.2s ease, color 0.2s ease;
     }
 
     body {
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 10px 20px 8px;
+      background-color: var(--bg);
+      color: var(--text-main);
+      padding: 10px 24px 12px;
       position: relative;
+      overflow-x: clip;
+      transition: background-color 0.2s ease, color 0.2s ease;
     }
 
     .top-bar {
@@ -152,38 +157,49 @@
       box-shadow: 0 1px 3px var(--pill-shadow);
     }
 
-    .header-wrapper {
+    .brand-header {
       width: 100%;
-      max-width: 920px;
+      max-width: 1140px;
+      text-align: center;
+      padding: 2px 0 4px;
       flex-shrink: 0;
+    }
+    .sticky-dock {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      width: calc(100% + 48px);
+      margin: 0 -24px 12px;
+      padding: 4px 24px 8px;
+      background: var(--sticky-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
       display: flex;
       flex-direction: column;
       align-items: center;
+      transition: border-color 0.2s ease;
     }
-
-    .header-zone {
-      text-align: center;
-      max-width: 800px;
-      padding-top: 0;
-      width: 100%;
+    body.is-scrolled .sticky-dock {
+      border-bottom-color: var(--border);
     }
     h1 {
-      font-size: clamp(1.35rem, 2.05vw, 1.75rem);
+      font-size: clamp(1.38rem, 2.05vw, 1.78rem);
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: none;
       color: var(--text-main);
       padding-top: 2px;
-      margin: 0 0 1px;
+      margin: 0 0 2px;
       line-height: 1.25;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 7px;
     }
-    .kheper-svg { display: inline-block; flex-shrink: 0; vertical-align: middle; }
-    .kheper-hdr { width: 1.08em; height: 1.08em; }
-    .kheper-inline { width: 15px; height: 15px; }
+    .kheper-svg { display: inline-block; flex-shrink: 0; }
+    .kheper-hdr { height: 1.24em; width: auto; vertical-align: -0.14em; }
+    .kheper-inline { height: 1.26em; width: auto; vertical-align: -0.22em; margin-right: 4px; }
     h1 span.reg {
       font-size: 0.72rem;
       vertical-align: super;
@@ -208,17 +224,17 @@
 
     /* Altura compacta y fija para no restar espacio vertical ni provocar saltos */
     .quote-box {
-      height: 56px;
-      min-height: 56px;
-      max-height: 56px;
+      height: 44px;
+      min-height: 44px;
+      max-height: 44px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
       width: 100%;
-      max-width: 900px;
+      max-width: 1020px;
       text-align: center;
       user-select: text;
       -webkit-user-select: text;
@@ -257,7 +273,7 @@
       padding: 3px;
       border-radius: 22px;
       border: 1px solid var(--border);
-      margin-bottom: 10px;
+      margin-bottom: 0;
     }
     .tab-btn {
       background: transparent;
@@ -287,24 +303,16 @@
     }
 
     .content-stage {
-      max-width: 920px;
+      max-width: 1140px;
       width: 100%;
       flex: 1;
-      overflow-y: auto;
-      padding-right: 6px;
-      padding-bottom: 14px;
-      scrollbar-width: thin;
-      scrollbar-color: var(--border) transparent;
+      overflow: visible;
+      padding-bottom: 18px;
       overflow-anchor: none;
       transition: max-width 0.25s var(--physio-curve);
     }
     body.sandbox-wide .content-stage {
-      max-width: 1080px;
-    }
-    .content-stage::-webkit-scrollbar { width: 6px; }
-    .content-stage::-webkit-scrollbar-thumb {
-      background: var(--border);
-      border-radius: 4px;
+      max-width: 1200px;
     }
 
     .panel {
@@ -548,11 +556,14 @@
     }
     .sandbox-container.sim-active .radar-sticky-deck {
       position: sticky;
-      top: 0;
+      top: 96px;
       z-index: 15;
       background: var(--card-inner);
       padding-top: 2px;
       padding-bottom: 8px;
+    }
+    body.sandbox-focus .sandbox-container.sim-active .radar-sticky-deck {
+      top: 58px;
     }
     .radar-svg-box {
       width: 100%;
@@ -626,9 +637,12 @@
         grid-row: 1;
         margin-bottom: 0;
         position: sticky;
-        top: 0;
+        top: 102px;
         background: transparent;
         padding: 0;
+      }
+      body.sandbox-focus .sandbox-container.sim-active .radar-sticky-deck {
+        top: 62px;
       }
       .sandbox-container.sim-active .radar-svg-box svg {
         max-height: 300px;
@@ -785,6 +799,17 @@
       background: var(--surface-deep);
       transition: max-width 0.25s var(--physio-curve), border-radius 0.25s var(--physio-curve);
     }
+    .gallery-stage:not(.is-mobile) .preview-card {
+      width: fit-content;
+      max-width: 100%;
+    }
+    .gallery-stage:not(.is-mobile) .preview-card img {
+      width: auto;
+      max-width: 100%;
+      max-height: calc(100vh - 185px);
+      height: auto;
+      margin: 0 auto;
+    }
     .gallery-stage.is-mobile .preview-card {
       max-width: 315px;
       border-radius: 26px;
@@ -851,19 +876,19 @@
     footer {
       flex-shrink: 0;
       width: 100%;
-      max-width: 920px;
-      padding: 6px 0 6px;
-      font-size: 0.72rem;
+      max-width: 1140px;
+      padding: 10px 0 8px;
+      font-size: 0.73rem;
       color: var(--text-muted);
       text-align: center;
-      line-height: 1.4;
+      line-height: 1.55;
       border-top: 1px solid var(--border);
       margin-top: auto;
     }
     footer a { color: var(--accent-blue); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
-    /* Enlace minimalista del Códice Rosetta en el Footer */
+    /* Enlace minimalista del Códice Rosetta en el Footer (alineado exactamente a la línea base) */
     #rosettaFooterBtn {
       background: transparent !important;
       border: none !important;
@@ -875,9 +900,8 @@
       letter-spacing: 0.02em;
       color: var(--text-muted);
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
+      display: inline;
+      vertical-align: baseline;
       transition: color 0.25s ease, opacity 0.25s ease;
     }
     .rosetta-sticky-epigraph {
@@ -1074,27 +1098,22 @@
     }
 
     @media (max-width: 768px) {
-      html, body, .content-stage {
-        height: auto !important;
-        min-height: 100%;
-        overflow-x: clip !important;
-        overflow-y: visible !important;
-      }
-      .header-wrapper,
-      .header-zone {
+      .sticky-dock {
         display: contents;
       }
       .quote-box {
         position: sticky;
         top: 0;
         z-index: 25;
+        width: calc(100% + 24px);
+        max-width: none;
+        margin: 0 -12px 8px;
         background: var(--bg);
         padding: 6px 12px;
         border-bottom: 1px solid var(--border);
-        height: 82px !important;
-        min-height: 82px !important;
-        max-height: 82px !important;
-        margin-bottom: 8px;
+        height: 78px !important;
+        min-height: 78px !important;
+        max-height: 78px !important;
       }
       body.sandbox-focus .quote-box,
       body.sandbox-wide .quote-box {
@@ -1102,9 +1121,17 @@
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
         border-bottom: none;
-        height: 82px !important;
-        min-height: 82px !important;
-        max-height: 82px !important;
+        height: 78px !important;
+        min-height: 78px !important;
+        max-height: 78px !important;
+      }
+      .sandbox-container.sim-active .radar-sticky-deck,
+      body.sandbox-focus .sandbox-container.sim-active .radar-sticky-deck {
+        top: 0;
+      }
+      .gallery-stage:not(.is-mobile) .preview-card img {
+        max-height: none;
+        width: 100%;
       }
       body { padding: 12px 12px 18px; }
       .top-bar {
@@ -1216,16 +1243,18 @@
       color: transparent !important;
     }
 
-    body.sandbox-focus #mainHeading,
-    body.sandbox-focus #appDescriptor,
+    body.sandbox-focus .brand-header,
     body.sandbox-focus .tabs-dock {
       display: none !important;
     }
     body.sandbox-focus .quote-box {
-      height: 50px;
-      min-height: 50px;
-      max-height: 50px;
-      margin-bottom: 4px;
+      height: 40px;
+      min-height: 40px;
+      max-height: 40px;
+      margin-bottom: 0;
+    }
+    body.sandbox-focus .sticky-dock {
+      padding-bottom: 4px;
     }
 
     /* === EL SUEÑO (PORTAL 3D EN HEARTBEATS) === */
@@ -1243,8 +1272,8 @@
       --mellon-glass-side: rgba(9, 105, 218, 0.12);
       --mellon-glass-back: rgba(31, 35, 40, 0.30);
     }
-    body.mellon-locked,
-    body.mellon-locked .content-stage {
+    html.mellon-locked,
+    body.mellon-locked {
       overflow: hidden !important;
       user-select: none !important;
     }
@@ -1652,14 +1681,14 @@
     </div>
   </div>
   
-  <div class="header-wrapper">
-    <div class="header-zone">
-      <h1 id="mainHeading">Aula Viva<span class="reg">®</span></h1>
-      <p class="descriptor" id="appDescriptor">PRISMA™ — Multidimensional illumination of human learning assisted by local AI</p>
-      
-      <div class="quote-box" id="quoteContainer">
-        <p id="primaryQuote" class="primary-quote">“Shining white light through learners and projecting its refracted colors to reveal the profound journey of their growth.” <span class="quote-sub">(English)</span></p>
-      </div>
+  <header class="brand-header">
+    <h1 id="mainHeading">Aula Viva<span class="reg">®</span></h1>
+    <p class="descriptor" id="appDescriptor">PRISMA™ — Multidimensional illumination of human learning assisted by local AI</p>
+  </header>
+
+  <div class="sticky-dock" id="stickyDock">
+    <div class="quote-box" id="quoteContainer">
+      <p id="primaryQuote" class="primary-quote">“Shining white light through learners and projecting its refracted colors to reveal the profound journey of their growth.” <span class="quote-sub">(English)</span></p>
     </div>
 
     <!-- Navegación de 5 botones canónicos -->
@@ -1796,7 +1825,7 @@
   <div id="rosettaModal" aria-hidden="true">
     <div class="rosetta-header">
       <div class="rosetta-title">
-        <svg class="kheper-svg kheper-inline" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="kheperGrad_rosettaHdr" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse"><stop offset="0%" style="stop-color:var(--kheper-1)"/><stop offset="20%" style="stop-color:var(--kheper-2)"/><stop offset="38%" style="stop-color:var(--kheper-3)"/><stop offset="56%" style="stop-color:var(--kheper-4)"/><stop offset="74%" style="stop-color:var(--kheper-5)"/><stop offset="88%" style="stop-color:var(--kheper-6)"/><stop offset="100%" style="stop-color:var(--kheper-7)"/></linearGradient></defs><circle cx="32" cy="7.5" r="3.1" fill="url(#kheperGrad_rosettaHdr)"/><path d="M24.2 19.2 C23.8 15.4 26.8 12.6 32 12.6 C37.2 12.6 40.2 15.4 39.8 19.2 C37.4 18.2 34.8 17.8 32 17.8 C29.2 17.8 26.6 18.2 24.2 19.2 Z" fill="url(#kheperGrad_rosettaHdr)"/><path d="M19.2 28.4 C19.2 22.8 24.4 19.8 32 19.8 C39.6 19.8 44.8 22.8 44.8 28.4 C44.8 30.2 43.9 31.6 42.6 32.4 C39.4 31.2 35.8 30.7 32 30.7 C28.2 30.7 24.6 31.2 21.4 32.4 C20.1 31.6 19.2 30.2 19.2 28.4 Z" fill="url(#kheperGrad_rosettaHdr)"/><polygon points="29.4,33.1 34.6,33.1 32,37.2" fill="url(#kheperGrad_rosettaHdr)"/><path d="M21.0 34.4 C23.8 33.4 26.6 33.1 28.2 33.4 L30.9 38.2 L30.9 56.2 C24.6 55.6 19.4 49.4 19.2 41.2 C19.1 38.2 19.8 35.8 21.0 34.4 Z" fill="url(#kheperGrad_rosettaHdr)"/><path d="M43.0 34.4 C40.2 33.4 37.4 33.1 35.8 33.4 L33.1 38.2 L33.1 56.2 C39.4 55.6 44.6 49.4 44.8 41.2 C44.9 38.2 44.2 35.8 43.0 34.4 Z" fill="url(#kheperGrad_rosettaHdr)"/><path d="M20.6 24.2 C14.6 23.0 11.0 18.6 12.6 13.0 C13.8 9.2 17.8 7.6 22.2 8.2" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.2 17.2 L9.0 16.0 M12.8 13.4 L10.0 11.4" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="2.1" stroke-linecap="round"/><path d="M43.4 24.2 C49.4 23.0 53.0 18.6 51.4 13.0 C50.2 9.2 46.2 7.6 41.8 8.2" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/><path d="M51.8 17.2 L55.0 16.0 M51.2 13.4 L54.0 11.4" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="2.1" stroke-linecap="round"/><path d="M18.6 34.8 C12.4 34.4 8.2 37.2 7.6 42.2 C7.3 44.6 8.4 46.8 10.6 48.2" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M45.4 34.8 C51.6 34.4 55.8 37.2 56.4 42.2 C56.7 44.6 55.6 46.8 53.4 48.2" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M21.0 46.2 C15.2 48.8 12.8 53.4 15.2 57.6 C16.8 60.0 19.8 60.6 23.0 59.6" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M43.0 46.2 C48.8 48.8 51.2 53.4 48.8 57.6 C47.2 60.0 44.2 60.6 41.0 59.6" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="kheper-svg kheper-inline" viewBox="0 0 44 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="kheperGrad_rosettaHdr" x1="4" y1="4" x2="40" y2="60" gradientUnits="userSpaceOnUse"><stop offset="0%" style="stop-color:var(--kheper-1)"/><stop offset="20%" style="stop-color:var(--kheper-2)"/><stop offset="38%" style="stop-color:var(--kheper-3)"/><stop offset="56%" style="stop-color:var(--kheper-4)"/><stop offset="74%" style="stop-color:var(--kheper-5)"/><stop offset="88%" style="stop-color:var(--kheper-6)"/><stop offset="100%" style="stop-color:var(--kheper-7)"/></linearGradient></defs><g transform="translate(4.1, 0) skewX(-7.5)"><circle cx="22" cy="6.2" r="2.2" fill="url(#kheperGrad_rosettaHdr)"/><path d="M16.8 16.4 C16.6 13.0 18.8 10.6 22 10.6 C25.2 10.6 27.4 13.0 27.2 16.4 C25.5 15.6 23.8 15.3 22 15.3 C20.2 15.3 18.5 15.6 16.8 16.4 Z" fill="url(#kheperGrad_rosettaHdr)"/><path d="M13.4 25.4 C13.5 19.6 16.8 16.8 22 16.8 C27.2 16.8 30.5 19.6 30.6 25.4 C30.6 27.0 29.9 28.2 28.8 28.9 C26.6 27.9 24.4 27.5 22 27.5 C19.6 27.5 17.4 27.9 15.2 28.9 C14.1 28.2 13.4 27.0 13.4 25.4 Z" fill="url(#kheperGrad_rosettaHdr)"/><polygon points="20.1,29.4 23.9,29.4 22,33.2" fill="url(#kheperGrad_rosettaHdr)"/><path d="M14.8 30.4 C16.9 29.6 18.6 29.4 19.6 29.7 L21.2 34.0 L21.2 55.6 C16.4 54.6 13.2 47.8 13.3 38.6 C13.4 35.0 13.9 32.0 14.8 30.4 Z" fill="url(#kheperGrad_rosettaHdr)"/><path d="M29.2 30.4 C27.1 29.6 25.4 29.4 24.4 29.7 L22.8 34.0 L22.8 55.6 C27.6 54.6 30.8 47.8 30.7 38.6 C30.6 35.0 30.1 32.0 29.2 30.4 Z" fill="url(#kheperGrad_rosettaHdr)"/><path d="M14.6 21.0 C9.6 19.2 7.8 14.2 10.2 8.8 C11.5 6.0 14.4 4.8 17.4 5.5" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.1 14.4 L6.7 13.4 M9.8 10.8 L7.6 9.2" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="1.6" stroke-linecap="round"/><path d="M29.4 21.0 C34.4 19.2 36.2 14.2 33.8 8.8 C32.5 6.0 29.6 4.8 26.6 5.5" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/><path d="M34.9 14.4 L37.3 13.4 M34.2 10.8 L36.4 9.2" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="1.6" stroke-linecap="round"/><path d="M13.2 31.6 C8.4 32.2 6.8 36.2 7.8 41.6 C8.3 44.0 9.4 45.6 10.8 46.8" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/><path d="M30.8 31.6 C35.6 32.2 37.2 36.2 36.2 41.6 C35.7 44.0 34.6 45.6 33.2 46.8" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.4 45.4 C10.4 48.6 9.8 54.0 12.2 58.2 C13.6 60.2 16.0 60.8 18.4 59.8" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/><path d="M29.6 45.4 C33.6 48.6 34.2 54.0 31.8 58.2 C30.4 60.2 28.0 60.8 25.6 59.8" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
         <span id="rosettaModalTitleText">PRISMA™ Rosetta Codex · 23+7 Languages</span>
       </div>
       <div class="rosetta-controls">
@@ -1877,8 +1906,8 @@
   <script>
     function kheperSvg(uid, cls = "kheper-svg") {
       const gid = "kheperGrad_" + uid;
-      return `<svg class="${cls}" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">`
-        + `<defs><linearGradient id="${gid}" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">`
+      return `<svg class="${cls}" viewBox="0 0 44 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">`
+        + `<defs><linearGradient id="${gid}" x1="4" y1="4" x2="40" y2="60" gradientUnits="userSpaceOnUse">`
         + `<stop offset="0%" style="stop-color:var(--kheper-1)"/>`
         + `<stop offset="20%" style="stop-color:var(--kheper-2)"/>`
         + `<stop offset="38%" style="stop-color:var(--kheper-3)"/>`
@@ -1887,21 +1916,22 @@
         + `<stop offset="88%" style="stop-color:var(--kheper-6)"/>`
         + `<stop offset="100%" style="stop-color:var(--kheper-7)"/>`
         + `</linearGradient></defs>`
-        + `<circle cx="32" cy="7.5" r="3.1" fill="url(#${gid})"/>`
-        + `<path d="M24.2 19.2 C23.8 15.4 26.8 12.6 32 12.6 C37.2 12.6 40.2 15.4 39.8 19.2 C37.4 18.2 34.8 17.8 32 17.8 C29.2 17.8 26.6 18.2 24.2 19.2 Z" fill="url(#${gid})"/>`
-        + `<path d="M19.2 28.4 C19.2 22.8 24.4 19.8 32 19.8 C39.6 19.8 44.8 22.8 44.8 28.4 C44.8 30.2 43.9 31.6 42.6 32.4 C39.4 31.2 35.8 30.7 32 30.7 C28.2 30.7 24.6 31.2 21.4 32.4 C20.1 31.6 19.2 30.2 19.2 28.4 Z" fill="url(#${gid})"/>`
-        + `<polygon points="29.4,33.1 34.6,33.1 32,37.2" fill="url(#${gid})"/>`
-        + `<path d="M21.0 34.4 C23.8 33.4 26.6 33.1 28.2 33.4 L30.9 38.2 L30.9 56.2 C24.6 55.6 19.4 49.4 19.2 41.2 C19.1 38.2 19.8 35.8 21.0 34.4 Z" fill="url(#${gid})"/>`
-        + `<path d="M43.0 34.4 C40.2 33.4 37.4 33.1 35.8 33.4 L33.1 38.2 L33.1 56.2 C39.4 55.6 44.6 49.4 44.8 41.2 C44.9 38.2 44.2 35.8 43.0 34.4 Z" fill="url(#${gid})"/>`
-        + `<path d="M20.6 24.2 C14.6 23.0 11.0 18.6 12.6 13.0 C13.8 9.2 17.8 7.6 22.2 8.2" stroke="url(#${gid})" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/>`
-        + `<path d="M12.2 17.2 L9.0 16.0 M12.8 13.4 L10.0 11.4" stroke="url(#${gid})" stroke-width="2.1" stroke-linecap="round"/>`
-        + `<path d="M43.4 24.2 C49.4 23.0 53.0 18.6 51.4 13.0 C50.2 9.2 46.2 7.6 41.8 8.2" stroke="url(#${gid})" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/>`
-        + `<path d="M51.8 17.2 L55.0 16.0 M51.2 13.4 L54.0 11.4" stroke="url(#${gid})" stroke-width="2.1" stroke-linecap="round"/>`
-        + `<path d="M18.6 34.8 C12.4 34.4 8.2 37.2 7.6 42.2 C7.3 44.6 8.4 46.8 10.6 48.2" stroke="url(#${gid})" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>`
-        + `<path d="M45.4 34.8 C51.6 34.4 55.8 37.2 56.4 42.2 C56.7 44.6 55.6 46.8 53.4 48.2" stroke="url(#${gid})" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>`
-        + `<path d="M21.0 46.2 C15.2 48.8 12.8 53.4 15.2 57.6 C16.8 60.0 19.8 60.6 23.0 59.6" stroke="url(#${gid})" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>`
-        + `<path d="M43.0 46.2 C48.8 48.8 51.2 53.4 48.8 57.6 C47.2 60.0 44.2 60.6 41.0 59.6" stroke="url(#${gid})" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>`
-        + `</svg>`;
+        + `<g transform="translate(4.1, 0) skewX(-7.5)">`
+        + `<circle cx="22" cy="6.2" r="2.2" fill="url(#${gid})"/>`
+        + `<path d="M16.8 16.4 C16.6 13.0 18.8 10.6 22 10.6 C25.2 10.6 27.4 13.0 27.2 16.4 C25.5 15.6 23.8 15.3 22 15.3 C20.2 15.3 18.5 15.6 16.8 16.4 Z" fill="url(#${gid})"/>`
+        + `<path d="M13.4 25.4 C13.5 19.6 16.8 16.8 22 16.8 C27.2 16.8 30.5 19.6 30.6 25.4 C30.6 27.0 29.9 28.2 28.8 28.9 C26.6 27.9 24.4 27.5 22 27.5 C19.6 27.5 17.4 27.9 15.2 28.9 C14.1 28.2 13.4 27.0 13.4 25.4 Z" fill="url(#${gid})"/>`
+        + `<polygon points="20.1,29.4 23.9,29.4 22,33.2" fill="url(#${gid})"/>`
+        + `<path d="M14.8 30.4 C16.9 29.6 18.6 29.4 19.6 29.7 L21.2 34.0 L21.2 55.6 C16.4 54.6 13.2 47.8 13.3 38.6 C13.4 35.0 13.9 32.0 14.8 30.4 Z" fill="url(#${gid})"/>`
+        + `<path d="M29.2 30.4 C27.1 29.6 25.4 29.4 24.4 29.7 L22.8 34.0 L22.8 55.6 C27.6 54.6 30.8 47.8 30.7 38.6 C30.6 35.0 30.1 32.0 29.2 30.4 Z" fill="url(#${gid})"/>`
+        + `<path d="M14.6 21.0 C9.6 19.2 7.8 14.2 10.2 8.8 C11.5 6.0 14.4 4.8 17.4 5.5" stroke="url(#${gid})" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>`
+        + `<path d="M9.1 14.4 L6.7 13.4 M9.8 10.8 L7.6 9.2" stroke="url(#${gid})" stroke-width="1.6" stroke-linecap="round"/>`
+        + `<path d="M29.4 21.0 C34.4 19.2 36.2 14.2 33.8 8.8 C32.5 6.0 29.6 4.8 26.6 5.5" stroke="url(#${gid})" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>`
+        + `<path d="M34.9 14.4 L37.3 13.4 M34.2 10.8 L36.4 9.2" stroke="url(#${gid})" stroke-width="1.6" stroke-linecap="round"/>`
+        + `<path d="M13.2 31.6 C8.4 32.2 6.8 36.2 7.8 41.6 C8.3 44.0 9.4 45.6 10.8 46.8" stroke="url(#${gid})" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>`
+        + `<path d="M30.8 31.6 C35.6 32.2 37.2 36.2 36.2 41.6 C35.7 44.0 34.6 45.6 33.2 46.8" stroke="url(#${gid})" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>`
+        + `<path d="M14.4 45.4 C10.4 48.6 9.8 54.0 12.2 58.2 C13.6 60.2 16.0 60.8 18.4 59.8" stroke="url(#${gid})" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>`
+        + `<path d="M29.6 45.4 C33.6 48.6 34.2 54.0 31.8 58.2 C30.4 60.2 28.0 60.8 25.6 59.8" stroke="url(#${gid})" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>`
+        + `</g></svg>`;
     }
 
     const ICONS = {
@@ -2462,6 +2492,7 @@
     let quoteSwapTimeout = null;
 
     window.addEventListener("scroll", function() {
+      document.body.classList.toggle("is-scrolled", window.scrollY > 36);
       const shouldFreeze = window.scrollY > 45;
       if (shouldFreeze && !isQuoteFrozen) {
         isQuoteFrozen = true;
@@ -3395,6 +3426,7 @@
         overlay.classList.remove("exiting");
         if (qStage) qStage.innerHTML = "";
         resetMellonVisualState();
+        document.documentElement.classList.remove("mellon-locked");
         document.body.classList.remove("mellon-locked");
         isMellonActive = false;
       }, TWO_BEATS);
@@ -3420,6 +3452,7 @@
       const fText = document.getElementById("mellonFarewellText");
       if (!overlay || !qStage) return;
 
+      document.documentElement.classList.add("mellon-locked");
       document.body.classList.add("mellon-locked");
       overlay.style.display = "flex";
 
