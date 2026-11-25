@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title id="pageTitle">Aula Viva® — PRISMA™ Visor Offline (ℝ⁸)</title>
+  <title id="pageTitle">Aula Viva® — PRISMA™ Visor (ℝ⁸)</title>
   <meta name="description" content="PRISMA™ — Visor móvil 100 % offline para proyectar notas cualitativas en el espacio vectorial ℝ⁸.">
   <meta name="theme-color" content="#090d13">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="PRISMA™">
+  <meta name="apple-mobile-web-app-title" content="PRISMA Visor">
   <link rel="manifest" href="visor-manifest.json">
   <link rel="apple-touch-icon" href="visor-icon.png">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23090d13'/><polygon points='50,18 82,78 18,78' fill='none' stroke='%2358a6ff' stroke-width='6'/><line x1='10' y1='56' x2='42' y2='48' stroke='%23ffffff' stroke-width='4'/><line x1='58' y1='46' x2='90' y2='36' stroke='%23c084fc' stroke-width='3.5'/><line x1='61' y1='52' x2='90' y2='52' stroke='%234ade80' stroke-width='3.5'/><line x1='64' y1='58' x2='90' y2='68' stroke='%23facc15' stroke-width='3.5'/></svg>">
@@ -43,6 +43,13 @@
       --delta-red: #f85149;
       --radar-grid: #262f3d;
       --physio-curve: cubic-bezier(0.16, 1, 0.3, 1);
+      --kheper-1: #c084fc;
+      --kheper-2: #60a5fa;
+      --kheper-3: #38bdf8;
+      --kheper-4: #4ade80;
+      --kheper-5: #facc15;
+      --kheper-6: #fb923c;
+      --kheper-7: #f87171;
     }
     html[data-theme="light"] {
       --bg: #ffffff;
@@ -63,6 +70,13 @@
       --delta-yellow: #b45309;
       --delta-red: #cf222e;
       --radar-grid: #d0d7de;
+      --kheper-1: #7e22ce;
+      --kheper-2: #2563eb;
+      --kheper-3: #0284c7;
+      --kheper-4: #16a34a;
+      --kheper-5: #d97706;
+      --kheper-6: #ea580c;
+      --kheper-7: #dc2626;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
@@ -139,7 +153,133 @@
       color: var(--text-main);
       line-height: 1.25;
       margin-bottom: 2px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
+    .kheper-svg { display: inline-block; flex-shrink: 0; vertical-align: middle; }
+    .kheper-hdr { width: 1.08em; height: 1.08em; }
+    .kheper-inline { width: 15px; height: 15px; margin-right: 4px; }
+    .footer-brand-line {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .panel-card.collapsed-input {
+      padding: 11px 16px;
+      margin-bottom: 12px;
+    }
+    .panel-card.collapsed-input .card-title-row {
+      margin-bottom: 0;
+    }
+    .panel-card.collapsed-input #lblPaste,
+    .panel-card.collapsed-input #inputBodyWrap {
+      display: none;
+    }
+    .btn-edit-json {
+      display: none;
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      color: var(--text-body);
+      padding: 4px 11px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .btn-edit-json:hover { color: var(--text-main); border-color: var(--accent-blue); }
+    .panel-card.collapsed-input .btn-edit-json {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .share-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(6, 9, 14, 0.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .share-modal-backdrop.open { display: flex; }
+    .share-modal-card {
+      width: 100%;
+      max-width: 340px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 18px 18px;
+      text-align: center;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+      animation: fadeIn 0.2s var(--physio-curve);
+    }
+    .share-modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .share-modal-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .share-close-btn {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+    .share-close-btn:hover { color: var(--text-main); }
+    .qr-frame {
+      display: inline-flex;
+      padding: 10px;
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin: 4px 0 10px;
+    }
+    .qr-frame svg {
+      display: block;
+      width: 184px;
+      height: 184px;
+    }
+    .share-url-pill {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.76rem;
+      color: var(--accent-blue);
+      background: var(--surface-deep);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 10px;
+      margin-bottom: 12px;
+      word-break: break-all;
+    }
+    .share-hint {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .share-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .share-actions button { width: 100%; }
     h1 span.reg {
       font-size: 0.72rem;
       vertical-align: super;
@@ -429,6 +569,7 @@
 <body>
 
   <div class="top-bar no-print">
+    <button type="button" class="theme-toggle" id="btnShare" onclick="openShareModal()">↗ Compartir</button>
     <button type="button" class="theme-toggle" id="btnTheme" onclick="toggleTheme()">☀ Claro</button>
     <div class="lang-switcher">
       <button type="button" class="lang-btn" id="btn-en" onclick="setLocale('en')">EN</button>
@@ -437,25 +578,28 @@
   </div>
 
   <header class="header-zone">
-    <h1>Aula Viva<span class="reg">®</span></h1>
+    <h1><svg class="kheper-svg kheper-hdr" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="kheperGrad_visorHdr" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse"><stop offset="0%" style="stop-color:var(--kheper-1)"/><stop offset="20%" style="stop-color:var(--kheper-2)"/><stop offset="38%" style="stop-color:var(--kheper-3)"/><stop offset="56%" style="stop-color:var(--kheper-4)"/><stop offset="74%" style="stop-color:var(--kheper-5)"/><stop offset="88%" style="stop-color:var(--kheper-6)"/><stop offset="100%" style="stop-color:var(--kheper-7)"/></linearGradient></defs><circle cx="32" cy="7.5" r="3.1" fill="url(#kheperGrad_visorHdr)"/><path d="M24.2 19.2 C23.8 15.4 26.8 12.6 32 12.6 C37.2 12.6 40.2 15.4 39.8 19.2 C37.4 18.2 34.8 17.8 32 17.8 C29.2 17.8 26.6 18.2 24.2 19.2 Z" fill="url(#kheperGrad_visorHdr)"/><path d="M19.2 28.4 C19.2 22.8 24.4 19.8 32 19.8 C39.6 19.8 44.8 22.8 44.8 28.4 C44.8 30.2 43.9 31.6 42.6 32.4 C39.4 31.2 35.8 30.7 32 30.7 C28.2 30.7 24.6 31.2 21.4 32.4 C20.1 31.6 19.2 30.2 19.2 28.4 Z" fill="url(#kheperGrad_visorHdr)"/><polygon points="29.4,33.1 34.6,33.1 32,37.2" fill="url(#kheperGrad_visorHdr)"/><path d="M21.0 34.4 C23.8 33.4 26.6 33.1 28.2 33.4 L30.9 38.2 L30.9 56.2 C24.6 55.6 19.4 49.4 19.2 41.2 C19.1 38.2 19.8 35.8 21.0 34.4 Z" fill="url(#kheperGrad_visorHdr)"/><path d="M43.0 34.4 C40.2 33.4 37.4 33.1 35.8 33.4 L33.1 38.2 L33.1 56.2 C39.4 55.6 44.6 49.4 44.8 41.2 C44.9 38.2 44.2 35.8 43.0 34.4 Z" fill="url(#kheperGrad_visorHdr)"/><path d="M20.6 24.2 C14.6 23.0 11.0 18.6 12.6 13.0 C13.8 9.2 17.8 7.6 22.2 8.2" stroke="url(#kheperGrad_visorHdr)" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.2 17.2 L9.0 16.0 M12.8 13.4 L10.0 11.4" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.1" stroke-linecap="round"/><path d="M43.4 24.2 C49.4 23.0 53.0 18.6 51.4 13.0 C50.2 9.2 46.2 7.6 41.8 8.2" stroke="url(#kheperGrad_visorHdr)" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/><path d="M51.8 17.2 L55.0 16.0 M51.2 13.4 L54.0 11.4" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.1" stroke-linecap="round"/><path d="M18.6 34.8 C12.4 34.4 8.2 37.2 7.6 42.2 C7.3 44.6 8.4 46.8 10.6 48.2" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M45.4 34.8 C51.6 34.4 55.8 37.2 56.4 42.2 C56.7 44.6 55.6 46.8 53.4 48.2" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M21.0 46.2 C15.2 48.8 12.8 53.4 15.2 57.6 C16.8 60.0 19.8 60.6 23.0 59.6" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M43.0 46.2 C48.8 48.8 51.2 53.4 48.8 57.6 C47.2 60.0 44.2 60.6 41.0 59.6" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Aula Viva<span class="reg">®</span></span></h1>
     <p class="descriptor" id="appDescriptor">PRISMA™ — Visor móvil 100 % offline en ℝ⁸</p>
     <p class="primary-quote" id="primaryQuote"></p>
   </header>
 
   <main>
-    <section class="panel-card no-print">
+    <section class="panel-card no-print" id="inputCard">
       <div class="card-title-row">
         <span class="card-label" id="lblPaste">Pega aquí el JSON generado por PocketPal AI</span>
         <span class="offline-pill" id="offlinePill">● 100 % local · Cero nube</span>
+        <button type="button" class="btn-edit-json" id="btnEditJson" onclick="expandInputCard()">✎ Nueva nota</button>
       </div>
-      <textarea id="jsonInput" spellcheck="false" placeholder='{ "estado_educabilidad": { ... }, "evaluacion_ejes": { ... } }'></textarea>
-      <div class="btn-row">
-        <button type="button" class="btn-action" id="btnRender" onclick="renderFromInput()">Visualizar proyección</button>
-        <button type="button" class="btn-secondary" id="btnPaste" onclick="pasteClipboard()">Pegar</button>
-        <button type="button" class="btn-secondary" id="btnSample" onclick="loadSample()">Cargar ejemplo (María)</button>
-        <button type="button" class="btn-secondary" id="btnClear" onclick="clearAll()">Limpiar</button>
+      <div id="inputBodyWrap">
+        <textarea id="jsonInput" spellcheck="false" placeholder='{ "estado_educabilidad": { ... }, "evaluacion_ejes": { ... } }'></textarea>
+        <div class="btn-row">
+          <button type="button" class="btn-action" id="btnRender" onclick="renderFromInput()">Visualizar proyección</button>
+          <button type="button" class="btn-secondary" id="btnPaste" onclick="pasteClipboard()">Pegar</button>
+          <button type="button" class="btn-secondary" id="btnSample" onclick="loadSample()">Cargar ejemplo (María)</button>
+          <button type="button" class="btn-secondary" id="btnClear" onclick="clearAll()">Limpiar</button>
+        </div>
+        <div id="errBox" class="err-box"></div>
       </div>
-      <div id="errBox" class="err-box"></div>
     </section>
 
     <section id="resultSection" class="panel-card" style="display:none;">
@@ -491,15 +635,70 @@
 
   <footer id="siteFooter"></footer>
 
+
+  <div id="shareModal" class="share-modal-backdrop no-print" aria-hidden="true" onclick="if(event.target===this) closeShareModal()">
+    <div class="share-modal-card" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle">
+      <div class="share-modal-head">
+        <span id="shareModalTitle" class="share-modal-title">Compartir PRISMA™ Visor</span>
+        <button type="button" class="share-close-btn" onclick="closeShareModal()" aria-label="Close">✕</button>
+      </div>
+      <div class="qr-frame"><svg viewBox="0 0 35 35" width="188" height="188" role="img" aria-label="QR: https://aulaviva.lat/visor.html" xmlns="http://www.w3.org/2000/svg"><rect width="35" height="35" rx="2" fill="#ffffff"/><path d="M3 3h7v1h-7zM11 3h4v1h-4zM16 3h2v1h-2zM19 3h3v1h-3zM25 3h7v1h-7zM3 4h1v1h-1zM9 4h1v1h-1zM13 4h2v1h-2zM16 4h3v1h-3zM21 4h3v1h-3zM25 4h1v1h-1zM31 4h1v1h-1zM3 5h1v1h-1zM5 5h3v1h-3zM9 5h1v1h-1zM13 5h2v1h-2zM17 5h1v1h-1zM20 5h4v1h-4zM25 5h1v1h-1zM27 5h3v1h-3zM31 5h1v1h-1zM3 6h1v1h-1zM5 6h3v1h-3zM9 6h1v1h-1zM11 6h1v1h-1zM13 6h1v1h-1zM15 6h1v1h-1zM21 6h1v1h-1zM23 6h1v1h-1zM25 6h1v1h-1zM27 6h3v1h-3zM31 6h1v1h-1zM3 7h1v1h-1zM5 7h3v1h-3zM9 7h1v1h-1zM11 7h1v1h-1zM14 7h1v1h-1zM25 7h1v1h-1zM27 7h3v1h-3zM31 7h1v1h-1zM3 8h1v1h-1zM9 8h1v1h-1zM11 8h2v1h-2zM14 8h1v1h-1zM19 8h4v1h-4zM25 8h1v1h-1zM31 8h1v1h-1zM3 9h7v1h-7zM11 9h1v1h-1zM13 9h1v1h-1zM15 9h1v1h-1zM17 9h1v1h-1zM19 9h1v1h-1zM21 9h1v1h-1zM23 9h1v1h-1zM25 9h7v1h-7zM11 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h6v1h-6zM3 11h1v1h-1zM7 11h1v1h-1zM9 11h4v1h-4zM14 11h1v1h-1zM16 11h1v1h-1zM20 11h1v1h-1zM23 11h6v1h-6zM31 11h1v1h-1zM3 12h3v1h-3zM11 12h1v1h-1zM14 12h4v1h-4zM19 12h3v1h-3zM23 12h9v1h-9zM4 13h1v1h-1zM6 13h4v1h-4zM12 13h1v1h-1zM15 13h1v1h-1zM19 13h1v1h-1zM21 13h1v1h-1zM25 13h1v1h-1zM31 13h1v1h-1zM3 14h3v1h-3zM11 14h2v1h-2zM14 14h2v1h-2zM17 14h1v1h-1zM20 14h2v1h-2zM23 14h2v1h-2zM26 14h1v1h-1zM28 14h1v1h-1zM30 14h2v1h-2zM3 15h1v1h-1zM9 15h1v1h-1zM11 15h1v1h-1zM13 15h1v1h-1zM16 15h5v1h-5zM22 15h1v1h-1zM24 15h1v1h-1zM30 15h1v1h-1zM3 16h1v1h-1zM8 16h1v1h-1zM10 16h1v1h-1zM13 16h3v1h-3zM25 16h7v1h-7zM3 17h2v1h-2zM6 17h5v1h-5zM13 17h6v1h-6zM23 17h2v1h-2zM26 17h1v1h-1zM28 17h2v1h-2zM31 17h1v1h-1zM4 18h2v1h-2zM8 18h1v1h-1zM10 18h1v1h-1zM13 18h1v1h-1zM16 18h1v1h-1zM18 18h3v1h-3zM25 18h1v1h-1zM27 18h1v1h-1zM30 18h2v1h-2zM7 19h1v1h-1zM9 19h2v1h-2zM12 19h1v1h-1zM15 19h2v1h-2zM20 19h5v1h-5zM30 19h1v1h-1zM3 20h1v1h-1zM10 20h2v1h-2zM13 20h2v1h-2zM16 20h2v1h-2zM19 20h3v1h-3zM24 20h5v1h-5zM30 20h2v1h-2zM6 21h2v1h-2zM9 21h3v1h-3zM14 21h1v1h-1zM19 21h1v1h-1zM21 21h1v1h-1zM25 21h1v1h-1zM29 21h1v1h-1zM31 21h1v1h-1zM6 22h2v1h-2zM14 22h2v1h-2zM17 22h1v1h-1zM20 22h1v1h-1zM23 22h2v1h-2zM30 22h2v1h-2zM3 23h2v1h-2zM6 23h1v1h-1zM9 23h1v1h-1zM12 23h1v1h-1zM16 23h3v1h-3zM20 23h1v1h-1zM23 23h6v1h-6zM31 23h1v1h-1zM11 24h1v1h-1zM15 24h1v1h-1zM20 24h4v1h-4zM27 24h1v1h-1zM31 24h1v1h-1zM3 25h7v1h-7zM11 25h3v1h-3zM16 25h5v1h-5zM22 25h2v1h-2zM25 25h1v1h-1zM27 25h3v1h-3zM31 25h1v1h-1zM3 26h1v1h-1zM9 26h1v1h-1zM13 26h2v1h-2zM16 26h1v1h-1zM18 26h1v1h-1zM20 26h1v1h-1zM22 26h2v1h-2zM27 26h1v1h-1zM3 27h1v1h-1zM5 27h3v1h-3zM9 27h1v1h-1zM11 27h2v1h-2zM14 27h3v1h-3zM18 27h1v1h-1zM20 27h1v1h-1zM22 27h7v1h-7zM30 27h2v1h-2zM3 28h1v1h-1zM5 28h3v1h-3zM9 28h1v1h-1zM15 28h1v1h-1zM17 28h3v1h-3zM22 28h1v1h-1zM24 28h1v1h-1zM26 28h1v1h-1zM30 28h1v1h-1zM3 29h1v1h-1zM5 29h3v1h-3zM9 29h1v1h-1zM13 29h1v1h-1zM16 29h1v1h-1zM18 29h1v1h-1zM20 29h5v1h-5zM28 29h4v1h-4zM3 30h1v1h-1zM9 30h1v1h-1zM12 30h1v1h-1zM14 30h5v1h-5zM20 30h1v1h-1zM23 30h3v1h-3zM28 30h1v1h-1zM30 30h2v1h-2zM3 31h7v1h-7zM11 31h3v1h-3zM15 31h1v1h-1zM18 31h1v1h-1zM20 31h1v1h-1zM22 31h3v1h-3zM27 31h2v1h-2zM30 31h1v1h-1z" fill="#090d13"/></svg></div>
+      <div class="share-url-pill">https://aulaviva.lat/visor.html</div>
+      <p id="shareHint" class="share-hint">Escanea este código QR (100 % offline) o envía el enlace directo</p>
+      <div class="share-actions">
+        <button type="button" class="btn-action" id="btnNativeShare" onclick="triggerNativeShare()">Compartir desde el dispositivo</button>
+        <button type="button" class="btn-secondary" id="btnCopyUrl" onclick="copyVisorUrl()">Copiar enlace</button>
+      </div>
+    </div>
+  </div>
+
   <script>
+    function kheperSvg(uid, cls = "kheper-svg") {
+      const gid = "kheperGrad_" + uid;
+      return `<svg class="${cls}" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">`
+        + `<defs><linearGradient id="${gid}" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">`
+        + `<stop offset="0%" style="stop-color:var(--kheper-1)"/>`
+        + `<stop offset="20%" style="stop-color:var(--kheper-2)"/>`
+        + `<stop offset="38%" style="stop-color:var(--kheper-3)"/>`
+        + `<stop offset="56%" style="stop-color:var(--kheper-4)"/>`
+        + `<stop offset="74%" style="stop-color:var(--kheper-5)"/>`
+        + `<stop offset="88%" style="stop-color:var(--kheper-6)"/>`
+        + `<stop offset="100%" style="stop-color:var(--kheper-7)"/>`
+        + `</linearGradient></defs>`
+        + `<circle cx="32" cy="7.5" r="3.1" fill="url(#${gid})"/>`
+        + `<path d="M24.2 19.2 C23.8 15.4 26.8 12.6 32 12.6 C37.2 12.6 40.2 15.4 39.8 19.2 C37.4 18.2 34.8 17.8 32 17.8 C29.2 17.8 26.6 18.2 24.2 19.2 Z" fill="url(#${gid})"/>`
+        + `<path d="M19.2 28.4 C19.2 22.8 24.4 19.8 32 19.8 C39.6 19.8 44.8 22.8 44.8 28.4 C44.8 30.2 43.9 31.6 42.6 32.4 C39.4 31.2 35.8 30.7 32 30.7 C28.2 30.7 24.6 31.2 21.4 32.4 C20.1 31.6 19.2 30.2 19.2 28.4 Z" fill="url(#${gid})"/>`
+        + `<polygon points="29.4,33.1 34.6,33.1 32,37.2" fill="url(#${gid})"/>`
+        + `<path d="M21.0 34.4 C23.8 33.4 26.6 33.1 28.2 33.4 L30.9 38.2 L30.9 56.2 C24.6 55.6 19.4 49.4 19.2 41.2 C19.1 38.2 19.8 35.8 21.0 34.4 Z" fill="url(#${gid})"/>`
+        + `<path d="M43.0 34.4 C40.2 33.4 37.4 33.1 35.8 33.4 L33.1 38.2 L33.1 56.2 C39.4 55.6 44.6 49.4 44.8 41.2 C44.9 38.2 44.2 35.8 43.0 34.4 Z" fill="url(#${gid})"/>`
+        + `<path d="M20.6 24.2 C14.6 23.0 11.0 18.6 12.6 13.0 C13.8 9.2 17.8 7.6 22.2 8.2" stroke="url(#${gid})" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/>`
+        + `<path d="M12.2 17.2 L9.0 16.0 M12.8 13.4 L10.0 11.4" stroke="url(#${gid})" stroke-width="2.1" stroke-linecap="round"/>`
+        + `<path d="M43.4 24.2 C49.4 23.0 53.0 18.6 51.4 13.0 C50.2 9.2 46.2 7.6 41.8 8.2" stroke="url(#${gid})" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/>`
+        + `<path d="M51.8 17.2 L55.0 16.0 M51.2 13.4 L54.0 11.4" stroke="url(#${gid})" stroke-width="2.1" stroke-linecap="round"/>`
+        + `<path d="M18.6 34.8 C12.4 34.4 8.2 37.2 7.6 42.2 C7.3 44.6 8.4 46.8 10.6 48.2" stroke="url(#${gid})" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>`
+        + `<path d="M45.4 34.8 C51.6 34.4 55.8 37.2 56.4 42.2 C56.7 44.6 55.6 46.8 53.4 48.2" stroke="url(#${gid})" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>`
+        + `<path d="M21.0 46.2 C15.2 48.8 12.8 53.4 15.2 57.6 C16.8 60.0 19.8 60.6 23.0 59.6" stroke="url(#${gid})" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>`
+        + `<path d="M43.0 46.2 C48.8 48.8 51.2 53.4 48.8 57.6 C47.2 60.0 44.2 60.6 41.0 59.6" stroke="url(#${gid})" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>`
+        + `</svg>`;
+    }
+
+    const VISOR_SHARE_URL = "https://aulaviva.lat/visor.html";
     let currentLocale = "es";
     let lastParsed = null;
     let isSampleLoaded = false;
 
     const UI = {
       es: {
-        pageTitle: "Aula Viva® — PRISMA™ Visor Offline (ℝ⁸)",
-        descriptor: "PRISMA™ — Visor móvil 100 % offline en ℝ⁸",
+        pageTitle: "Aula Viva® — PRISMA™ Visor (ℝ⁸)",
+        descriptor: "PRISMA™ Visor — Proyección móvil 100 % offline en ℝ⁸",
+        btnShare: "↗ Compartir",
+        btnEditJson: "✎ Nueva nota",
+        shareTitle: "Compartir PRISMA™ Visor",
+        shareHint: "Escanea este código QR (100 % offline) o envía el enlace directo",
+        btnNativeShare: "Compartir (AirDrop · WhatsApp · Mensajes)",
+        btnCopyUrl: "Copiar enlace",
+        copiedUrl: "✓ Enlace copiado",
+        shareText: "PRISMA™ Visor — Espejo metacognitivo móvil 100 % offline en ℝ⁸",
         quote: "«Hacer brillar luz blanca a través de cada estudiante y proyectar sus colores refractados para revelar el profundo camino de su crecimiento.»",
         lblPaste: "Pega aquí el JSON generado por PocketPal AI",
         offlinePill: "● 100 % local · Cero nube",
@@ -518,11 +717,19 @@
           AMARILLO: "🟡 Semáforo AMARILLO — Atención pedagógica",
           ROJO: "🔴 Semáforo ROJO — Prioridad de resguardo"
         },
-        footer: `<span class="scarab-rainbow">𓆣</span><strong>Aula Viva®</strong> · PRISMA™ Visor Offline · <a href="https://aulaviva.lat" target="_blank" rel="noopener noreferrer">aulaviva.lat</a><br>Ejecución estrictamente local en el dispositivo · © 2026 Grupo SiEFH S.A.S.`
+        footer: `<span class="footer-brand-line">${kheperSvg("vFtrEs", "kheper-svg kheper-inline")}<strong>Aula Viva®</strong> · PRISMA™ Visor · <a href="https://aulaviva.lat" target="_blank" rel="noopener noreferrer">aulaviva.lat</a></span><br>Ejecución estrictamente local en el dispositivo · © 2026 Grupo SiEFH S.A.S.`
       },
       en: {
-        pageTitle: "Aula Viva® — PRISMA™ Offline Viewer (ℝ⁸)",
-        descriptor: "PRISMA™ — 100% offline mobile viewer in ℝ⁸",
+        pageTitle: "Aula Viva® — PRISMA™ Visor (ℝ⁸)",
+        descriptor: "PRISMA™ Visor — 100% offline mobile projection in ℝ⁸",
+        btnShare: "↗ Share",
+        btnEditJson: "✎ New note",
+        shareTitle: "Share PRISMA™ Visor",
+        shareHint: "Scan this QR code (works 100% offline) or share the direct link",
+        btnNativeShare: "Share via device (AirDrop · Messages)",
+        btnCopyUrl: "Copy link",
+        copiedUrl: "✓ Link copied",
+        shareText: "PRISMA™ Visor — 100% offline mobile metacognitive mirror in ℝ⁸",
         quote: "“Shining white light through learners and projecting its refracted colors to reveal the profound journey of their growth.”",
         lblPaste: "Paste the JSON generated by PocketPal AI",
         offlinePill: "● 100% on-device · Zero cloud",
@@ -541,7 +748,7 @@
           AMARILLO: "🟡 YELLOW — Pedagogical attention",
           ROJO: "🔴 RED — Safeguarding priority"
         },
-        footer: `<span class="scarab-rainbow">𓆣</span><strong>Aula Viva®</strong> · PRISMA™ Offline Viewer · <a href="https://aulaviva.lat" target="_blank" rel="noopener noreferrer">aulaviva.lat</a><br>Strictly on-device browser execution · © 2026 Grupo SiEFH S.A.S.`
+        footer: `<span class="footer-brand-line">${kheperSvg("vFtrEn", "kheper-svg kheper-inline")}<strong>Aula Viva®</strong> · PRISMA™ Visor · <a href="https://aulaviva.lat" target="_blank" rel="noopener noreferrer">aulaviva.lat</a></span><br>Strictly on-device browser execution · © 2026 Grupo SiEFH S.A.S.`
       }
     };
 
@@ -559,36 +766,36 @@
     const SAMPLES = {
       es: {
         estado_educabilidad: {
-          semaforo: "VERDE",
-          analisis_previo_educabilidad: "Condición sociofisiológica basal estable. María muestra iniciativa y compromiso técnico en la construcción del prototipo.",
-          advertencia_pedagogica: "Acompañar la dinámica grupal para sostener acuerdos de atención compartida."
+          semaforo: "ROJO",
+          analisis_previo_educabilidad: "Malestar agudo reportado (dolor y fatiga severa por emergencia doméstica) con sueño y nutrición adecuados. El desborde emocional en el descanso responde a desgaste somático acumulado, no a sabotaje académico.",
+          advertencia_pedagogica: "Priorizar el cuidado somático y considerar el desgaste biológico al valorar el proceso formativo. Reconocer la magnitud del esfuerzo de recuperación para volver a la tarea y reparar el vínculo con la disculpa espontánea."
         },
         evaluacion_ejes: {
-          Indagacion_Investigacion: { razonamiento: "Observó flujo lento, examinó la densidad de la arena y ajustó la capa de forma empírica.", polaridad: "CRECIMIENTO", delta_pct: 16 },
-          Pensamiento_Critico_Analitico: { razonamiento: "Identificó la causa raíz del fallo de filtración y corrigió el parámetro físico.", polaridad: "CRECIMIENTO", delta_pct: 12 },
-          Razonamiento_Etico: { razonamiento: "Medió el desacuerdo escuchando a sus compañeras y priorizó el propósito colectivo.", polaridad: "CRECIMIENTO", delta_pct: 16 },
-          Agencia_Intercultural: { razonamiento: "Coordinó al equipo de forma respetuosa sin imposición jerárquica.", polaridad: "CRECIMIENTO", delta_pct: 7 },
-          Liderazgo_Colaborativo: { razonamiento: "Organizó activamente los roles del grupo para la presentación.", polaridad: "CRECIMIENTO", delta_pct: 19 },
-          Saber_Hacer_Ejecucion_Tecnica: { razonamiento: "Ejecutó la calibración y el reensamble funcional del filtro de agua.", polaridad: "CRECIMIENTO", delta_pct: 16 },
-          Resiliencia_Autogestion: { razonamiento: "Perseveró tras el fallo inicial en la prueba sin abandonar la tarea.", polaridad: "CRECIMIENTO", delta_pct: 19 },
-          Reflexion_Metacognitiva: { razonamiento: "Mostró automonitoreo consciente durante el ajuste iterativo del diseño.", polaridad: "CRECIMIENTO", delta_pct: 12 }
+          Indagacion_Investigacion: { razonamiento: "Identificación del problema (flujo lento), hipótesis sobre la densidad de la arena y ejecución de la corrección (reducción de capa).", polaridad: "CRECIMIENTO", delta_basal_pct: 25, delta_pct: 25 },
+          Pensamiento_Critico_Analitico: { razonamiento: "Relación causal entre la densidad del material y el rendimiento del sistema, y capacidad de ajustar parámetros técnicos basándose en la observación empírica.", polaridad: "CRECIMIENTO", delta_basal_pct: 20, delta_pct: 20 },
+          Razonamiento_Etico: { razonamiento: "Liderazgo al repartir tareas a pesar de la distracción del equipo y disculpa espontánea y proactiva al final del día tras el episodio de frustración ⚡ [Amplificado desde +1.6 dB (+20%) · 🔴].", polaridad: "CRECIMIENTO", delta_basal_pct: 20, delta_pct: 26 },
+          Agencia_Intercultural: { razonamiento: "Liderazgo inclusivo en la asignación de roles dentro del grupo, demostrando capacidad de gestión de la dinámica colectiva.", polaridad: "CRECIMIENTO", delta_basal_pct: 15, delta_pct: 15 },
+          Liderazgo_Colaborativo: { razonamiento: "Coordinación del equipo para la presentación, recuperación de la atención tras la distracción y gestión de la dinámica grupal.", polaridad: "CRECIMIENTO", delta_basal_pct: 25, delta_pct: 25 },
+          Saber_Hacer_Ejecucion_Tecnica: { razonamiento: "Construcción del prototipo, detección de fallo técnico (flujo lento), ajuste empírico de materiales (arena) y optimización del proceso.", polaridad: "CRECIMIENTO", delta_basal_pct: 30, delta_pct: 30 },
+          Resiliencia_Autogestion: { razonamiento: "Episodio de desregulación emocional severa derivado de la frustración bajo malestar agudo, seguido de una recuperación volitiva para volver a la tarea y reparar el daño ⚡ [Amplificado desde +1.6 dB (+20%) · 🔴].", polaridad: "CRECIMIENTO", delta_basal_pct: 20, delta_pct: 26 },
+          Reflexion_Metacognitiva: { razonamiento: "La disculpa espontánea y la capacidad de volver a la tarea tras el desborde indican comprensión del impacto de sus acciones y autorregulación ⚡ [Amplificado desde +1.2 dB (+15%) · 🔴].", polaridad: "CRECIMIENTO", delta_basal_pct: 15, delta_pct: 21 }
         }
       },
       en: {
         estado_educabilidad: {
-          semaforo: "GREEN",
-          analisis_previo_educabilidad: "Baseline socio-physiological state stable. María demonstrates strong initiative and technical focus on the prototype.",
-          advertencia_pedagogica: "Support team norms to sustain shared attention during collaborative sessions."
+          semaforo: "RED",
+          analisis_previo_educabilidad: "Acute somatic discomfort reported (severe pain and fatigue from domestic emergency) alongside adequate sleep and nutrition. Emotional outbursts reflect temporary dysregulation under acute strain, not behavioral sabotage.",
+          advertencia_pedagogica: "Prioritize somatic care and rest. Frame emotional outbursts (yelling, throwing items) as temporary dysregulation due to acute pain/fatigue, and acknowledge her self-initiated repair as an act of courage under duress."
         },
         evaluacion_ejes: {
-          Indagacion_Investigacion: { razonamiento: "Observed slow flow, examined sand density, and empirically adjusted the filtration layer.", polaridad: "GROWTH", delta_pct: 16 },
-          Pensamiento_Critico_Analitico: { razonamiento: "Identified the root cause of slow filtration and corrected the physical parameter.", polaridad: "GROWTH", delta_pct: 12 },
-          Razonamiento_Etico: { razonamiento: "Mediated peer disagreement by listening actively and prioritizing collective purpose.", polaridad: "GROWTH", delta_pct: 16 },
-          Agencia_Intercultural: { razonamiento: "Facilitated respectful peer collaboration without authoritarian imposition.", polaridad: "GROWTH", delta_pct: 7 },
-          Liderazgo_Colaborativo: { razonamiento: "Actively organized team roles for the upcoming presentation.", polaridad: "GROWTH", delta_pct: 19 },
-          Saber_Hacer_Ejecucion_Tecnica: { razonamiento: "Executed prototype re-assembly and material layer calibration.", polaridad: "GROWTH", delta_pct: 16 },
-          Resiliencia_Autogestion: { razonamiento: "Persevered past the initial filtration test failure without abandoning the task.", polaridad: "GROWTH", delta_pct: 19 },
-          Reflexion_Metacognitiva: { razonamiento: "Demonstrated conscious self-monitoring during iterative design adjustments.", polaridad: "GROWTH", delta_pct: 12 }
+          Indagacion_Investigacion: { razonamiento: "Evidence of autonomous hypothesis formulation (noticing slow flow, examining sand density, halving layer thickness) and iterative debugging during prototype construction.", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 },
+          Pensamiento_Critico_Analitico: { razonamiento: "Demonstrated signal decoupling by identifying the cause of slow flow (sand density) and logical synthesis to adjust variables (halving layer thickness) to solve the problem.", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 },
+          Razonamiento_Etico: { razonamiento: "High merit: Spontaneous apology to classmates and teacher on her own initiative despite acute pain and frustration, demonstrating moral agency and repair of harm ⚡ [Amplified from +1.6 dB (+20%) · 🔴].", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 32 },
+          Agencia_Intercultural: { razonamiento: "Demonstrated inclusive leadership by re-engaging distracted peers and assigning tasks for collective success, validating group effort.", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 },
+          Liderazgo_Colaborativo: { razonamiento: "Demonstrated non-coercive coordination by calling the team together and assigning tasks. Emotional withdrawal (silence) was a reaction to frustration, not sabotage.", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 },
+          Saber_Hacer_Ejecucion_Tecnica: { razonamiento: "Observable hands-on craftsmanship: examined materials, adjusted layer thickness, and ensured functional output of the water filter prototype.", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 },
+          Resiliencia_Autogestion: { razonamiento: "High merit: Persisted through acute pain and frustration to complete the task and apologize, overcoming severe somatic strain to restore equilibrium ⚡ [Amplified from +1.6 dB (+20%) · 🔴].", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 32 },
+          Reflexion_Metacognitiva: { razonamiento: "Demonstrated intellectual humility and self-awareness by recognizing her emotional state, apologizing, and repairing relationships despite the initial outburst ⚡ [Amplified from +1.6 dB (+20%) · 🔴].", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 32 }
         }
       }
     };
@@ -635,6 +842,12 @@
       document.getElementById("thReason").textContent = t.thReason;
       document.getElementById("btnPrint").textContent = t.btnPrint;
       document.getElementById("siteFooter").innerHTML = t.footer;
+      document.getElementById("btnShare").textContent = t.btnShare;
+      document.getElementById("btnEditJson").textContent = t.btnEditJson;
+      document.getElementById("shareModalTitle").textContent = t.shareTitle;
+      document.getElementById("shareHint").textContent = t.shareHint;
+      document.getElementById("btnNativeShare").textContent = t.btnNativeShare;
+      document.getElementById("btnCopyUrl").textContent = t.btnCopyUrl;
       updateThemeBtnLabel();
 
       if (isSampleLoaded) {
@@ -675,6 +888,7 @@
       lastParsed = null;
       document.getElementById("jsonInput").value = "";
       document.getElementById("resultSection").style.display = "none";
+      expandInputCard();
       document.getElementById("errBox").style.display = "none";
     }
 
@@ -769,6 +983,7 @@
 
       drawRadar(rows);
       document.getElementById("resultSection").style.display = "block";
+      collapseInputCard();
     }
 
     function drawRadar(rows) {
@@ -797,8 +1012,8 @@
           out += `<polygon points="${pts.join(" ")}" fill="none" stroke="var(--radar-grid)" stroke-width="0.95" stroke-dasharray="3,3"/>`;
         }
         if (db >= -0.01) {
-          const da = -Math.PI / 4;
-          out += `<text x="${cx + Math.cos(da)*r*f + 3}" y="${cy + Math.sin(da)*r*f - 2}" fill="${isBase ? "#6366f1" : "var(--text-dim)"}" font-size="7.5" font-family="monospace">${isBase ? "0.0" : "+" + db.toFixed(1)}</text>`;
+          const da = -Math.PI / 2 + Math.PI / 8;
+          out += `<text x="${cx + Math.cos(da)*r*f + 2}" y="${cy + Math.sin(da)*r*f - 1}" fill="${isBase ? "#6366f1" : "var(--text-dim)"}" font-size="7.5" font-family="monospace">${isBase ? "0.0" : "+" + db.toFixed(1)}</text>`;
         }
       }
 
@@ -830,6 +1045,63 @@
         document.getElementById("offlinePill").textContent = UI[currentLocale].offlineCached;
       }).catch(() => {});
     }
+
+
+    function collapseInputCard() {
+      const card = document.getElementById("inputCard");
+      if (card) card.classList.add("collapsed-input");
+    }
+
+    function expandInputCard() {
+      const card = document.getElementById("inputCard");
+      if (card) card.classList.remove("collapsed-input");
+    }
+
+    function openShareModal() {
+      const modal = document.getElementById("shareModal");
+      const nativeBtn = document.getElementById("btnNativeShare");
+      if (nativeBtn) nativeBtn.style.display = navigator.share ? "block" : "none";
+      document.getElementById("btnCopyUrl").textContent = UI[currentLocale].btnCopyUrl;
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+    }
+
+    function closeShareModal() {
+      const modal = document.getElementById("shareModal");
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+    }
+
+    async function triggerNativeShare() {
+      if (!navigator.share) return;
+      try {
+        await navigator.share({
+          title: "PRISMA™ Visor — Aula Viva®",
+          text: UI[currentLocale].shareText,
+          url: VISOR_SHARE_URL
+        });
+      } catch (e) {}
+    }
+
+    async function copyVisorUrl() {
+      const btn = document.getElementById("btnCopyUrl");
+      try {
+        await navigator.clipboard.writeText(VISOR_SHARE_URL);
+      } catch (e) {
+        const tmp = document.createElement("textarea");
+        tmp.value = VISOR_SHARE_URL;
+        document.body.appendChild(tmp);
+        tmp.select();
+        document.execCommand("copy");
+        document.body.removeChild(tmp);
+      }
+      btn.textContent = UI[currentLocale].copiedUrl;
+      setTimeout(() => { btn.textContent = UI[currentLocale].btnCopyUrl; }, 1800);
+    }
+
+    window.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") closeShareModal();
+    });
 
     setLocale("es");
   </script>

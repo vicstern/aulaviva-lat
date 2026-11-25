@@ -1,6 +1,6 @@
 {
-  "name": "PRISMA™ · Aula Viva® Visor Offline",
-  "short_name": "PRISMA™",
+  "name": "PRISMA™ Visor · Aula Viva®",
+  "short_name": "PRISMA Visor",
   "description": "Visor móvil 100 % offline para proyectar coordenadas cualitativas en ℝ⁸.",
   "start_url": "./visor.html",
   "scope": "./",
