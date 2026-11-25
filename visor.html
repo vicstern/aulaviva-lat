@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title id="pageTitle">Aula Viva® — PRISMA™ Visor (ℝ⁸)</title>
-  <meta name="description" content="PRISMA™ — Visor móvil 100 % offline para proyectar notas cualitativas en el espacio vectorial ℝ⁸.">
+  <title id="pageTitle">Aula Viva® — PRISMA™ Visor</title>
+  <meta name="description" content="PRISMA™ Visor — Proyección móvil 100 % offline del espacio vectorial ℝ⁸ · Aula Viva®.">
   <meta name="theme-color" content="#090d13">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -79,8 +79,10 @@
       --kheper-7: #dc2626;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     html, body {
-      min-height: 100%;
+      height: 100%;
+      overflow: hidden;
       background-color: var(--bg);
       color: var(--text-main);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -91,20 +93,41 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: calc(12px + env(safe-area-inset-top)) 16px calc(18px + env(safe-area-inset-bottom));
+      padding: 10px 20px 8px;
       position: relative;
     }
 
-    .top-bar {
+    /* === STICKY HEADER SHELL (IDENTICAL ARCHITECTURE TO index.html) === */
+    .sticky-header-shell {
       width: 100%;
       max-width: 920px;
+      flex-shrink: 0;
       display: flex;
-      justify-content: flex-end;
+      flex-direction: column;
+      align-items: center;
+      background: var(--bg);
+      position: relative;
+      z-index: 30;
+    }
+    .top-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
       gap: 8px;
-      margin-bottom: 6px;
+      pointer-events: none;
     }
-    .theme-toggle {
+    .top-bar-left, .top-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      pointer-events: auto;
+    }
+    .theme-toggle, .pill-link {
       background: var(--card-bg);
       border: 1px solid var(--border);
       color: var(--text-muted);
@@ -113,9 +136,14 @@
       font-weight: 600;
       border-radius: 20px;
       cursor: pointer;
+      text-decoration: none;
       transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
     }
-    .theme-toggle:hover { color: var(--text-main); }
+    .theme-toggle:hover, .pill-link:hover { color: var(--text-main); border-color: var(--accent-blue); }
     .lang-switcher {
       display: inline-flex;
       background: var(--card-bg);
@@ -143,33 +171,108 @@
     .header-zone {
       text-align: center;
       width: 100%;
-      max-width: 820px;
-      margin-bottom: 16px;
+      max-width: 800px;
+      padding-bottom: 10px;
     }
     h1 {
-      font-size: clamp(1.38rem, 2.2vw, 1.78rem);
+      font-size: clamp(1.35rem, 2.05vw, 1.75rem);
       font-weight: 700;
       letter-spacing: 0.08em;
       color: var(--text-main);
+      padding-top: 2px;
+      margin: 0 0 1px;
       line-height: 1.25;
-      margin-bottom: 2px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
     }
+    h1 span.reg {
+      font-size: 0.72rem;
+      vertical-align: super;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
     .kheper-svg { display: inline-block; flex-shrink: 0; vertical-align: middle; }
     .kheper-hdr { width: 1.08em; height: 1.08em; }
-    .kheper-inline { width: 15px; height: 15px; margin-right: 4px; }
-    .footer-brand-line {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 4px;
+    .kheper-inline { width: 15px; height: 15px; }
+    p.descriptor {
+      font-size: clamp(0.82rem, 1.02vw, 0.9rem);
+      color: var(--accent-blue);
+      letter-spacing: 0.015em;
+      line-height: 1.3;
+      font-weight: 500;
+      margin-bottom: 4px;
     }
+    p.primary-quote {
+      font-style: italic;
+      font-size: clamp(0.84rem, 1.0vw, 0.92rem);
+      line-height: 1.32;
+      max-width: 820px;
+      margin: 0 auto;
+      text-align: center;
+      text-wrap: balance;
+      user-select: text;
+      -webkit-user-select: text;
+      background: linear-gradient(
+        90deg,
+        #FFFFFF 0%, #FFFFFF 28%, #E2E8F0 36%, #C084FC 48%, #60A5FA 58%,
+        #38BDF8 68%, #4ADE80 78%, #FACC15 86%, #FB923C 93%, #F87171 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+    html[data-theme="light"] p.primary-quote {
+      background: linear-gradient(
+        90deg,
+        #1f2328 0%, #1f2328 28%, #334155 36%, #7e22ce 48%, #2563eb 58%,
+        #0284c7 68%, #16a34a 78%, #b45309 86%, #ea580c 93%, #dc2626 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+    p.primary-quote::selection {
+      -webkit-text-fill-color: var(--text-main);
+      background: rgba(88, 166, 255, 0.28);
+    }
+
+    /* === SCROLLABLE CONTENT STAGE (EXACTLY LIKE index.html) === */
+    .content-stage {
+      max-width: 920px;
+      width: 100%;
+      flex: 1;
+      overflow-y: auto;
+      padding-right: 6px;
+      padding-bottom: 12px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+      -webkit-overflow-scrolling: touch;
+    }
+    .content-stage::-webkit-scrollbar { width: 6px; }
+    .content-stage::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 4px;
+    }
+
+    .panel-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 24px;
+      margin-bottom: 12px;
+      animation: fadeIn 0.25s var(--physio-curve);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .panel-card.collapsed-input {
-      padding: 11px 16px;
+      padding: 10px 16px;
       margin-bottom: 12px;
     }
     .panel-card.collapsed-input .card-title-row {
@@ -179,8 +282,34 @@
     .panel-card.collapsed-input #inputBodyWrap {
       display: none;
     }
+
+    .card-title-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .card-label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .offline-pill {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--delta-green);
+      background: rgba(63, 185, 80, 0.1);
+      border: 1px solid rgba(63, 185, 80, 0.28);
+      padding: 3px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
     .btn-edit-json {
-      display: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
       background: var(--card-inner);
       border: 1px solid var(--border);
       color: var(--text-body);
@@ -193,11 +322,333 @@
       white-space: nowrap;
     }
     .btn-edit-json:hover { color: var(--text-main); border-color: var(--accent-blue); }
-    .panel-card.collapsed-input .btn-edit-json {
+
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      background: var(--surface-deep);
+      color: var(--text-body);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      resize: vertical;
+      margin-bottom: 10px;
+      outline: none;
+    }
+    textarea:focus { border-color: var(--accent-blue); }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .btn-action {
+      background: #238636;
+      border: 1px solid rgba(240, 246, 252, 0.12);
+      color: #ffffff;
+      padding: 7px 15px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-action:hover { background: #2ea043; }
+    .btn-secondary {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      color: var(--text-body);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { color: var(--text-main); border-color: var(--accent-blue); }
+
+    .err-box {
+      display: none;
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: var(--delta-red);
+      background: rgba(248, 81, 73, 0.08);
+      border: 1px solid rgba(248, 81, 73, 0.3);
+    }
+
+    /* === COMPACT DEMO BAR & READ-ONLY NARRATIVE === */
+    .demo-bar {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px 12px;
+      margin-bottom: 12px;
+    }
+    .demo-bar-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .demo-tag-lbl {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+    .demo-switch {
+      display: inline-flex;
+      background: var(--surface-deep);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2px;
+      gap: 2px;
+    }
+    .demo-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 4px 10px;
+      font-size: 0.73rem;
+      font-weight: 600;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .demo-btn:hover { color: var(--text-main); }
+    .demo-btn.active {
+      background: var(--pill-active-bg);
+      color: var(--pill-active-text);
+      box-shadow: 0 1px 3px var(--pill-shadow);
+    }
+    .demo-note-details {
+      margin-top: 7px;
+      padding-top: 7px;
+      border-top: 1px solid var(--border);
+    }
+    .demo-note-details summary {
+      list-style: none;
+      cursor: pointer;
+      font-size: 0.77rem;
+      font-weight: 600;
+      color: var(--accent-blue);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .demo-note-details summary::-webkit-details-marker { display: none; }
+    .demo-note-details summary::after {
+      content: "▾";
+      font-size: 0.8rem;
+      transition: transform 0.2s;
+    }
+    .demo-note-details[open] summary::after {
+      transform: rotate(180deg);
+    }
+    .demo-note-body {
+      margin-top: 8px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: var(--surface-deep);
+      border: 1px solid var(--border);
+      font-size: 0.82rem;
+      color: var(--text-body);
+      line-height: 1.5;
+    }
+    .demo-note-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .demo-note-quote {
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+    .demo-note-disclaimer {
+      font-size: 0.73rem;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border);
+      padding-top: 6px;
+    }
+
+    .semaforo-box {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--delta-green);
+      border-radius: 0 10px 10px 0;
+      padding: 12px 15px;
+      margin-bottom: 14px;
+    }
+    .semaforo-title {
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+      letter-spacing: 0.01em;
+    }
+    .semaforo-box p {
+      font-size: 0.88rem;
+      color: var(--text-body);
+      line-height: 1.5;
+      margin-bottom: 4px;
+    }
+    .semaforo-box p:last-child { margin-bottom: 0; }
+
+    /* === STACKED LAYOUT: LARGE CENTERED MAP ON TOP, DELTAS TABLE BELOW === */
+    .viz-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+    }
+    .radar-svg-box {
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      background: var(--surface-deep);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      padding: 10px 8px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .radar-svg-box svg {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      display: block;
+    }
+
+    .table-wrap {
+      width: 100%;
+    }
+    .delta-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      table-layout: fixed;
+    }
+    .delta-table th, .delta-table td {
+      padding: 9px 10px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    .delta-table th {
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .delta-table .col-axis { width: 38%; }
+    .delta-table .col-reason { width: 62%; }
+    .th-sep { display: inline; }
+    .th-delta { display: inline; white-space: nowrap; }
+    @media (max-width: 768px) and (orientation: portrait) {
+      .th-sep { display: none; }
+      .th-delta { display: block; margin-top: 2px; }
+      .delta-table .col-axis { width: 44%; }
+      .delta-table .col-reason { width: 56%; }
+    }
+    .axis-name {
+      display: block;
+      color: var(--text-main);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .delta-val {
+      display: block;
+      margin-top: 3px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .delta-pos { color: var(--delta-green); }
+    .delta-neg { color: var(--delta-red); }
+    .delta-neu { color: var(--text-dim); }
+    .reason-txt {
+      color: var(--text-muted);
+      font-size: 0.84rem;
+      line-height: 1.48;
+    }
+
+    /* === PEDAGOGICAL SCOPE NOTICE (CLONED FROM ETHOS IN index.html) === */
+    .scope-notice {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+    .scope-notice p {
+      margin-bottom: 0;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .scope-notice strong {
+      color: var(--text-body);
+    }
+    .scope-notice-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--card-inner);
+      border: 1px solid var(--border);
       display: inline-flex;
       align-items: center;
+      justify-content: center;
+      color: var(--accent-blue);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .scope-notice-icon svg {
+      width: 23px;
+      height: 23px;
+    }
+
+    /* === FOOTER (CLONED FROM index.html) === */
+    footer {
+      flex-shrink: 0;
+      width: 100%;
+      max-width: 920px;
+      padding: 6px 0 6px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.4;
+      border-top: 1px solid var(--border);
+      margin-top: auto;
+    }
+    footer a { color: var(--accent-blue); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-brand-line {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
       gap: 5px;
     }
+
+    /* === SHARE / OFFLINE QR MODAL === */
     .share-modal-backdrop {
       position: fixed;
       inset: 0;
@@ -280,287 +731,62 @@
       gap: 8px;
     }
     .share-actions button { width: 100%; }
-    h1 span.reg {
-      font-size: 0.72rem;
-      vertical-align: super;
-      font-weight: 400;
-      color: var(--text-muted);
-    }
-    p.descriptor {
-      font-size: clamp(0.82rem, 1.05vw, 0.9rem);
-      color: var(--accent-blue);
-      letter-spacing: 0.015em;
-      line-height: 1.35;
-      font-weight: 500;
-      margin-bottom: 8px;
-    }
-    p.primary-quote {
-      font-style: italic;
-      font-size: clamp(0.84rem, 1.02vw, 0.92rem);
-      line-height: 1.38;
-      max-width: 760px;
-      margin: 0 auto;
-      text-align: center;
-      background: linear-gradient(
-        90deg,
-        #FFFFFF 0%, #FFFFFF 28%, #E2E8F0 36%, #C084FC 48%, #60A5FA 58%,
-        #38BDF8 68%, #4ADE80 78%, #FACC15 86%, #FB923C 93%, #F87171 100%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      color: transparent;
-    }
-    html[data-theme="light"] p.primary-quote {
-      background: linear-gradient(
-        90deg,
-        #1f2328 0%, #1f2328 28%, #334155 36%, #7e22ce 48%, #2563eb 58%,
-        #0284c7 68%, #16a34a 78%, #b45309 86%, #ea580c 93%, #dc2626 100%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      color: transparent;
-    }
 
-    main {
-      width: 100%;
-      max-width: 920px;
-      flex: 1;
-    }
-    .panel-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 20px 22px;
-      margin-bottom: 16px;
-      animation: fadeIn 0.25s var(--physio-curve);
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .card-title-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-    .card-label {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-main);
-    }
-    .offline-pill {
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--delta-green);
-      background: rgba(63, 185, 80, 0.1);
-      border: 1px solid rgba(63, 185, 80, 0.28);
-      padding: 3px 10px;
-      border-radius: 999px;
-      white-space: nowrap;
-    }
-    textarea {
-      width: 100%;
-      min-height: 126px;
-      background: var(--surface-deep);
-      color: var(--text-body);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 0.78rem;
-      line-height: 1.45;
-      resize: vertical;
-      margin-bottom: 12px;
-      outline: none;
-    }
-    textarea:focus { border-color: var(--accent-blue); }
-
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-    }
-    .btn-action {
-      background: #238636;
-      border: 1px solid rgba(240, 246, 252, 0.12);
-      color: #ffffff;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-size: 0.84rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .btn-action:hover { background: #2ea043; }
-    .btn-secondary {
-      background: var(--card-inner);
-      border: 1px solid var(--border);
-      color: var(--text-body);
-      padding: 7px 13px;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .btn-secondary:hover { color: var(--text-main); border-color: var(--accent-blue); }
-
-    .err-box {
-      display: none;
-      margin-top: 10px;
-      padding: 10px 12px;
-      border-radius: 8px;
-      font-size: 0.82rem;
-      color: var(--delta-red);
-      background: rgba(248, 81, 73, 0.08);
-      border: 1px solid rgba(248, 81, 73, 0.3);
-    }
-
-    .semaforo-box {
-      background: var(--card-inner);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--delta-green);
-      border-radius: 0 10px 10px 0;
-      padding: 14px 16px;
-      margin-bottom: 18px;
-    }
-    .semaforo-title {
-      font-size: 0.84rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-      letter-spacing: 0.01em;
-    }
-    .semaforo-box p {
-      font-size: 0.88rem;
-      color: var(--text-body);
-      line-height: 1.5;
-      margin-bottom: 4px;
-    }
-    .semaforo-box p:last-child { margin-bottom: 0; }
-
-    .viz-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-    @media (min-width: 860px) {
-      .viz-grid {
-        display: grid;
-        grid-template-columns: minmax(340px, 0.92fr) minmax(0, 1.08fr);
-        gap: 20px;
-        align-items: start;
+    /* === MOBILE RESPONSIVE (STICKY HEADER SHELL + SAFE AREA) === */
+    @media (max-width: 768px) {
+      html, body, .content-stage {
+        height: auto !important;
+        min-height: 100%;
+        overflow-x: clip !important;
+        overflow-y: visible !important;
+      }
+      body {
+        padding: 0 12px calc(16px + env(safe-area-inset-bottom));
+      }
+      .sticky-header-shell {
+        position: sticky;
+        top: 0;
+        width: calc(100% + 24px);
+        max-width: none;
+        margin: 0 -12px 10px;
+        padding: calc(10px + env(safe-area-inset-top)) 12px 8px;
+        border-bottom: 1px solid var(--border);
+      }
+      .top-bar {
+        position: static;
+        width: 100%;
+        margin-bottom: 4px;
+        pointer-events: auto;
+      }
+      .header-zone {
+        padding-bottom: 0;
+      }
+      .content-stage {
+        padding-right: 0;
+        padding-bottom: 8px;
+      }
+      .panel-card {
+        padding: 15px 14px;
+        border-radius: 12px;
+      }
+      footer {
+        padding: 10px 0 6px;
       }
     }
-    .radar-svg-box {
-      width: 100%;
-      background: var(--surface-deep);
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      padding: 10px 6px 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .radar-svg-box svg {
-      width: 100%;
-      max-width: 440px;
-      height: auto;
-      display: block;
+    @media (max-height: 500px) {
+      .sticky-header-shell {
+        position: static !important;
+      }
     }
 
-    .delta-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.84rem;
-      table-layout: fixed;
-    }
-    .delta-table th, .delta-table td {
-      padding: 9px 10px;
-      border-bottom: 1px solid var(--border);
-      text-align: left;
-      vertical-align: top;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-    }
-    .delta-table th {
-      color: var(--text-dim);
-      font-size: 0.76rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
-    .delta-table .col-axis { width: 42%; }
-    .delta-table .col-reason { width: 58%; }
-    .axis-name {
-      display: block;
-      color: var(--text-main);
-      font-weight: 600;
-      line-height: 1.3;
-    }
-    .delta-val {
-      display: block;
-      margin-top: 3px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-    .delta-pos { color: var(--delta-green); }
-    .delta-neg { color: var(--delta-red); }
-    .delta-neu { color: var(--text-dim); }
-    .reason-txt {
-      color: var(--text-muted);
-      font-size: 0.83rem;
-      line-height: 1.45;
-    }
-
-    footer {
-      width: 100%;
-      max-width: 920px;
-      margin-top: auto;
-      padding: 12px 0 4px;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      font-size: 0.74rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-    footer a { color: var(--accent-blue); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-    .scarab-rainbow {
-      font-family: "Noto Sans Egyptian Hieroglyphs", "Apple Symbols", sans-serif;
-      font-size: 0.92rem;
-      line-height: 1;
-      background: linear-gradient(90deg, #c084fc, #38bdf8, #4ade80, #facc15, #fb923c, #f87171);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: transparent;
-      display: inline-block;
-      vertical-align: baseline;
-      margin-right: 4px;
-    }
-    html[data-theme="light"] .scarab-rainbow {
-      background: linear-gradient(90deg, #7e22ce, #0284c7, #16a34a, #d97706, #dc2626);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: transparent;
-    }
-
-    @media (max-width: 640px) {
-      .panel-card { padding: 16px 14px; border-radius: 12px; }
-      .delta-table .col-axis { width: 44%; }
-      .delta-table .col-reason { width: 56%; }
-    }
     @media print {
       .no-print { display: none !important; }
+      html, body, .content-stage {
+        height: auto !important;
+        overflow: visible !important;
+      }
       body { background: #fff; color: #1f2328; padding: 0; }
+      .sticky-header-shell { position: static; border: none; padding: 0 0 8px; margin: 0; width: 100%; }
       .panel-card, .radar-svg-box, .semaforo-box { border-color: #d0d7de; background: #fff; }
       p.primary-quote { -webkit-text-fill-color: #1f2328; color: #1f2328; background: none; }
     }
@@ -568,27 +794,34 @@
 </head>
 <body>
 
-  <div class="top-bar no-print">
-    <button type="button" class="theme-toggle" id="btnShare" onclick="openShareModal()">↗ Compartir</button>
-    <button type="button" class="theme-toggle" id="btnTheme" onclick="toggleTheme()">☀ Claro</button>
-    <div class="lang-switcher">
-      <button type="button" class="lang-btn" id="btn-en" onclick="setLocale('en')">EN</button>
-      <button type="button" class="lang-btn active" id="btn-es" onclick="setLocale('es')">ES</button>
+  <div class="sticky-header-shell">
+    <div class="top-bar no-print">
+      <div class="top-bar-left">
+        <a class="pill-link" id="btnBackHome" href="index.html">← Aula Viva®</a>
+      </div>
+      <div class="top-bar-right">
+        <button type="button" class="theme-toggle" id="btnShare" onclick="openShareModal()">↗ Compartir</button>
+        <button type="button" class="theme-toggle" id="btnTheme" onclick="toggleTheme()">☀ Claro</button>
+        <div class="lang-switcher">
+          <button type="button" class="lang-btn" id="btn-en" onclick="setLocale('en')">EN</button>
+          <button type="button" class="lang-btn active" id="btn-es" onclick="setLocale('es')">ES</button>
+        </div>
+      </div>
     </div>
+
+    <header class="header-zone">
+      <h1><svg class="kheper-svg kheper-hdr" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="kheperGrad_visorHdr" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse"><stop offset="0%" style="stop-color:var(--kheper-1)"/><stop offset="20%" style="stop-color:var(--kheper-2)"/><stop offset="38%" style="stop-color:var(--kheper-3)"/><stop offset="56%" style="stop-color:var(--kheper-4)"/><stop offset="74%" style="stop-color:var(--kheper-5)"/><stop offset="88%" style="stop-color:var(--kheper-6)"/><stop offset="100%" style="stop-color:var(--kheper-7)"/></linearGradient></defs><circle cx="32" cy="7.5" r="3.1" fill="url(#kheperGrad_visorHdr)"/><path d="M24.2 19.2 C23.8 15.4 26.8 12.6 32 12.6 C37.2 12.6 40.2 15.4 39.8 19.2 C37.4 18.2 34.8 17.8 32 17.8 C29.2 17.8 26.6 18.2 24.2 19.2 Z" fill="url(#kheperGrad_visorHdr)"/><path d="M19.2 28.4 C19.2 22.8 24.4 19.8 32 19.8 C39.6 19.8 44.8 22.8 44.8 28.4 C44.8 30.2 43.9 31.6 42.6 32.4 C39.4 31.2 35.8 30.7 32 30.7 C28.2 30.7 24.6 31.2 21.4 32.4 C20.1 31.6 19.2 30.2 19.2 28.4 Z" fill="url(#kheperGrad_visorHdr)"/><polygon points="29.4,33.1 34.6,33.1 32,37.2" fill="url(#kheperGrad_visorHdr)"/><path d="M21.0 34.4 C23.8 33.4 26.6 33.1 28.2 33.4 L30.9 38.2 L30.9 56.2 C24.6 55.6 19.4 49.4 19.2 41.2 C19.1 38.2 19.8 35.8 21.0 34.4 Z" fill="url(#kheperGrad_visorHdr)"/><path d="M43.0 34.4 C40.2 33.4 37.4 33.1 35.8 33.4 L33.1 38.2 L33.1 56.2 C39.4 55.6 44.6 49.4 44.8 41.2 C44.9 38.2 44.2 35.8 43.0 34.4 Z" fill="url(#kheperGrad_visorHdr)"/><path d="M20.6 24.2 C14.6 23.0 11.0 18.6 12.6 13.0 C13.8 9.2 17.8 7.6 22.2 8.2" stroke="url(#kheperGrad_visorHdr)" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.2 17.2 L9.0 16.0 M12.8 13.4 L10.0 11.4" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.1" stroke-linecap="round"/><path d="M43.4 24.2 C49.4 23.0 53.0 18.6 51.4 13.0 C50.2 9.2 46.2 7.6 41.8 8.2" stroke="url(#kheperGrad_visorHdr)" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/><path d="M51.8 17.2 L55.0 16.0 M51.2 13.4 L54.0 11.4" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.1" stroke-linecap="round"/><path d="M18.6 34.8 C12.4 34.4 8.2 37.2 7.6 42.2 C7.3 44.6 8.4 46.8 10.6 48.2" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M45.4 34.8 C51.6 34.4 55.8 37.2 56.4 42.2 C56.7 44.6 55.6 46.8 53.4 48.2" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M21.0 46.2 C15.2 48.8 12.8 53.4 15.2 57.6 C16.8 60.0 19.8 60.6 23.0 59.6" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M43.0 46.2 C48.8 48.8 51.2 53.4 48.8 57.6 C47.2 60.0 44.2 60.6 41.0 59.6" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Aula Viva<span class="reg">®</span></span></h1>
+      <p class="descriptor" id="appDescriptor">PRISMA™ Visor — Proyección móvil 100 % offline en ℝ⁸</p>
+      <p class="primary-quote" id="primaryQuote"></p>
+    </header>
   </div>
 
-  <header class="header-zone">
-    <h1><svg class="kheper-svg kheper-hdr" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="kheperGrad_visorHdr" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse"><stop offset="0%" style="stop-color:var(--kheper-1)"/><stop offset="20%" style="stop-color:var(--kheper-2)"/><stop offset="38%" style="stop-color:var(--kheper-3)"/><stop offset="56%" style="stop-color:var(--kheper-4)"/><stop offset="74%" style="stop-color:var(--kheper-5)"/><stop offset="88%" style="stop-color:var(--kheper-6)"/><stop offset="100%" style="stop-color:var(--kheper-7)"/></linearGradient></defs><circle cx="32" cy="7.5" r="3.1" fill="url(#kheperGrad_visorHdr)"/><path d="M24.2 19.2 C23.8 15.4 26.8 12.6 32 12.6 C37.2 12.6 40.2 15.4 39.8 19.2 C37.4 18.2 34.8 17.8 32 17.8 C29.2 17.8 26.6 18.2 24.2 19.2 Z" fill="url(#kheperGrad_visorHdr)"/><path d="M19.2 28.4 C19.2 22.8 24.4 19.8 32 19.8 C39.6 19.8 44.8 22.8 44.8 28.4 C44.8 30.2 43.9 31.6 42.6 32.4 C39.4 31.2 35.8 30.7 32 30.7 C28.2 30.7 24.6 31.2 21.4 32.4 C20.1 31.6 19.2 30.2 19.2 28.4 Z" fill="url(#kheperGrad_visorHdr)"/><polygon points="29.4,33.1 34.6,33.1 32,37.2" fill="url(#kheperGrad_visorHdr)"/><path d="M21.0 34.4 C23.8 33.4 26.6 33.1 28.2 33.4 L30.9 38.2 L30.9 56.2 C24.6 55.6 19.4 49.4 19.2 41.2 C19.1 38.2 19.8 35.8 21.0 34.4 Z" fill="url(#kheperGrad_visorHdr)"/><path d="M43.0 34.4 C40.2 33.4 37.4 33.1 35.8 33.4 L33.1 38.2 L33.1 56.2 C39.4 55.6 44.6 49.4 44.8 41.2 C44.9 38.2 44.2 35.8 43.0 34.4 Z" fill="url(#kheperGrad_visorHdr)"/><path d="M20.6 24.2 C14.6 23.0 11.0 18.6 12.6 13.0 C13.8 9.2 17.8 7.6 22.2 8.2" stroke="url(#kheperGrad_visorHdr)" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.2 17.2 L9.0 16.0 M12.8 13.4 L10.0 11.4" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.1" stroke-linecap="round"/><path d="M43.4 24.2 C49.4 23.0 53.0 18.6 51.4 13.0 C50.2 9.2 46.2 7.6 41.8 8.2" stroke="url(#kheperGrad_visorHdr)" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/><path d="M51.8 17.2 L55.0 16.0 M51.2 13.4 L54.0 11.4" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.1" stroke-linecap="round"/><path d="M18.6 34.8 C12.4 34.4 8.2 37.2 7.6 42.2 C7.3 44.6 8.4 46.8 10.6 48.2" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M45.4 34.8 C51.6 34.4 55.8 37.2 56.4 42.2 C56.7 44.6 55.6 46.8 53.4 48.2" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M21.0 46.2 C15.2 48.8 12.8 53.4 15.2 57.6 C16.8 60.0 19.8 60.6 23.0 59.6" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M43.0 46.2 C48.8 48.8 51.2 53.4 48.8 57.6 C47.2 60.0 44.2 60.6 41.0 59.6" stroke="url(#kheperGrad_visorHdr)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Aula Viva<span class="reg">®</span></span></h1>
-    <p class="descriptor" id="appDescriptor">PRISMA™ — Visor móvil 100 % offline en ℝ⁸</p>
-    <p class="primary-quote" id="primaryQuote"></p>
-  </header>
-
-  <main>
-    <section class="panel-card no-print" id="inputCard">
+  <main class="content-stage">
+    <section class="panel-card no-print collapsed-input" id="inputCard">
       <div class="card-title-row">
         <span class="card-label" id="lblPaste">Pega aquí el JSON generado por PocketPal AI</span>
-        <span class="offline-pill" id="offlinePill">● 100 % local · Cero nube</span>
-        <button type="button" class="btn-edit-json" id="btnEditJson" onclick="expandInputCard()">✎ Nueva nota</button>
+        <span class="offline-pill" id="offlinePill">● Listo offline (Modo avión)</span>
+        <button type="button" class="btn-edit-json" id="btnEditJson" onclick="toggleInputCard()">Ingresar JSON</button>
       </div>
       <div id="inputBodyWrap">
         <textarea id="jsonInput" spellcheck="false" placeholder='{ "estado_educabilidad": { ... }, "evaluacion_ejes": { ... } }'></textarea>
@@ -603,22 +836,40 @@
     </section>
 
     <section id="resultSection" class="panel-card" style="display:none;">
+      <div id="demoBar" class="demo-bar no-print">
+        <div class="demo-bar-top">
+          <span class="demo-tag-lbl" id="demoTagLbl">Demo · María (Ejemplo):</span>
+          <div class="demo-switch" role="tablist">
+            <button type="button" class="demo-btn" id="btnDemoOpt" onclick="setDemoCondition('optimal')">🟢 Óptima</button>
+            <button type="button" class="demo-btn active" id="btnDemoRed" onclick="setDemoCondition('red')">🔴 Malestar agudo</button>
+          </div>
+        </div>
+        <details class="demo-note-details" id="demoNoteDetails">
+          <summary id="demoNoteSummary">📄 Ver nota narrativa (solo lectura)</summary>
+          <div class="demo-note-body">
+            <div class="demo-note-meta" id="demoNoteMeta"></div>
+            <p class="demo-note-quote" id="demoNoteQuote"></p>
+            <div class="demo-note-disclaimer" id="demoNoteDisclaimer"></div>
+          </div>
+        </details>
+      </div>
+
       <div id="semaforoBox" class="semaforo-box">
         <div id="semaforoTitle" class="semaforo-title"></div>
         <p id="semaforoAnalisis"></p>
         <p id="semaforoAdv" style="font-weight:600;"></p>
       </div>
 
-      <div class="viz-grid">
+      <div class="viz-stack">
         <div class="radar-svg-box">
           <svg id="radarSvg" width="460" height="310" viewBox="0 0 460 310"></svg>
         </div>
 
-        <div>
+        <div class="table-wrap">
           <table class="delta-table">
             <thead>
               <tr>
-                <th id="thAxis" class="col-axis">Dimensión (ℝ⁸) · Δ dB (%)</th>
+                <th id="thAxis" class="col-axis">Dimensión (ℝ⁸)<span class="th-sep"> · </span><span class="th-delta">Δ dB (%)</span></th>
                 <th id="thReason" class="col-reason">Razonamiento pedagógico</th>
               </tr>
             </thead>
@@ -627,14 +878,18 @@
         </div>
       </div>
 
-      <div class="btn-row no-print" style="margin-top:16px; justify-content:center;">
+      <div class="btn-row no-print" style="margin-top:14px; justify-content:center;">
         <button type="button" class="btn-secondary" id="btnPrint" onclick="window.print()">Imprimir / Guardar PDF</button>
+      </div>
+
+      <div class="scope-notice">
+        <span class="scope-notice-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l8 3.3v5.8c0 5.3-3.4 9.6-8 11.2-4.6-1.6-8-5.9-8-11.2V5.8L12 2.5z"/><polyline points="8.5 12.2 11 14.7 15.8 9.6"/></svg></span>
+        <p id="scopeNoticeText"></p>
       </div>
     </section>
   </main>
 
   <footer id="siteFooter"></footer>
-
 
   <div id="shareModal" class="share-modal-backdrop no-print" aria-hidden="true" onclick="if(event.target===this) closeShareModal()">
     <div class="share-modal-card" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle">
@@ -685,14 +940,25 @@
     const VISOR_SHARE_URL = "https://aulaviva.lat/visor.html";
     let currentLocale = "es";
     let lastParsed = null;
-    let isSampleLoaded = false;
+    let isSampleLoaded = true;
+    let demoCondition = "red";
 
     const UI = {
       es: {
-        pageTitle: "Aula Viva® — PRISMA™ Visor (ℝ⁸)",
+        pageTitle: "Aula Viva® — PRISMA™ Visor",
+        btnBackHome: "← Aula Viva®",
         descriptor: "PRISMA™ Visor — Proyección móvil 100 % offline en ℝ⁸",
         btnShare: "↗ Compartir",
-        btnEditJson: "✎ Nueva nota",
+        btnEditJson: "Ingresar JSON",
+        btnHideJson: "✕ Ocultar",
+        demoTagLbl: "Demo · María (Ejemplo):",
+        demoOptBtn: "🟢 Óptima",
+        demoRedBtn: "🔴 Malestar agudo",
+        demoNoteSummary: "📄 Ver nota narrativa (solo lectura)",
+        demoNoteMetaRed: "Educación Secundaria · STEM / Lab · Sueño > 7 h · Alimentación completa · Bienestar: Malestar agudo (cólico, dolor o fatiga severa por cuidados intensivos o emergencia en casa)",
+        demoNoteMetaOpt: "Educación Secundaria · STEM / Lab · Sueño > 7 h · Alimentación completa · Bienestar: Óptimo (sin dolor, molestia o fatiga)",
+        demoNoteQuote: "«Hoy María lideró la construcción del prototipo de filtro de agua. Notó que el flujo estaba muy lento, revisó la densidad de la arena y redujo la capa a la mitad. Cuando su equipo se distrajo con los teléfonos, los llamó para repartir las tareas de la presentación de mañana. En el descanso tuvo un episodio severo de frustración porque la escogieron al final para los equipos de fútbol. Gritó, aventó su mochila y después se negó a hablar con el equipo durante la clase. Al final del día, se disculpó con sus compañeras y conmigo, por su propia iniciativa.»",
+        demoNoteDisclaimer: "Caso de demostración (solo lectura). El motor de IA local corre fuera del navegador (en la app de escritorio o cargando una salida propia con «Ingresar JSON»).",
         shareTitle: "Compartir PRISMA™ Visor",
         shareHint: "Escanea este código QR (100 % offline) o envía el enlace directo",
         btnNativeShare: "Compartir (AirDrop · WhatsApp · Mensajes)",
@@ -701,17 +967,17 @@
         shareText: "PRISMA™ Visor — Espejo metacognitivo móvil 100 % offline en ℝ⁸",
         quote: "«Hacer brillar luz blanca a través de cada estudiante y proyectar sus colores refractados para revelar el profundo camino de su crecimiento.»",
         lblPaste: "Pega aquí el JSON generado por PocketPal AI",
-        offlinePill: "● 100 % local · Cero nube",
-        offlineCached: "● Listo sin conexión (Modo avión)",
+        offlinePill: "● Listo offline (Modo avión)",
         btnRender: "Visualizar proyección",
         btnPaste: "Pegar",
         btnSample: "Cargar ejemplo (María)",
         btnClear: "Limpiar",
-        thAxis: "Dimensión (ℝ⁸) · Δ dB (%)",
+        thAxis: 'Dimensión (ℝ⁸)<span class="th-sep"> · </span><span class="th-delta">Δ dB (%)</span>',
         thReason: "Razonamiento pedagógico",
         btnPrint: "Imprimir / Guardar PDF",
         scale: "Escala",
         err: "No se encontró un JSON válido de PRISMA™. Copia desde la primera { hasta la última }.",
+        scopeNotice: "<strong>Alcance pedagógico:</strong> PRISMA™ es estrictamente un instrumento educativo de reflexión y analítica formativa diseñado para potenciar el aprendizaje y la calidad de la educación. No es una herramienta médica ni de diagnóstico clínico o psicológico, ni sustituye la valoración de profesionales de la salud.",
         sem: {
           VERDE: "🟢 Semáforo VERDE — Condición óptima",
           AMARILLO: "🟡 Semáforo AMARILLO — Atención pedagógica",
@@ -720,10 +986,20 @@
         footer: `<span class="footer-brand-line">${kheperSvg("vFtrEs", "kheper-svg kheper-inline")}<strong>Aula Viva®</strong> · PRISMA™ Visor · <a href="https://aulaviva.lat" target="_blank" rel="noopener noreferrer">aulaviva.lat</a></span><br>Ejecución estrictamente local en el dispositivo · © 2026 Grupo SiEFH S.A.S.`
       },
       en: {
-        pageTitle: "Aula Viva® — PRISMA™ Visor (ℝ⁸)",
+        pageTitle: "Aula Viva® — PRISMA™ Visor",
+        btnBackHome: "← Aula Viva®",
         descriptor: "PRISMA™ Visor — 100% offline mobile projection in ℝ⁸",
         btnShare: "↗ Share",
-        btnEditJson: "✎ New note",
+        btnEditJson: "Enter JSON",
+        btnHideJson: "✕ Hide",
+        demoTagLbl: "Demo · María (Sample):",
+        demoOptBtn: "🟢 Optimal",
+        demoRedBtn: "🔴 Acute strain",
+        demoNoteSummary: "📄 View narrative note (read-only)",
+        demoNoteMetaRed: "Lower Secondary · STEM / Lab · Sleep > 7 h · Complete nutrition · Well-being: Acute discomfort (severe cramps, pain, or fatigue from intensive household care or domestic emergency)",
+        demoNoteMetaOpt: "Lower Secondary · STEM / Lab · Sleep > 7 h · Complete nutrition · Well-being: Optimal (no pain, discomfort, or fatigue)",
+        demoNoteQuote: "“Today María led the construction of the water filter prototype. She noticed the flow was too slow, examined the sand density, and halved the layer thickness. When her team became distracted by their phones, she called them together to assign tasks for tomorrow's presentation. During recess, she experienced a severe episode of frustration after being picked last for the soccer teams. She yelled, threw her backpack, and then refused to speak with her group during class. At the end of the day, she apologized to her classmates and to me on her own initiative.”",
+        demoNoteDisclaimer: "Read-only demonstration case. Local AI inference runs outside the browser (via the desktop app or by pasting your own output with “Enter JSON”).",
         shareTitle: "Share PRISMA™ Visor",
         shareHint: "Scan this QR code (works 100% offline) or share the direct link",
         btnNativeShare: "Share via device (AirDrop · Messages)",
@@ -732,17 +1008,17 @@
         shareText: "PRISMA™ Visor — 100% offline mobile metacognitive mirror in ℝ⁸",
         quote: "“Shining white light through learners and projecting its refracted colors to reveal the profound journey of their growth.”",
         lblPaste: "Paste the JSON generated by PocketPal AI",
-        offlinePill: "● 100% on-device · Zero cloud",
-        offlineCached: "● Ready offline (Airplane mode)",
+        offlinePill: "● Ready offline (Airplane mode)",
         btnRender: "Visualize projection",
         btnPaste: "Paste",
         btnSample: "Load sample (María)",
         btnClear: "Clear",
-        thAxis: "Dimension (ℝ⁸) · Δ dB (%)",
+        thAxis: 'Dimension (ℝ⁸)<span class="th-sep"> · </span><span class="th-delta">Δ dB (%)</span>',
         thReason: "Pedagogical reasoning",
         btnPrint: "Print / Save PDF",
         scale: "Scale",
         err: "No valid PRISMA™ JSON found. Copy from the opening { to the closing }.",
+        scopeNotice: "<strong>Pedagogical scope notice:</strong> PRISMA™ is strictly an educational reflection and learning-analytics instrument designed to strengthen teaching quality and holistic student growth. It is not a medical, clinical, or psychological diagnostic tool, nor a substitute for qualified healthcare or mental-health professionals.",
         sem: {
           VERDE: "🟢 GREEN — Optimal condition",
           AMARILLO: "🟡 YELLOW — Pedagogical attention",
@@ -765,42 +1041,78 @@
 
     const SAMPLES = {
       es: {
-        estado_educabilidad: {
-          semaforo: "ROJO",
-          analisis_previo_educabilidad: "Malestar agudo reportado (dolor y fatiga severa por emergencia doméstica) con sueño y nutrición adecuados. El desborde emocional en el descanso responde a desgaste somático acumulado, no a sabotaje académico.",
-          advertencia_pedagogica: "Priorizar el cuidado somático y considerar el desgaste biológico al valorar el proceso formativo. Reconocer la magnitud del esfuerzo de recuperación para volver a la tarea y reparar el vínculo con la disculpa espontánea."
+        red: {
+          estado_educabilidad: {
+            semaforo: "ROJO",
+            analisis_previo_educabilidad: "Malestar agudo reportado (cólico, dolor o fatiga severa por cuidados intensivos o emergencia en casa) con sueño y nutrición adecuados. El desborde emocional en el descanso responde a desgaste somático acumulado, no a sabotaje académico.",
+            advertencia_pedagogica: "Priorizar el cuidado somático y considerar el desgaste biológico al valorar el proceso formativo. Reconocer la magnitud del esfuerzo de recuperación para volver a la tarea y reparar el vínculo con la disculpa espontánea."
+          },
+          evaluacion_ejes: {
+            Indagacion_Investigacion: { razonamiento: "Identificación del problema (flujo lento), hipótesis sobre la densidad de la arena y ejecución de la corrección (reducción de capa).", polaridad: "CRECIMIENTO", delta_basal_pct: 25, delta_pct: 25 },
+            Pensamiento_Critico_Analitico: { razonamiento: "Relación causal entre la densidad del material y el rendimiento del sistema, y capacidad de ajustar parámetros técnicos basándose en la observación empírica.", polaridad: "CRECIMIENTO", delta_basal_pct: 20, delta_pct: 20 },
+            Razonamiento_Etico: { razonamiento: "Liderazgo al repartir tareas a pesar de la distracción del equipo y disculpa espontánea y proactiva al final del día tras el episodio de frustración ⚡ [Amplificado desde +1.6 dB (+20%) · 🔴].", polaridad: "CRECIMIENTO", delta_basal_pct: 20, delta_pct: 26 },
+            Agencia_Intercultural: { razonamiento: "Liderazgo inclusivo en la asignación de roles dentro del grupo, demostrando capacidad de gestión de la dinámica colectiva.", polaridad: "CRECIMIENTO", delta_basal_pct: 15, delta_pct: 15 },
+            Liderazgo_Colaborativo: { razonamiento: "Coordinación del equipo para la presentación, recuperación de la atención tras la distracción y gestión de la dinámica grupal.", polaridad: "CRECIMIENTO", delta_basal_pct: 25, delta_pct: 25 },
+            Saber_Hacer_Ejecucion_Tecnica: { razonamiento: "Construcción del prototipo, detección de fallo técnico (flujo lento), ajuste empírico de materiales (arena) y optimización del proceso.", polaridad: "CRECIMIENTO", delta_basal_pct: 30, delta_pct: 30 },
+            Resiliencia_Autogestion: { razonamiento: "Episodio de desregulación emocional severa derivado de la frustración bajo malestar agudo, seguido de una recuperación volitiva para volver a la tarea y reparar el daño ⚡ [Amplificado desde +1.6 dB (+20%) · 🔴].", polaridad: "CRECIMIENTO", delta_basal_pct: 20, delta_pct: 26 },
+            Reflexion_Metacognitiva: { razonamiento: "La disculpa espontánea y la capacidad de volver a la tarea tras el desborde indican comprensión del impacto de sus acciones y autorregulación ⚡ [Amplificado desde +1.2 dB (+15%) · 🔴].", polaridad: "CRECIMIENTO", delta_basal_pct: 15, delta_pct: 21 }
+          }
         },
-        evaluacion_ejes: {
-          Indagacion_Investigacion: { razonamiento: "Identificación del problema (flujo lento), hipótesis sobre la densidad de la arena y ejecución de la corrección (reducción de capa).", polaridad: "CRECIMIENTO", delta_basal_pct: 25, delta_pct: 25 },
-          Pensamiento_Critico_Analitico: { razonamiento: "Relación causal entre la densidad del material y el rendimiento del sistema, y capacidad de ajustar parámetros técnicos basándose en la observación empírica.", polaridad: "CRECIMIENTO", delta_basal_pct: 20, delta_pct: 20 },
-          Razonamiento_Etico: { razonamiento: "Liderazgo al repartir tareas a pesar de la distracción del equipo y disculpa espontánea y proactiva al final del día tras el episodio de frustración ⚡ [Amplificado desde +1.6 dB (+20%) · 🔴].", polaridad: "CRECIMIENTO", delta_basal_pct: 20, delta_pct: 26 },
-          Agencia_Intercultural: { razonamiento: "Liderazgo inclusivo en la asignación de roles dentro del grupo, demostrando capacidad de gestión de la dinámica colectiva.", polaridad: "CRECIMIENTO", delta_basal_pct: 15, delta_pct: 15 },
-          Liderazgo_Colaborativo: { razonamiento: "Coordinación del equipo para la presentación, recuperación de la atención tras la distracción y gestión de la dinámica grupal.", polaridad: "CRECIMIENTO", delta_basal_pct: 25, delta_pct: 25 },
-          Saber_Hacer_Ejecucion_Tecnica: { razonamiento: "Construcción del prototipo, detección de fallo técnico (flujo lento), ajuste empírico de materiales (arena) y optimización del proceso.", polaridad: "CRECIMIENTO", delta_basal_pct: 30, delta_pct: 30 },
-          Resiliencia_Autogestion: { razonamiento: "Episodio de desregulación emocional severa derivado de la frustración bajo malestar agudo, seguido de una recuperación volitiva para volver a la tarea y reparar el daño ⚡ [Amplificado desde +1.6 dB (+20%) · 🔴].", polaridad: "CRECIMIENTO", delta_basal_pct: 20, delta_pct: 26 },
-          Reflexion_Metacognitiva: { razonamiento: "La disculpa espontánea y la capacidad de volver a la tarea tras el desborde indican comprensión del impacto de sus acciones y autorregulación ⚡ [Amplificado desde +1.2 dB (+15%) · 🔴].", polaridad: "CRECIMIENTO", delta_basal_pct: 15, delta_pct: 21 }
+        optimal: {
+          estado_educabilidad: {
+            semaforo: "VERDE",
+            analisis_previo_educabilidad: "Condición sociofisiológica basal estable (sueño > 7 h, alimentación completa y bienestar óptimo). No se reporta desgaste somático que active amplificación protectora.",
+            advertencia_pedagogica: "Sostener la autonomía técnica y acompañar estrategias preventivas de regulación emocional ante frustración competitiva, reforzando su iniciativa de disculpa."
+          },
+          evaluacion_ejes: {
+            Indagacion_Investigacion: { razonamiento: "Identificación del problema (flujo lento), hipótesis sobre la densidad de la arena y ejecución de la corrección (reducción de capa).", polaridad: "CRECIMIENTO", delta_basal_pct: 25, delta_pct: 25 },
+            Pensamiento_Critico_Analitico: { razonamiento: "Relación causal entre la densidad del material y el rendimiento del sistema, y capacidad de ajustar parámetros técnicos basándose en la observación empírica.", polaridad: "CRECIMIENTO", delta_basal_pct: 20, delta_pct: 20 },
+            Razonamiento_Etico: { razonamiento: "Liderazgo al repartir tareas y disculpa espontánea al final del día tras el conflicto (valoración basal, sin amplificación somática).", polaridad: "CRECIMIENTO", delta_basal_pct: 20, delta_pct: 20 },
+            Agencia_Intercultural: { razonamiento: "Liderazgo inclusivo en la asignación de roles dentro del grupo, demostrando capacidad de gestión de la dinámica colectiva.", polaridad: "CRECIMIENTO", delta_basal_pct: 15, delta_pct: 15 },
+            Liderazgo_Colaborativo: { razonamiento: "Coordinó eficazmente al equipo para la presentación; el aislamiento temporal tras el recreo frenó parcialmente la dinámica grupal.", polaridad: "CRECIMIENTO", delta_basal_pct: 15, delta_pct: 15 },
+            Saber_Hacer_Ejecucion_Tecnica: { razonamiento: "Construcción del prototipo, detección de fallo técnico (flujo lento), ajuste empírico de materiales (arena) y optimización del proceso.", polaridad: "CRECIMIENTO", delta_basal_pct: 30, delta_pct: 30 },
+            Resiliencia_Autogestion: { razonamiento: "Balance formativo basal entre el episodio de frustración en el recreo (gritos y mochila) y su recuperación posterior con disculpa voluntaria (sin vulnerabilidad somática reportada).", polaridad: "CRECIMIENTO", delta_basal_pct: 8, delta_pct: 8 },
+            Reflexion_Metacognitiva: { razonamiento: "La disculpa por propia iniciativa muestra conciencia del impacto de sus acciones y disposición a reparar el vínculo (valoración basal).", polaridad: "CRECIMIENTO", delta_basal_pct: 15, delta_pct: 15 }
+          }
         }
       },
       en: {
-        estado_educabilidad: {
-          semaforo: "RED",
-          analisis_previo_educabilidad: "Acute somatic discomfort reported (severe pain and fatigue from domestic emergency) alongside adequate sleep and nutrition. Emotional outbursts reflect temporary dysregulation under acute strain, not behavioral sabotage.",
-          advertencia_pedagogica: "Prioritize somatic care and rest. Frame emotional outbursts (yelling, throwing items) as temporary dysregulation due to acute pain/fatigue, and acknowledge her self-initiated repair as an act of courage under duress."
+        red: {
+          estado_educabilidad: {
+            semaforo: "RED",
+            analisis_previo_educabilidad: "Acute somatic discomfort reported (severe cramps, pain, or fatigue from intensive household care or domestic emergency) alongside adequate sleep and nutrition. Emotional outbursts reflect temporary dysregulation under acute strain, not behavioral sabotage.",
+            advertencia_pedagogica: "Prioritize somatic care and rest. Frame emotional outbursts (yelling, throwing items) as temporary dysregulation due to acute pain/fatigue, and acknowledge her self-initiated repair as an act of courage under duress."
+          },
+          evaluacion_ejes: {
+            Indagacion_Investigacion: { razonamiento: "Evidence of autonomous hypothesis formulation (noticing slow flow, examining sand density, halving layer thickness) and iterative debugging during prototype construction.", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 },
+            Pensamiento_Critico_Analitico: { razonamiento: "Demonstrated signal decoupling by identifying the cause of slow flow (sand density) and logical synthesis to adjust variables (halving layer thickness) to solve the problem.", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 },
+            Razonamiento_Etico: { razonamiento: "High merit: Spontaneous apology to classmates and teacher on her own initiative despite acute pain and frustration, demonstrating moral agency and repair of harm ⚡ [Amplified from +1.6 dB (+20%) · 🔴].", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 32 },
+            Agencia_Intercultural: { razonamiento: "Demonstrated inclusive leadership by re-engaging distracted peers and assigning tasks for collective success, validating group effort.", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 },
+            Liderazgo_Colaborativo: { razonamiento: "Demonstrated non-coercive coordination by calling the team together and assigning tasks. Emotional withdrawal (silence) was a reaction to frustration, not sabotage.", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 },
+            Saber_Hacer_Ejecucion_Tecnica: { razonamiento: "Observable hands-on craftsmanship: examined materials, adjusted layer thickness, and ensured functional output of the water filter prototype.", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 },
+            Resiliencia_Autogestion: { razonamiento: "High merit: Persisted through acute pain and frustration to complete the task and apologize, overcoming severe somatic strain to restore equilibrium ⚡ [Amplified from +1.6 dB (+20%) · 🔴].", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 32 },
+            Reflexion_Metacognitiva: { razonamiento: "Demonstrated intellectual humility and self-awareness by recognizing her emotional state, apologizing, and repairing relationships despite the initial outburst ⚡ [Amplified from +1.6 dB (+20%) · 🔴].", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 32 }
+          }
         },
-        evaluacion_ejes: {
-          Indagacion_Investigacion: { razonamiento: "Evidence of autonomous hypothesis formulation (noticing slow flow, examining sand density, halving layer thickness) and iterative debugging during prototype construction.", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 },
-          Pensamiento_Critico_Analitico: { razonamiento: "Demonstrated signal decoupling by identifying the cause of slow flow (sand density) and logical synthesis to adjust variables (halving layer thickness) to solve the problem.", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 },
-          Razonamiento_Etico: { razonamiento: "High merit: Spontaneous apology to classmates and teacher on her own initiative despite acute pain and frustration, demonstrating moral agency and repair of harm ⚡ [Amplified from +1.6 dB (+20%) · 🔴].", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 32 },
-          Agencia_Intercultural: { razonamiento: "Demonstrated inclusive leadership by re-engaging distracted peers and assigning tasks for collective success, validating group effort.", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 },
-          Liderazgo_Colaborativo: { razonamiento: "Demonstrated non-coercive coordination by calling the team together and assigning tasks. Emotional withdrawal (silence) was a reaction to frustration, not sabotage.", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 },
-          Saber_Hacer_Ejecucion_Tecnica: { razonamiento: "Observable hands-on craftsmanship: examined materials, adjusted layer thickness, and ensured functional output of the water filter prototype.", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 },
-          Resiliencia_Autogestion: { razonamiento: "High merit: Persisted through acute pain and frustration to complete the task and apologize, overcoming severe somatic strain to restore equilibrium ⚡ [Amplified from +1.6 dB (+20%) · 🔴].", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 32 },
-          Reflexion_Metacognitiva: { razonamiento: "Demonstrated intellectual humility and self-awareness by recognizing her emotional state, apologizing, and repairing relationships despite the initial outburst ⚡ [Amplified from +1.6 dB (+20%) · 🔴].", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 32 }
+        optimal: {
+          estado_educabilidad: {
+            semaforo: "GREEN",
+            analisis_previo_educabilidad: "Stable biopsychosocial baseline (sleep > 7 h, complete nutrition, optimal well-being). No acute somatic strain reported to trigger protective amplification.",
+            advertencia_pedagogica: "Sustain technical autonomy and coach proactive emotional regulation strategies under competitive frustration, reinforcing her self-initiated apology."
+          },
+          evaluacion_ejes: {
+            Indagacion_Investigacion: { razonamiento: "Evidence of autonomous hypothesis formulation (noticing slow flow, examining sand density, halving layer thickness) and iterative debugging during prototype construction.", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 },
+            Pensamiento_Critico_Analitico: { razonamiento: "Demonstrated signal decoupling by identifying the cause of slow flow (sand density) and logical synthesis to adjust variables (halving layer thickness) to solve the problem.", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 },
+            Razonamiento_Etico: { razonamiento: "Spontaneous apology to classmates and teacher on her own initiative, demonstrating moral agency and repair of harm (baseline delta, no somatic amplification).", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 },
+            Agencia_Intercultural: { razonamiento: "Demonstrated inclusive leadership by re-engaging distracted peers and assigning tasks for collective success, validating group effort.", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 },
+            Liderazgo_Colaborativo: { razonamiento: "Organized team tasks effectively before recess; temporary emotional withdrawal during class partially slowed group coordination.", polaridad: "GROWTH", delta_basal_pct: 12, delta_pct: 12 },
+            Saber_Hacer_Ejecucion_Tecnica: { razonamiento: "Observable hands-on craftsmanship: examined materials, adjusted layer thickness, and ensured functional output of the water filter prototype.", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 },
+            Resiliencia_Autogestion: { razonamiento: "Balanced baseline assessment weighing the recess frustration episode (yelling, throwing backpack) against her subsequent recovery and self-initiated apology (no somatic strain reported).", polaridad: "GROWTH", delta_basal_pct: 8, delta_pct: 8 },
+            Reflexion_Metacognitiva: { razonamiento: "Demonstrated intellectual humility and self-awareness by recognizing her emotional state and apologizing voluntarily (baseline delta).", polaridad: "GROWTH", delta_basal_pct: 20, delta_pct: 20 }
+          }
         }
       }
     };
-
-    let swReady = false;
 
     function updateThemeBtnLabel() {
       const isLight = document.documentElement.getAttribute("data-theme") === "light";
@@ -824,34 +1136,38 @@
     }
 
     function setLocale(loc) {
-      currentLocale = loc;
-      document.documentElement.lang = loc;
-      document.getElementById("btn-en").classList.toggle("active", loc === "en");
-      document.getElementById("btn-es").classList.toggle("active", loc === "es");
-      const t = UI[loc];
+      currentLocale = (loc === "en") ? "en" : "es";
+      try { localStorage.setItem("av-lang", currentLocale); } catch (e) {}
+      document.documentElement.lang = currentLocale;
+      document.getElementById("btn-en").classList.toggle("active", currentLocale === "en");
+      document.getElementById("btn-es").classList.toggle("active", currentLocale === "es");
+      const t = UI[currentLocale];
       document.getElementById("pageTitle").textContent = t.pageTitle;
+      document.getElementById("btnBackHome").textContent = t.btnBackHome;
       document.getElementById("appDescriptor").textContent = t.descriptor;
       document.getElementById("primaryQuote").textContent = t.quote;
       document.getElementById("lblPaste").textContent = t.lblPaste;
-      document.getElementById("offlinePill").textContent = swReady ? t.offlineCached : t.offlinePill;
+      document.getElementById("offlinePill").textContent = t.offlinePill;
       document.getElementById("btnRender").textContent = t.btnRender;
       document.getElementById("btnPaste").textContent = t.btnPaste;
       document.getElementById("btnSample").textContent = t.btnSample;
       document.getElementById("btnClear").textContent = t.btnClear;
-      document.getElementById("thAxis").textContent = t.thAxis;
+      document.getElementById("thAxis").innerHTML = t.thAxis;
       document.getElementById("thReason").textContent = t.thReason;
       document.getElementById("btnPrint").textContent = t.btnPrint;
+      document.getElementById("scopeNoticeText").innerHTML = t.scopeNotice;
       document.getElementById("siteFooter").innerHTML = t.footer;
       document.getElementById("btnShare").textContent = t.btnShare;
-      document.getElementById("btnEditJson").textContent = t.btnEditJson;
+      updateEditJsonBtnLabel();
       document.getElementById("shareModalTitle").textContent = t.shareTitle;
       document.getElementById("shareHint").textContent = t.shareHint;
       document.getElementById("btnNativeShare").textContent = t.btnNativeShare;
       document.getElementById("btnCopyUrl").textContent = t.btnCopyUrl;
+      updateDemoBarUI();
       updateThemeBtnLabel();
 
       if (isSampleLoaded) {
-        lastParsed = SAMPLES[loc];
+        lastParsed = SAMPLES[currentLocale][demoCondition];
         document.getElementById("jsonInput").value = JSON.stringify(lastParsed, null, 2);
         renderData(lastParsed);
       } else if (lastParsed) {
@@ -870,17 +1186,52 @@
         document.getElementById("jsonInput").value = txt;
         renderFromInput();
       } catch (e) {
-        const box = document.getElementById("jsonInput");
-        box.focus();
+        document.getElementById("jsonInput").focus();
       }
     }
 
     function loadSample() {
       isSampleLoaded = true;
-      lastParsed = SAMPLES[currentLocale];
+      lastParsed = SAMPLES[currentLocale][demoCondition];
       document.getElementById("jsonInput").value = JSON.stringify(lastParsed, null, 2);
       document.getElementById("errBox").style.display = "none";
+      updateDemoBarUI();
       renderData(lastParsed);
+    }
+
+    function setDemoCondition(cond) {
+      demoCondition = (cond === "optimal") ? "optimal" : "red";
+      isSampleLoaded = true;
+      lastParsed = SAMPLES[currentLocale][demoCondition];
+      document.getElementById("jsonInput").value = JSON.stringify(lastParsed, null, 2);
+      updateDemoBarUI();
+      renderData(lastParsed);
+    }
+
+    function updateDemoBarUI() {
+      const t = UI[currentLocale];
+      const bar = document.getElementById("demoBar");
+      if (bar) bar.style.display = isSampleLoaded ? "block" : "none";
+      const lbl = document.getElementById("demoTagLbl");
+      if (lbl) lbl.textContent = t.demoTagLbl;
+      const bOpt = document.getElementById("btnDemoOpt");
+      const bRed = document.getElementById("btnDemoRed");
+      if (bOpt) {
+        bOpt.textContent = t.demoOptBtn;
+        bOpt.classList.toggle("active", demoCondition === "optimal");
+      }
+      if (bRed) {
+        bRed.textContent = t.demoRedBtn;
+        bRed.classList.toggle("active", demoCondition === "red");
+      }
+      const sum = document.getElementById("demoNoteSummary");
+      if (sum) sum.textContent = t.demoNoteSummary;
+      const meta = document.getElementById("demoNoteMeta");
+      if (meta) meta.textContent = (demoCondition === "optimal") ? t.demoNoteMetaOpt : t.demoNoteMetaRed;
+      const q = document.getElementById("demoNoteQuote");
+      if (q) q.textContent = t.demoNoteQuote;
+      const disc = document.getElementById("demoNoteDisclaimer");
+      if (disc) disc.textContent = t.demoNoteDisclaimer;
     }
 
     function clearAll() {
@@ -938,6 +1289,7 @@
         const data = extractJSON(document.getElementById("jsonInput").value.trim());
         if (!data.evaluacion_ejes) throw new Error("Missing evaluacion_ejes");
         lastParsed = data;
+        updateDemoBarUI();
         renderData(data);
       } catch (e) {
         err.textContent = UI[currentLocale].err;
@@ -1039,22 +1391,31 @@
       svg.innerHTML = out;
     }
 
-    if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
-      navigator.serviceWorker.register("./visor-sw.js").then(() => {
-        swReady = true;
-        document.getElementById("offlinePill").textContent = UI[currentLocale].offlineCached;
-      }).catch(() => {});
+    function updateEditJsonBtnLabel() {
+      const card = document.getElementById("inputCard");
+      const btn = document.getElementById("btnEditJson");
+      if (!card || !btn) return;
+      const isCollapsed = card.classList.contains("collapsed-input");
+      btn.textContent = isCollapsed ? UI[currentLocale].btnEditJson : UI[currentLocale].btnHideJson;
     }
-
 
     function collapseInputCard() {
       const card = document.getElementById("inputCard");
       if (card) card.classList.add("collapsed-input");
+      updateEditJsonBtnLabel();
     }
 
     function expandInputCard() {
       const card = document.getElementById("inputCard");
       if (card) card.classList.remove("collapsed-input");
+      updateEditJsonBtnLabel();
+    }
+
+    function toggleInputCard() {
+      const card = document.getElementById("inputCard");
+      if (!card) return;
+      card.classList.toggle("collapsed-input");
+      updateEditJsonBtnLabel();
     }
 
     function openShareModal() {
@@ -1103,7 +1464,16 @@
       if (e.key === "Escape") closeShareModal();
     });
 
-    setLocale("es");
+    if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+      navigator.serviceWorker.register("./visor-sw.js").catch(() => {});
+    }
+
+    (function initLocale() {
+      var savedLang = null;
+      try { savedLang = localStorage.getItem("av-lang"); } catch (e) {}
+      var navLang = (navigator.language || "es").toLowerCase().startsWith("en") ? "en" : "es";
+      setLocale(savedLang === "en" || savedLang === "es" ? savedLang : navLang);
+    })();
   </script>
 </body>
 </html>
