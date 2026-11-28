@@ -19,12 +19,13 @@ Aula Viva® seeks to restore human and planetary flourishing as the fundamental 
 
 ## Technical Architecture
 
-- **Offline-First Edge AI:** Runs entirely on local educator hardware using quantized Small Language Models (1.5B–7B parameters at 4-bit quantization) via open local runtimes (Ollama, llama.cpp, PocketPal), eliminating cloud dependency, recurring API costs, and data-center footprints.
+- **Offline-First Edge AI:** Runs entirely on local educator hardware using quantized Small Language Models (2B–9B parameters at 4-bit quantization — 2B on mobile, 4B and 9B on desktop) via open local runtimes (Ollama, llama.cpp, PocketPal), eliminating cloud dependency, recurring API costs, and data-center footprints.
 - **Data Sovereignty:** Student records, identifiers, and qualitative observations remain strictly on-device and inside the school; no minor data is transmitted to third-party cloud servers.
 - **Logarithmic Decibel Calibration (dB):** Transformation deltas are expressed in decibels (dB) to reflect relative formative effort and qualitative impact rather than flat linear point addition.
 - **Cumulative Growth & Non-Regression by Omission:** Demonstrated competencies accumulate structurally in ℝ⁸. Dimensions not observed in a given note remain at 0.0 dB (epistemic silence) and are never penalized for omission.
 - **Analog-First Scale Invariance:** The eight-axis vector topology works both on paper (hand-drawn logs and radial graphs co-constructed by teacher and student) and offline on local hardware.
 - **100% Auditable Evidence Trails:** Every vector coordinate links directly to raw narrative evidence, educability context, and sovereign human adjustments.
+- **Easing Administrative Load (Official Reports):** Synthesizes brief classroom observations into editable Official Report drafts (Word / .docx) aligned with SEP/NEM, IB, CCH, Cambridge, or custom institutional criteria, freeing educators to focus on teaching and mentoring.
 
 ## The ℝ⁸ Vector Space (Four Cybernetic Quadrants & 180° Polar Symmetry)
 

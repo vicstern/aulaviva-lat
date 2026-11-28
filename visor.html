@@ -709,6 +709,32 @@
       cursor: pointer;
     }
     .share-close-btn:hover { color: var(--text-main); }
+    .share-target-switch {
+      display: inline-flex;
+      background: var(--surface-deep);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2px;
+      gap: 2px;
+      margin-bottom: 10px;
+    }
+    .share-target-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 4px 12px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .share-target-btn:hover { color: var(--text-main); }
+    .share-target-btn.active {
+      background: var(--pill-active-bg);
+      color: var(--pill-active-text);
+      box-shadow: 0 1px 3px var(--pill-shadow);
+    }
     .qr-frame {
       display: inline-flex;
       padding: 10px;
@@ -895,8 +921,12 @@
         <span id="shareModalTitle" class="share-modal-title">Compartir PRISMA™ Visor</span>
         <button type="button" class="share-close-btn" onclick="closeShareModal()" aria-label="Close">✕</button>
       </div>
-      <div class="qr-frame"><svg viewBox="0 0 35 35" width="188" height="188" role="img" aria-label="QR: https://aulaviva.lat/visor.html" xmlns="http://www.w3.org/2000/svg"><rect width="35" height="35" rx="2" fill="#ffffff"/><path d="M3 3h7v1h-7zM11 3h4v1h-4zM16 3h2v1h-2zM19 3h3v1h-3zM25 3h7v1h-7zM3 4h1v1h-1zM9 4h1v1h-1zM13 4h2v1h-2zM16 4h3v1h-3zM21 4h3v1h-3zM25 4h1v1h-1zM31 4h1v1h-1zM3 5h1v1h-1zM5 5h3v1h-3zM9 5h1v1h-1zM13 5h2v1h-2zM17 5h1v1h-1zM20 5h4v1h-4zM25 5h1v1h-1zM27 5h3v1h-3zM31 5h1v1h-1zM3 6h1v1h-1zM5 6h3v1h-3zM9 6h1v1h-1zM11 6h1v1h-1zM13 6h1v1h-1zM15 6h1v1h-1zM21 6h1v1h-1zM23 6h1v1h-1zM25 6h1v1h-1zM27 6h3v1h-3zM31 6h1v1h-1zM3 7h1v1h-1zM5 7h3v1h-3zM9 7h1v1h-1zM11 7h1v1h-1zM14 7h1v1h-1zM25 7h1v1h-1zM27 7h3v1h-3zM31 7h1v1h-1zM3 8h1v1h-1zM9 8h1v1h-1zM11 8h2v1h-2zM14 8h1v1h-1zM19 8h4v1h-4zM25 8h1v1h-1zM31 8h1v1h-1zM3 9h7v1h-7zM11 9h1v1h-1zM13 9h1v1h-1zM15 9h1v1h-1zM17 9h1v1h-1zM19 9h1v1h-1zM21 9h1v1h-1zM23 9h1v1h-1zM25 9h7v1h-7zM11 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h6v1h-6zM3 11h1v1h-1zM7 11h1v1h-1zM9 11h4v1h-4zM14 11h1v1h-1zM16 11h1v1h-1zM20 11h1v1h-1zM23 11h6v1h-6zM31 11h1v1h-1zM3 12h3v1h-3zM11 12h1v1h-1zM14 12h4v1h-4zM19 12h3v1h-3zM23 12h9v1h-9zM4 13h1v1h-1zM6 13h4v1h-4zM12 13h1v1h-1zM15 13h1v1h-1zM19 13h1v1h-1zM21 13h1v1h-1zM25 13h1v1h-1zM31 13h1v1h-1zM3 14h3v1h-3zM11 14h2v1h-2zM14 14h2v1h-2zM17 14h1v1h-1zM20 14h2v1h-2zM23 14h2v1h-2zM26 14h1v1h-1zM28 14h1v1h-1zM30 14h2v1h-2zM3 15h1v1h-1zM9 15h1v1h-1zM11 15h1v1h-1zM13 15h1v1h-1zM16 15h5v1h-5zM22 15h1v1h-1zM24 15h1v1h-1zM30 15h1v1h-1zM3 16h1v1h-1zM8 16h1v1h-1zM10 16h1v1h-1zM13 16h3v1h-3zM25 16h7v1h-7zM3 17h2v1h-2zM6 17h5v1h-5zM13 17h6v1h-6zM23 17h2v1h-2zM26 17h1v1h-1zM28 17h2v1h-2zM31 17h1v1h-1zM4 18h2v1h-2zM8 18h1v1h-1zM10 18h1v1h-1zM13 18h1v1h-1zM16 18h1v1h-1zM18 18h3v1h-3zM25 18h1v1h-1zM27 18h1v1h-1zM30 18h2v1h-2zM7 19h1v1h-1zM9 19h2v1h-2zM12 19h1v1h-1zM15 19h2v1h-2zM20 19h5v1h-5zM30 19h1v1h-1zM3 20h1v1h-1zM10 20h2v1h-2zM13 20h2v1h-2zM16 20h2v1h-2zM19 20h3v1h-3zM24 20h5v1h-5zM30 20h2v1h-2zM6 21h2v1h-2zM9 21h3v1h-3zM14 21h1v1h-1zM19 21h1v1h-1zM21 21h1v1h-1zM25 21h1v1h-1zM29 21h1v1h-1zM31 21h1v1h-1zM6 22h2v1h-2zM14 22h2v1h-2zM17 22h1v1h-1zM20 22h1v1h-1zM23 22h2v1h-2zM30 22h2v1h-2zM3 23h2v1h-2zM6 23h1v1h-1zM9 23h1v1h-1zM12 23h1v1h-1zM16 23h3v1h-3zM20 23h1v1h-1zM23 23h6v1h-6zM31 23h1v1h-1zM11 24h1v1h-1zM15 24h1v1h-1zM20 24h4v1h-4zM27 24h1v1h-1zM31 24h1v1h-1zM3 25h7v1h-7zM11 25h3v1h-3zM16 25h5v1h-5zM22 25h2v1h-2zM25 25h1v1h-1zM27 25h3v1h-3zM31 25h1v1h-1zM3 26h1v1h-1zM9 26h1v1h-1zM13 26h2v1h-2zM16 26h1v1h-1zM18 26h1v1h-1zM20 26h1v1h-1zM22 26h2v1h-2zM27 26h1v1h-1zM3 27h1v1h-1zM5 27h3v1h-3zM9 27h1v1h-1zM11 27h2v1h-2zM14 27h3v1h-3zM18 27h1v1h-1zM20 27h1v1h-1zM22 27h7v1h-7zM30 27h2v1h-2zM3 28h1v1h-1zM5 28h3v1h-3zM9 28h1v1h-1zM15 28h1v1h-1zM17 28h3v1h-3zM22 28h1v1h-1zM24 28h1v1h-1zM26 28h1v1h-1zM30 28h1v1h-1zM3 29h1v1h-1zM5 29h3v1h-3zM9 29h1v1h-1zM13 29h1v1h-1zM16 29h1v1h-1zM18 29h1v1h-1zM20 29h5v1h-5zM28 29h4v1h-4zM3 30h1v1h-1zM9 30h1v1h-1zM12 30h1v1h-1zM14 30h5v1h-5zM20 30h1v1h-1zM23 30h3v1h-3zM28 30h1v1h-1zM30 30h2v1h-2zM3 31h7v1h-7zM11 31h3v1h-3zM15 31h1v1h-1zM18 31h1v1h-1zM20 31h1v1h-1zM22 31h3v1h-3zM27 31h2v1h-2zM30 31h1v1h-1z" fill="#090d13"/></svg></div>
-      <div class="share-url-pill">https://aulaviva.lat/visor.html</div>
+      <div class="share-target-switch" role="tablist">
+        <button type="button" class="share-target-btn active" id="btnShareTargetVisor" onclick="setShareTarget('visor')">PRISMA™ Visor</button>
+        <button type="button" class="share-target-btn" id="btnShareTargetApp" onclick="setShareTarget('app')">PRISMA™ App</button>
+      </div>
+      <div class="qr-frame"><span id="qrSvgVisor"><svg viewBox="0 0 35 35" width="188" height="188" role="img" aria-label="QR: https://aulaviva.lat/visor.html" xmlns="http://www.w3.org/2000/svg"><rect width="35" height="35" rx="2" fill="#ffffff"/><path d="M3 3h7v1h-7zM11 3h4v1h-4zM16 3h2v1h-2zM19 3h3v1h-3zM25 3h7v1h-7zM3 4h1v1h-1zM9 4h1v1h-1zM13 4h2v1h-2zM16 4h3v1h-3zM21 4h3v1h-3zM25 4h1v1h-1zM31 4h1v1h-1zM3 5h1v1h-1zM5 5h3v1h-3zM9 5h1v1h-1zM13 5h2v1h-2zM17 5h1v1h-1zM20 5h4v1h-4zM25 5h1v1h-1zM27 5h3v1h-3zM31 5h1v1h-1zM3 6h1v1h-1zM5 6h3v1h-3zM9 6h1v1h-1zM11 6h1v1h-1zM13 6h1v1h-1zM15 6h1v1h-1zM21 6h1v1h-1zM23 6h1v1h-1zM25 6h1v1h-1zM27 6h3v1h-3zM31 6h1v1h-1zM3 7h1v1h-1zM5 7h3v1h-3zM9 7h1v1h-1zM11 7h1v1h-1zM14 7h1v1h-1zM25 7h1v1h-1zM27 7h3v1h-3zM31 7h1v1h-1zM3 8h1v1h-1zM9 8h1v1h-1zM11 8h2v1h-2zM14 8h1v1h-1zM19 8h4v1h-4zM25 8h1v1h-1zM31 8h1v1h-1zM3 9h7v1h-7zM11 9h1v1h-1zM13 9h1v1h-1zM15 9h1v1h-1zM17 9h1v1h-1zM19 9h1v1h-1zM21 9h1v1h-1zM23 9h1v1h-1zM25 9h7v1h-7zM11 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h6v1h-6zM3 11h1v1h-1zM7 11h1v1h-1zM9 11h4v1h-4zM14 11h1v1h-1zM16 11h1v1h-1zM20 11h1v1h-1zM23 11h6v1h-6zM31 11h1v1h-1zM3 12h3v1h-3zM11 12h1v1h-1zM14 12h4v1h-4zM19 12h3v1h-3zM23 12h9v1h-9zM4 13h1v1h-1zM6 13h4v1h-4zM12 13h1v1h-1zM15 13h1v1h-1zM19 13h1v1h-1zM21 13h1v1h-1zM25 13h1v1h-1zM31 13h1v1h-1zM3 14h3v1h-3zM11 14h2v1h-2zM14 14h2v1h-2zM17 14h1v1h-1zM20 14h2v1h-2zM23 14h2v1h-2zM26 14h1v1h-1zM28 14h1v1h-1zM30 14h2v1h-2zM3 15h1v1h-1zM9 15h1v1h-1zM11 15h1v1h-1zM13 15h1v1h-1zM16 15h5v1h-5zM22 15h1v1h-1zM24 15h1v1h-1zM30 15h1v1h-1zM3 16h1v1h-1zM8 16h1v1h-1zM10 16h1v1h-1zM13 16h3v1h-3zM25 16h7v1h-7zM3 17h2v1h-2zM6 17h5v1h-5zM13 17h6v1h-6zM23 17h2v1h-2zM26 17h1v1h-1zM28 17h2v1h-2zM31 17h1v1h-1zM4 18h2v1h-2zM8 18h1v1h-1zM10 18h1v1h-1zM13 18h1v1h-1zM16 18h1v1h-1zM18 18h3v1h-3zM25 18h1v1h-1zM27 18h1v1h-1zM30 18h2v1h-2zM7 19h1v1h-1zM9 19h2v1h-2zM12 19h1v1h-1zM15 19h2v1h-2zM20 19h5v1h-5zM30 19h1v1h-1zM3 20h1v1h-1zM10 20h2v1h-2zM13 20h2v1h-2zM16 20h2v1h-2zM19 20h3v1h-3zM24 20h5v1h-5zM30 20h2v1h-2zM6 21h2v1h-2zM9 21h3v1h-3zM14 21h1v1h-1zM19 21h1v1h-1zM21 21h1v1h-1zM25 21h1v1h-1zM29 21h1v1h-1zM31 21h1v1h-1zM6 22h2v1h-2zM14 22h2v1h-2zM17 22h1v1h-1zM20 22h1v1h-1zM23 22h2v1h-2zM30 22h2v1h-2zM3 23h2v1h-2zM6 23h1v1h-1zM9 23h1v1h-1zM12 23h1v1h-1zM16 23h3v1h-3zM20 23h1v1h-1zM23 23h6v1h-6zM31 23h1v1h-1zM11 24h1v1h-1zM15 24h1v1h-1zM20 24h4v1h-4zM27 24h1v1h-1zM31 24h1v1h-1zM3 25h7v1h-7zM11 25h3v1h-3zM16 25h5v1h-5zM22 25h2v1h-2zM25 25h1v1h-1zM27 25h3v1h-3zM31 25h1v1h-1zM3 26h1v1h-1zM9 26h1v1h-1zM13 26h2v1h-2zM16 26h1v1h-1zM18 26h1v1h-1zM20 26h1v1h-1zM22 26h2v1h-2zM27 26h1v1h-1zM3 27h1v1h-1zM5 27h3v1h-3zM9 27h1v1h-1zM11 27h2v1h-2zM14 27h3v1h-3zM18 27h1v1h-1zM20 27h1v1h-1zM22 27h7v1h-7zM30 27h2v1h-2zM3 28h1v1h-1zM5 28h3v1h-3zM9 28h1v1h-1zM15 28h1v1h-1zM17 28h3v1h-3zM22 28h1v1h-1zM24 28h1v1h-1zM26 28h1v1h-1zM30 28h1v1h-1zM3 29h1v1h-1zM5 29h3v1h-3zM9 29h1v1h-1zM13 29h1v1h-1zM16 29h1v1h-1zM18 29h1v1h-1zM20 29h5v1h-5zM28 29h4v1h-4zM3 30h1v1h-1zM9 30h1v1h-1zM12 30h1v1h-1zM14 30h5v1h-5zM20 30h1v1h-1zM23 30h3v1h-3zM28 30h1v1h-1zM30 30h2v1h-2zM3 31h7v1h-7zM11 31h3v1h-3zM15 31h1v1h-1zM18 31h1v1h-1zM20 31h1v1h-1zM22 31h3v1h-3zM27 31h2v1h-2zM30 31h1v1h-1z" fill="#090d13"/></svg></span><span id="qrSvgApp" style="display:none;"><svg viewBox="0 0 35 35" width="188" height="188" role="img" aria-label="QR: https://aulaviva.lat/start.html" xmlns="http://www.w3.org/2000/svg"><rect width="35" height="35" rx="2" fill="#ffffff"/><path d="M3 3h7v1h-7zM11 3h4v1h-4zM16 3h3v1h-3zM20 3h1v1h-1zM25 3h7v1h-7zM3 4h1v1h-1zM9 4h1v1h-1zM14 4h2v1h-2zM18 4h1v1h-1zM21 4h1v1h-1zM23 4h1v1h-1zM25 4h1v1h-1zM31 4h1v1h-1zM3 5h1v1h-1zM5 5h3v1h-3zM9 5h1v1h-1zM11 5h4v1h-4zM16 5h1v1h-1zM20 5h2v1h-2zM23 5h1v1h-1zM25 5h1v1h-1zM27 5h3v1h-3zM31 5h1v1h-1zM3 6h1v1h-1zM5 6h3v1h-3zM9 6h1v1h-1zM12 6h1v1h-1zM15 6h1v1h-1zM18 6h4v1h-4zM23 6h1v1h-1zM25 6h1v1h-1zM27 6h3v1h-3zM31 6h1v1h-1zM3 7h1v1h-1zM5 7h3v1h-3zM9 7h1v1h-1zM13 7h2v1h-2zM18 7h4v1h-4zM25 7h1v1h-1zM27 7h3v1h-3zM31 7h1v1h-1zM3 8h1v1h-1zM9 8h1v1h-1zM11 8h1v1h-1zM13 8h1v1h-1zM16 8h2v1h-2zM19 8h1v1h-1zM23 8h1v1h-1zM25 8h1v1h-1zM31 8h1v1h-1zM3 9h7v1h-7zM11 9h1v1h-1zM13 9h1v1h-1zM15 9h1v1h-1zM17 9h1v1h-1zM19 9h1v1h-1zM21 9h1v1h-1zM23 9h1v1h-1zM25 9h7v1h-7zM12 10h3v1h-3zM16 10h1v1h-1zM21 10h3v1h-3zM3 11h1v1h-1zM5 11h1v1h-1zM9 11h2v1h-2zM12 11h1v1h-1zM14 11h1v1h-1zM16 11h1v1h-1zM18 11h2v1h-2zM23 11h1v1h-1zM26 11h1v1h-1zM29 11h1v1h-1zM31 11h1v1h-1zM3 12h1v1h-1zM7 12h1v1h-1zM10 12h4v1h-4zM15 12h1v1h-1zM19 12h1v1h-1zM21 12h2v1h-2zM24 12h3v1h-3zM30 12h2v1h-2zM4 13h4v1h-4zM9 13h1v1h-1zM11 13h1v1h-1zM15 13h3v1h-3zM19 13h1v1h-1zM21 13h3v1h-3zM25 13h1v1h-1zM27 13h3v1h-3zM31 13h1v1h-1zM4 14h2v1h-2zM8 14h1v1h-1zM10 14h3v1h-3zM14 14h2v1h-2zM17 14h3v1h-3zM23 14h1v1h-1zM25 14h1v1h-1zM28 14h1v1h-1zM3 15h1v1h-1zM8 15h10v1h-10zM22 15h1v1h-1zM25 15h2v1h-2zM31 15h1v1h-1zM4 16h2v1h-2zM7 16h1v1h-1zM12 16h1v1h-1zM14 16h1v1h-1zM16 16h2v1h-2zM21 16h3v1h-3zM25 16h2v1h-2zM30 16h2v1h-2zM9 17h1v1h-1zM11 17h1v1h-1zM13 17h2v1h-2zM18 17h1v1h-1zM20 17h1v1h-1zM22 17h1v1h-1zM24 17h1v1h-1zM26 17h2v1h-2zM31 17h1v1h-1zM4 18h1v1h-1zM7 18h1v1h-1zM10 18h1v1h-1zM12 18h2v1h-2zM16 18h1v1h-1zM24 18h1v1h-1zM26 18h2v1h-2zM3 19h1v1h-1zM6 19h2v1h-2zM9 19h3v1h-3zM14 19h3v1h-3zM18 19h2v1h-2zM21 19h3v1h-3zM25 19h2v1h-2zM31 19h1v1h-1zM4 20h1v1h-1zM8 20h1v1h-1zM10 20h4v1h-4zM15 20h1v1h-1zM19 20h2v1h-2zM22 20h5v1h-5zM29 20h3v1h-3zM3 21h5v1h-5zM9 21h1v1h-1zM11 21h1v1h-1zM14 21h1v1h-1zM16 21h2v1h-2zM19 21h1v1h-1zM22 21h2v1h-2zM25 21h1v1h-1zM27 21h2v1h-2zM31 21h1v1h-1zM13 22h2v1h-2zM17 22h3v1h-3zM23 22h1v1h-1zM25 22h2v1h-2zM3 23h3v1h-3zM7 23h3v1h-3zM13 23h1v1h-1zM16 23h2v1h-2zM19 23h1v1h-1zM23 23h6v1h-6zM30 23h1v1h-1zM11 24h2v1h-2zM16 24h2v1h-2zM20 24h1v1h-1zM23 24h1v1h-1zM27 24h3v1h-3zM31 24h1v1h-1zM3 25h7v1h-7zM11 25h1v1h-1zM13 25h2v1h-2zM18 25h4v1h-4zM23 25h1v1h-1zM25 25h1v1h-1zM27 25h1v1h-1zM31 25h1v1h-1zM3 26h1v1h-1zM9 26h1v1h-1zM12 26h3v1h-3zM16 26h1v1h-1zM19 26h1v1h-1zM22 26h2v1h-2zM27 26h1v1h-1zM30 26h2v1h-2zM3 27h1v1h-1zM5 27h3v1h-3zM9 27h1v1h-1zM12 27h5v1h-5zM19 27h1v1h-1zM22 27h7v1h-7zM3 28h1v1h-1zM5 28h3v1h-3zM9 28h1v1h-1zM13 28h1v1h-1zM15 28h1v1h-1zM18 28h2v1h-2zM21 28h1v1h-1zM23 28h2v1h-2zM26 28h5v1h-5zM3 29h1v1h-1zM5 29h3v1h-3zM9 29h1v1h-1zM11 29h2v1h-2zM14 29h2v1h-2zM17 29h2v1h-2zM20 29h1v1h-1zM24 29h1v1h-1zM27 29h1v1h-1zM30 29h2v1h-2zM3 30h1v1h-1zM9 30h1v1h-1zM14 30h4v1h-4zM19 30h1v1h-1zM23 30h1v1h-1zM26 30h1v1h-1zM28 30h1v1h-1zM3 31h7v1h-7zM11 31h1v1h-1zM13 31h4v1h-4zM19 31h1v1h-1zM22 31h2v1h-2zM25 31h4v1h-4zM31 31h1v1h-1z" fill="#090d13"/></svg></span></div>
+      <div class="share-url-pill" id="shareUrlPill">https://aulaviva.lat/visor.html</div>
       <p id="shareHint" class="share-hint">Escanea este código QR (100 % offline) o envía el enlace directo</p>
       <div class="share-actions">
         <button type="button" class="btn-action" id="btnNativeShare" onclick="triggerNativeShare()">Compartir desde el dispositivo</button>
@@ -937,6 +967,8 @@
     }
 
     const VISOR_SHARE_URL = "https://aulaviva.lat/visor.html";
+    const APP_SHARE_URL = "https://aulaviva.lat/start.html";
+    let shareTarget = "visor";
     let currentLocale = "es";
     let lastParsed = null;
     let isSampleLoaded = true;
@@ -959,6 +991,9 @@
         demoNoteQuote: "«Hoy María lideró la construcción del prototipo de filtro de agua. Notó que el flujo estaba muy lento, revisó la densidad de la arena y redujo la capa a la mitad. Cuando su equipo se distrajo con los teléfonos, los llamó para repartir las tareas de la presentación de mañana. En el descanso tuvo un episodio severo de frustración porque la escogieron al final para los equipos de fútbol. Gritó, aventó su mochila y después se negó a hablar con el equipo durante la clase. Al final del día, se disculpó con sus compañeras y conmigo, por su propia iniciativa.»",
         demoNoteDisclaimer: "Caso de demostración (solo lectura). El motor de IA local corre fuera del navegador (en la app de escritorio o cargando una salida propia con «Ingresar JSON»).",
         shareTitle: "Compartir PRISMA™ Visor",
+        shareTitleApp: "Descargar PRISMA™",
+        shareAppTab: "Descargar PRISMA™",
+        shareAppText: "PRISMA™ de Aula Viva® — Analítica cualitativa local 100 % offline en ℝ⁸",
         shareHint: "Escanea este código QR (100 % offline) o envía el enlace directo",
         btnNativeShare: "Compartir (AirDrop · WhatsApp · Mensajes)",
         btnCopyUrl: "Copiar enlace",
@@ -1000,6 +1035,9 @@
         demoNoteQuote: "“Today María led the construction of the water filter prototype. She noticed the flow was too slow, examined the sand density, and halved the layer thickness. When her team became distracted by their phones, she called them together to assign tasks for tomorrow's presentation. During recess, she experienced a severe episode of frustration after being picked last for the soccer teams. She yelled, threw her backpack, and then refused to speak with her group during class. At the end of the day, she apologized to her classmates and to me on her own initiative.”",
         demoNoteDisclaimer: "Read-only demonstration case. Local AI inference runs outside the browser (via the desktop app or by pasting your own output with “Enter JSON”).",
         shareTitle: "Share PRISMA™ Visor",
+        shareTitleApp: "Download PRISMA™",
+        shareAppTab: "Download PRISMA™",
+        shareAppText: "PRISMA™ by Aula Viva® — 100% offline local AI qualitative learning analytics in ℝ⁸",
         shareHint: "Scan this QR code (works 100% offline) or share the direct link",
         btnNativeShare: "Share via device (AirDrop · Messages)",
         btnCopyUrl: "Copy link",
@@ -1158,10 +1196,12 @@
       document.getElementById("siteFooter").innerHTML = t.footer;
       document.getElementById("btnShare").textContent = t.btnShare;
       updateEditJsonBtnLabel();
-      document.getElementById("shareModalTitle").textContent = t.shareTitle;
       document.getElementById("shareHint").textContent = t.shareHint;
       document.getElementById("btnNativeShare").textContent = t.btnNativeShare;
       document.getElementById("btnCopyUrl").textContent = t.btnCopyUrl;
+      const appTabBtn = document.getElementById("btnShareTargetApp");
+      if (appTabBtn) appTabBtn.textContent = t.shareAppTab;
+      if (typeof setShareTarget === "function") setShareTarget(shareTarget);
       updateDemoBarUI();
       updateThemeBtnLabel();
 
@@ -1417,11 +1457,30 @@
       updateEditJsonBtnLabel();
     }
 
+    function setShareTarget(target) {
+      shareTarget = (target === "app") ? "app" : "visor";
+      const isApp = (shareTarget === "app");
+      const t = UI[currentLocale];
+      const bV = document.getElementById("btnShareTargetVisor");
+      const bA = document.getElementById("btnShareTargetApp");
+      if (bV) bV.classList.toggle("active", !isApp);
+      if (bA) bA.classList.toggle("active", isApp);
+      const qV = document.getElementById("qrSvgVisor");
+      const qA = document.getElementById("qrSvgApp");
+      if (qV) qV.style.display = isApp ? "none" : "inline";
+      if (qA) qA.style.display = isApp ? "inline" : "none";
+      const pill = document.getElementById("shareUrlPill");
+      if (pill) pill.textContent = isApp ? APP_SHARE_URL : VISOR_SHARE_URL;
+      const ttl = document.getElementById("shareModalTitle");
+      if (ttl) ttl.textContent = isApp ? t.shareTitleApp : t.shareTitle;
+    }
+
     function openShareModal() {
       const modal = document.getElementById("shareModal");
       const nativeBtn = document.getElementById("btnNativeShare");
       if (nativeBtn) nativeBtn.style.display = navigator.share ? "block" : "none";
       document.getElementById("btnCopyUrl").textContent = UI[currentLocale].btnCopyUrl;
+      setShareTarget(shareTarget);
       modal.classList.add("open");
       modal.setAttribute("aria-hidden", "false");
     }
@@ -1434,22 +1493,24 @@
 
     async function triggerNativeShare() {
       if (!navigator.share) return;
+      const isApp = (shareTarget === "app");
       try {
         await navigator.share({
-          title: "PRISMA™ Visor — Aula Viva®",
-          text: UI[currentLocale].shareText,
-          url: VISOR_SHARE_URL
+          title: isApp ? "PRISMA™ — Aula Viva®" : "PRISMA™ Visor — Aula Viva®",
+          text: isApp ? UI[currentLocale].shareAppText : UI[currentLocale].shareText,
+          url: isApp ? APP_SHARE_URL : VISOR_SHARE_URL
         });
       } catch (e) {}
     }
 
     async function copyVisorUrl() {
       const btn = document.getElementById("btnCopyUrl");
+      const url = (shareTarget === "app") ? APP_SHARE_URL : VISOR_SHARE_URL;
       try {
-        await navigator.clipboard.writeText(VISOR_SHARE_URL);
+        await navigator.clipboard.writeText(url);
       } catch (e) {
         const tmp = document.createElement("textarea");
-        tmp.value = VISOR_SHARE_URL;
+        tmp.value = url;
         document.body.appendChild(tmp);
         tmp.select();
         document.execCommand("copy");
