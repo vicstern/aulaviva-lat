@@ -1,4 +1,4 @@
-const CACHE_NAME = "prisma-visor-v8";
+const CACHE_NAME = "prisma-visor-v9";
 const VISOR_ASSETS = [
   "./visor.html",
   "./visor-manifest.json",

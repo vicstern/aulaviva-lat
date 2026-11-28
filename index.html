@@ -873,6 +873,304 @@
       font-size: 0.74rem;
     }
     
+    .dl-box {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 14px 0 16px;
+    }
+    .dl-box-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+    .dl-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 12px 0 14px;
+      align-items: center;
+    }
+    .dl-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #238636;
+      border: 1px solid rgba(240, 246, 252, 0.14);
+      color: #ffffff !important;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .dl-btn-primary:hover { background: #2ea043; }
+    .dl-btn-disabled {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--surface-deep);
+      border: 1px dashed var(--border);
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.83rem;
+      font-weight: 600;
+      cursor: default;
+    }
+    .dl-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface-deep);
+      border: 1px solid var(--border);
+      color: var(--text-body) !important;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .dl-btn-secondary:hover { border-color: var(--accent-blue); color: var(--text-main) !important; }
+    .dl-tier-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .dl-tier-card {
+      background: var(--surface-deep);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.48;
+    }
+    .dl-tier-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(63, 185, 80, 0.14);
+      color: var(--delta-green);
+      margin-bottom: 6px;
+    }
+    .dl-tier-card strong {
+      display: block;
+      color: var(--text-main);
+      margin-bottom: 4px;
+      font-size: 0.88rem;
+    }
+    .dl-footnote {
+      margin-top: 12px;
+      margin-bottom: 0 !important;
+      font-size: 0.82rem !important;
+      color: var(--text-muted) !important;
+      line-height: 1.5;
+    }
+    .dl-footnote a { color: var(--accent-blue); text-decoration: none; font-weight: 600; }
+    .dl-footnote a:hover { text-decoration: underline; }
+    .visor-explainer-box {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent-blue);
+      border-radius: 0 12px 12px 0;
+      padding: 16px 20px;
+      margin: 0 0 18px;
+    }
+    .visor-explainer-box p {
+      font-size: 0.88rem;
+      margin-bottom: 12px;
+      line-height: 1.55;
+    }
+    .visor-explainer-box .dl-actions {
+      margin: 0;
+    }
+    .gallery-intro {
+      margin-bottom: 12px;
+    }
+    .panel .gallery-intro h3.gallery-heading {
+      margin: 0 0 6px !important;
+      font-size: 1.02rem;
+      gap: 10px;
+    }
+    .panel .gallery-intro h3.gallery-heading .heading-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+    }
+    .panel .gallery-intro h3.gallery-heading .heading-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+    .gallery-intro p.gallery-subtitle {
+      margin: 0;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+    #galleryPreviewImg { cursor: zoom-in; }
+    .lightbox-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 99998;
+      background: rgba(6, 9, 14, 0.90);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding: 12px 16px 16px;
+    }
+    .lightbox-backdrop.open { display: flex; }
+    .lightbox-bar {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-shrink: 0;
+    }
+    .lightbox-caption {
+      font-size: 0.82rem;
+      color: #e2e8f0;
+      line-height: 1.35;
+      flex: 1;
+      min-width: 0;
+    }
+    .lightbox-controls {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .lightbox-btn {
+      background: #1a222d;
+      border: 1px solid #334155;
+      color: #f0f6fc;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .lightbox-btn:hover { border-color: #58a6ff; }
+    .lightbox-stage {
+      width: 100%;
+      flex: 1;
+      overflow: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .lightbox-stage.is-zoomed {
+      align-items: flex-start;
+      justify-content: flex-start;
+      cursor: grab;
+    }
+    .lightbox-stage.is-zoomed.is-dragging {
+      cursor: grabbing;
+      user-select: none;
+    }
+    .lightbox-stage img {
+      max-width: 94vw;
+      max-height: 82vh;
+      width: auto;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.55);
+      cursor: zoom-in;
+      display: block;
+      margin: auto;
+      -webkit-user-drag: none;
+    }
+    .lightbox-stage.is-zoomed img {
+      max-width: none;
+      max-height: none;
+      width: min(2200px, 195vw);
+      height: auto;
+      cursor: zoom-out;
+      margin: 0;
+    }
+    .qr-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 99997;
+      background: rgba(6, 9, 14, 0.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .qr-modal-backdrop.open { display: flex; }
+    .qr-modal-card {
+      width: 100%;
+      max-width: 345px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 18px 18px;
+      text-align: center;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+      animation: fadeIn 0.2s var(--physio-curve);
+    }
+    .qr-modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .qr-modal-title { font-size: 0.92rem; font-weight: 700; color: var(--text-main); }
+    .qr-close-btn {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+    .qr-close-btn:hover { color: var(--text-main); }
+    .qr-frame {
+      display: inline-flex;
+      padding: 10px;
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin: 4px 0 10px;
+    }
+    .qr-frame svg { display: block; width: 184px; height: 184px; }
+    .qr-url-pill {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.76rem;
+      color: var(--accent-blue);
+      background: var(--surface-deep);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 10px;
+      margin-bottom: 10px;
+      word-break: break-all;
+    }
+    .qr-hint { font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; margin-bottom: 12px; }
+    .qr-actions { display: flex; flex-direction: column; gap: 8px; }
+    .qr-actions button { width: 100%; justify-content: center; }
+
     footer {
       flex-shrink: 0;
       width: 100%;
@@ -1780,17 +2078,15 @@
       </div>
     </div>
 
-    <!-- 5. ON-DEVICE INTERFACE -->
+    <!-- 5. HOW PRISMA WORKS -->
     <div id="interface" class="panel">
-      <h2 id="interfaceTitle">On-device capture interface</h2>
-      <p id="interfaceDesc">Local Streamlit execution environment running offline SLM qualitative inference directly on educator hardware, ensuring zero cloud dependency and strict student data sovereignty.</p>
-      <div class="interface-meta-row">
-        <span id="interfaceStatus" style="display: inline-block; padding: 5px 12px; font-size: 0.8rem; border-radius: 999px; background: rgba(9, 105, 218, 0.1); color: var(--accent-blue); border: 1px solid rgba(9, 105, 218, 0.25);">
-          Coming soon for local download and deployment · Apache 2.0
-        </span>
-        <a id="interfaceVisorLink" class="interface-guide-link" href="visor.html">Open PRISMA™ Visor →</a>
-      </div>
+      <h2 id="interfaceTitle">How PRISMA™ works</h2>
+      <div id="interfaceContent"></div>
       <div class="gallery-shell" id="previewGalleryShell">
+        <div class="gallery-intro">
+          <h3 class="gallery-heading" id="galleryHeading"></h3>
+          <p class="gallery-subtitle" id="gallerySubtitle"></p>
+        </div>
         <div class="gallery-toolbar">
           <div class="gallery-pill-group" role="tablist" aria-label="Device">
             <button type="button" class="gallery-pill active" id="galDevDesktop" onclick="setGalleryDevice('desktop')">Computer</button>
@@ -1821,11 +2117,42 @@
     <div id="footerText"></div>
   </footer>
 
+  <!-- Lightbox de capturas con zoom y arrastre -->
+  <div id="imgLightboxModal" class="lightbox-backdrop" aria-hidden="true" onclick="if(event.target===this) closeGalleryLightbox()">
+    <div class="lightbox-bar">
+      <div id="lightboxCaption" class="lightbox-caption"></div>
+      <div class="lightbox-controls">
+        <button type="button" class="lightbox-btn" id="btnLightboxZoom" onclick="toggleLightboxZoom()">🔍 2x</button>
+        <button type="button" class="lightbox-btn" onclick="closeGalleryLightbox()">✕ ESC</button>
+      </div>
+    </div>
+    <div id="lightboxStage" class="lightbox-stage">
+      <img id="lightboxImg" src="" alt="PRISMA zoomed capture">
+    </div>
+  </div>
+
+  <!-- Modal Compartir / QR descarga PRISMA -->
+  <div id="qrShareModal" class="qr-modal-backdrop" aria-hidden="true" onclick="if(event.target===this) closeQrModal()">
+    <div class="qr-modal-card" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle">
+      <div class="qr-modal-head">
+        <span id="qrModalTitle" class="qr-modal-title">Share / Download PRISMA™</span>
+        <button type="button" class="qr-close-btn" onclick="closeQrModal()" aria-label="Close">✕</button>
+      </div>
+      <div class="qr-frame"><svg viewBox="0 0 35 35" width="188" height="188" role="img" aria-label="QR: https://aulaviva.lat/start.html" xmlns="http://www.w3.org/2000/svg"><rect width="35" height="35" rx="2" fill="#ffffff"/><path d="M3 3h7v1h-7zM11 3h4v1h-4zM16 3h3v1h-3zM20 3h1v1h-1zM25 3h7v1h-7zM3 4h1v1h-1zM9 4h1v1h-1zM14 4h2v1h-2zM18 4h1v1h-1zM21 4h1v1h-1zM23 4h1v1h-1zM25 4h1v1h-1zM31 4h1v1h-1zM3 5h1v1h-1zM5 5h3v1h-3zM9 5h1v1h-1zM11 5h4v1h-4zM16 5h1v1h-1zM20 5h2v1h-2zM23 5h1v1h-1zM25 5h1v1h-1zM27 5h3v1h-3zM31 5h1v1h-1zM3 6h1v1h-1zM5 6h3v1h-3zM9 6h1v1h-1zM12 6h1v1h-1zM15 6h1v1h-1zM18 6h4v1h-4zM23 6h1v1h-1zM25 6h1v1h-1zM27 6h3v1h-3zM31 6h1v1h-1zM3 7h1v1h-1zM5 7h3v1h-3zM9 7h1v1h-1zM13 7h2v1h-2zM18 7h4v1h-4zM25 7h1v1h-1zM27 7h3v1h-3zM31 7h1v1h-1zM3 8h1v1h-1zM9 8h1v1h-1zM11 8h1v1h-1zM13 8h1v1h-1zM16 8h2v1h-2zM19 8h1v1h-1zM23 8h1v1h-1zM25 8h1v1h-1zM31 8h1v1h-1zM3 9h7v1h-7zM11 9h1v1h-1zM13 9h1v1h-1zM15 9h1v1h-1zM17 9h1v1h-1zM19 9h1v1h-1zM21 9h1v1h-1zM23 9h1v1h-1zM25 9h7v1h-7zM12 10h3v1h-3zM16 10h1v1h-1zM21 10h3v1h-3zM3 11h1v1h-1zM5 11h1v1h-1zM9 11h2v1h-2zM12 11h1v1h-1zM14 11h1v1h-1zM16 11h1v1h-1zM18 11h2v1h-2zM23 11h1v1h-1zM26 11h1v1h-1zM29 11h1v1h-1zM31 11h1v1h-1zM3 12h1v1h-1zM7 12h1v1h-1zM10 12h4v1h-4zM15 12h1v1h-1zM19 12h1v1h-1zM21 12h2v1h-2zM24 12h3v1h-3zM30 12h2v1h-2zM4 13h4v1h-4zM9 13h1v1h-1zM11 13h1v1h-1zM15 13h3v1h-3zM19 13h1v1h-1zM21 13h3v1h-3zM25 13h1v1h-1zM27 13h3v1h-3zM31 13h1v1h-1zM4 14h2v1h-2zM8 14h1v1h-1zM10 14h3v1h-3zM14 14h2v1h-2zM17 14h3v1h-3zM23 14h1v1h-1zM25 14h1v1h-1zM28 14h1v1h-1zM3 15h1v1h-1zM8 15h10v1h-10zM22 15h1v1h-1zM25 15h2v1h-2zM31 15h1v1h-1zM4 16h2v1h-2zM7 16h1v1h-1zM12 16h1v1h-1zM14 16h1v1h-1zM16 16h2v1h-2zM21 16h3v1h-3zM25 16h2v1h-2zM30 16h2v1h-2zM9 17h1v1h-1zM11 17h1v1h-1zM13 17h2v1h-2zM18 17h1v1h-1zM20 17h1v1h-1zM22 17h1v1h-1zM24 17h1v1h-1zM26 17h2v1h-2zM31 17h1v1h-1zM4 18h1v1h-1zM7 18h1v1h-1zM10 18h1v1h-1zM12 18h2v1h-2zM16 18h1v1h-1zM24 18h1v1h-1zM26 18h2v1h-2zM3 19h1v1h-1zM6 19h2v1h-2zM9 19h3v1h-3zM14 19h3v1h-3zM18 19h2v1h-2zM21 19h3v1h-3zM25 19h2v1h-2zM31 19h1v1h-1zM4 20h1v1h-1zM8 20h1v1h-1zM10 20h4v1h-4zM15 20h1v1h-1zM19 20h2v1h-2zM22 20h5v1h-5zM29 20h3v1h-3zM3 21h5v1h-5zM9 21h1v1h-1zM11 21h1v1h-1zM14 21h1v1h-1zM16 21h2v1h-2zM19 21h1v1h-1zM22 21h2v1h-2zM25 21h1v1h-1zM27 21h2v1h-2zM31 21h1v1h-1zM13 22h2v1h-2zM17 22h3v1h-3zM23 22h1v1h-1zM25 22h2v1h-2zM3 23h3v1h-3zM7 23h3v1h-3zM13 23h1v1h-1zM16 23h2v1h-2zM19 23h1v1h-1zM23 23h6v1h-6zM30 23h1v1h-1zM11 24h2v1h-2zM16 24h2v1h-2zM20 24h1v1h-1zM23 24h1v1h-1zM27 24h3v1h-3zM31 24h1v1h-1zM3 25h7v1h-7zM11 25h1v1h-1zM13 25h2v1h-2zM18 25h4v1h-4zM23 25h1v1h-1zM25 25h1v1h-1zM27 25h1v1h-1zM31 25h1v1h-1zM3 26h1v1h-1zM9 26h1v1h-1zM12 26h3v1h-3zM16 26h1v1h-1zM19 26h1v1h-1zM22 26h2v1h-2zM27 26h1v1h-1zM30 26h2v1h-2zM3 27h1v1h-1zM5 27h3v1h-3zM9 27h1v1h-1zM12 27h5v1h-5zM19 27h1v1h-1zM22 27h7v1h-7zM3 28h1v1h-1zM5 28h3v1h-3zM9 28h1v1h-1zM13 28h1v1h-1zM15 28h1v1h-1zM18 28h2v1h-2zM21 28h1v1h-1zM23 28h2v1h-2zM26 28h5v1h-5zM3 29h1v1h-1zM5 29h3v1h-3zM9 29h1v1h-1zM11 29h2v1h-2zM14 29h2v1h-2zM17 29h2v1h-2zM20 29h1v1h-1zM24 29h1v1h-1zM27 29h1v1h-1zM30 29h2v1h-2zM3 30h1v1h-1zM9 30h1v1h-1zM14 30h4v1h-4zM19 30h1v1h-1zM23 30h1v1h-1zM26 30h1v1h-1zM28 30h1v1h-1zM3 31h7v1h-7zM11 31h1v1h-1zM13 31h4v1h-4zM19 31h1v1h-1zM22 31h2v1h-2zM25 31h4v1h-4zM31 31h1v1h-1z" fill="#090d13"/></svg></div>
+      <div class="qr-url-pill">https://aulaviva.lat/start.html</div>
+      <p id="qrHint" class="qr-hint"></p>
+      <div class="qr-actions">
+        <button type="button" class="btn-action" id="btnQrNativeShare" onclick="triggerQrNativeShare()"></button>
+        <button type="button" class="dl-btn-secondary" id="btnQrCopyUrl" onclick="copyQrUrl()"></button>
+      </div>
+    </div>
+  </div>
+
   <!-- Modal Códice Rosetta (Con epígrafe sticky tipo Hero y selectores EN/ES + Light/Dark sin saltar posición) -->
   <div id="rosettaModal" aria-hidden="true">
     <div class="rosetta-header">
       <div class="rosetta-title">
-        <svg class="kheper-svg kheper-inline" viewBox="0 0 44 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="kheperGrad_rosettaHdr" x1="4" y1="4" x2="40" y2="60" gradientUnits="userSpaceOnUse"><stop offset="0%" style="stop-color:var(--kheper-1)"/><stop offset="20%" style="stop-color:var(--kheper-2)"/><stop offset="38%" style="stop-color:var(--kheper-3)"/><stop offset="56%" style="stop-color:var(--kheper-4)"/><stop offset="74%" style="stop-color:var(--kheper-5)"/><stop offset="88%" style="stop-color:var(--kheper-6)"/><stop offset="100%" style="stop-color:var(--kheper-7)"/></linearGradient></defs><g transform="translate(4.1, 0) skewX(-7.5)"><circle cx="22" cy="6.2" r="2.2" fill="url(#kheperGrad_rosettaHdr)"/><path d="M16.8 16.4 C16.6 13.0 18.8 10.6 22 10.6 C25.2 10.6 27.4 13.0 27.2 16.4 C25.5 15.6 23.8 15.3 22 15.3 C20.2 15.3 18.5 15.6 16.8 16.4 Z" fill="url(#kheperGrad_rosettaHdr)"/><path d="M13.4 25.4 C13.5 19.6 16.8 16.8 22 16.8 C27.2 16.8 30.5 19.6 30.6 25.4 C30.6 27.0 29.9 28.2 28.8 28.9 C26.6 27.9 24.4 27.5 22 27.5 C19.6 27.5 17.4 27.9 15.2 28.9 C14.1 28.2 13.4 27.0 13.4 25.4 Z" fill="url(#kheperGrad_rosettaHdr)"/><polygon points="20.1,29.4 23.9,29.4 22,33.2" fill="url(#kheperGrad_rosettaHdr)"/><path d="M14.8 30.4 C16.9 29.6 18.6 29.4 19.6 29.7 L21.2 34.0 L21.2 55.6 C16.4 54.6 13.2 47.8 13.3 38.6 C13.4 35.0 13.9 32.0 14.8 30.4 Z" fill="url(#kheperGrad_rosettaHdr)"/><path d="M29.2 30.4 C27.1 29.6 25.4 29.4 24.4 29.7 L22.8 34.0 L22.8 55.6 C27.6 54.6 30.8 47.8 30.7 38.6 C30.6 35.0 30.1 32.0 29.2 30.4 Z" fill="url(#kheperGrad_rosettaHdr)"/><path d="M14.6 21.0 C9.6 19.2 7.8 14.2 10.2 8.8 C11.5 6.0 14.4 4.8 17.4 5.5" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.1 14.4 L6.7 13.4 M9.8 10.8 L7.6 9.2" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="1.6" stroke-linecap="round"/><path d="M29.4 21.0 C34.4 19.2 36.2 14.2 33.8 8.8 C32.5 6.0 29.6 4.8 26.6 5.5" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/><path d="M34.9 14.4 L37.3 13.4 M34.2 10.8 L36.4 9.2" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="1.6" stroke-linecap="round"/><path d="M13.2 31.6 C8.4 32.2 6.8 36.2 7.8 41.6 C8.3 44.0 9.4 45.6 10.8 46.8" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/><path d="M30.8 31.6 C35.6 32.2 37.2 36.2 36.2 41.6 C35.7 44.0 34.6 45.6 33.2 46.8" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.4 45.4 C10.4 48.6 9.8 54.0 12.2 58.2 C13.6 60.2 16.0 60.8 18.4 59.8" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/><path d="M29.6 45.4 C33.6 48.6 34.2 54.0 31.8 58.2 C30.4 60.2 28.0 60.8 25.6 59.8" stroke="url(#kheperGrad_rosettaHdr)" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
+        <svg class="kheper-svg kheper-inline" viewBox="0 0 72.31 106.0" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="kheperGrad_rosettaHdr" x1="0" y1="0" x2="72.31" y2="106.0" gradientUnits="userSpaceOnUse"><stop offset="0%" style="stop-color:var(--kheper-1)"/><stop offset="20%" style="stop-color:var(--kheper-2)"/><stop offset="38%" style="stop-color:var(--kheper-3)"/><stop offset="56%" style="stop-color:var(--kheper-4)"/><stop offset="74%" style="stop-color:var(--kheper-5)"/><stop offset="88%" style="stop-color:var(--kheper-6)"/><stop offset="100%" style="stop-color:var(--kheper-7)"/></linearGradient></defs><path d="M11.09 103 9.59 100.91Q10.76 99.66 12.01 98.25Q13.26 96.83 14.34 95.16L13.34 95.49L12.59 94.66L13.59 90.07L12.34 91.41L11.42 90.74L12.84 86.32L11.17 87.74L10.34 86.99Q10.76 85.24 11.63 82.4Q12.51 79.56 13.8 76.81Q15.09 74.06 16.59 72.64Q16.34 71.39 16.18 70.01Q16.01 68.64 16.01 67.22Q16.01 63.72 16.51 60.88Q13.84 63.38 12.8 66.09Q11.76 68.8 11.01 71.89L10.09 71.39Q9.42 72.97 8.13 74.14Q6.84 75.31 5.09 76.48L3 73.89Q4.5 72.89 5.59 71.47Q6.67 70.06 7 69.06Q6.42 69.06 5.71 69.01Q5 68.97 4.58 68.97L8.5 64.72Q8.17 64.55 7.8 64.47Q7.42 64.38 7.25 64.3L9.51 62.05Q8.92 61.88 8.38 61.8Q7.84 61.72 7.59 61.63Q9.01 60.46 10.84 59.13Q12.67 57.8 14.55 56.67Q16.43 55.54 17.85 55.21Q18.6 52.71 19.1 52.21Q19.51 51.96 20.1 51.71Q20.68 51.46 21.85 51.29Q21.1 50.37 21.1 48.7Q21.1 47.79 21.31 46.49Q21.52 45.2 21.85 43.78H15.26Q13.34 43.78 12.51 43.08Q11.67 42.37 11.67 40.86Q11.67 39.2 12.42 37.11L17.26 22.43L17.93 22.18L18.68 23.27L20.18 16.01L20.85 15.84L22.02 18.43Q22.43 16.76 22.93 14.97Q23.43 13.18 23.85 11.59L24.85 11.26L26.44 13.76Q26.85 12.34 26.85 10.59Q26.85 9.42 25.98 7.63Q25.1 5.84 24.27 4.5L26.85 3Q27.27 3.25 28.19 4.33Q29.11 5.42 29.9 6.84Q30.69 8.25 30.69 9.67Q30.69 11.26 30.65 12.01Q30.61 12.76 30.52 13.18Q30.94 13.01 31.4 12.88Q31.86 12.76 32.19 12.67L32.69 14.43Q31.44 15.84 29.61 17.93Q27.77 20.01 25.94 22.39Q24.1 24.77 22.6 26.94Q21.52 28.6 20.35 30.81Q19.18 33.03 18.26 35.24Q17.35 37.45 16.68 39.11H23.18Q23.6 37.86 23.89 36.94Q24.18 36.03 24.27 35.86L24.18 35.94Q24.52 35.19 25.14 34.73Q25.77 34.28 26.35 34.11V32.52Q26.35 30.44 26.89 28.48Q27.44 26.52 28.6 24.68Q29.44 23.52 30.81 21.97Q32.19 20.43 33.36 20.43Q33.94 20.43 34.53 21.22Q35.11 22.02 35.44 22.77H36.78Q37.2 22.02 37.78 21.22Q38.36 20.43 38.95 20.43Q40.11 20.43 41.49 21.97Q42.87 23.52 43.7 24.68Q44.87 26.52 45.41 28.48Q45.95 30.44 45.95 32.52V34.11Q46.54 34.28 47.12 34.73Q47.7 35.19 48.04 35.94V35.86Q48.12 36.03 48.41 36.94Q48.7 37.86 49.12 39.11H55.63Q55.04 37.45 54.08 35.24Q53.13 33.03 52 30.81Q50.87 28.6 49.71 26.94Q48.29 24.77 46.41 22.39Q44.53 20.01 42.74 17.93Q40.95 15.84 39.61 14.43L40.11 12.67Q40.45 12.76 40.91 12.88Q41.37 13.01 41.78 13.18Q41.7 12.76 41.66 12.01Q41.62 11.26 41.62 9.67Q41.62 8.25 42.41 6.84Q43.2 5.42 44.16 4.33Q45.12 3.25 45.45 3L48.04 4.5Q47.2 5.84 46.33 7.63Q45.45 9.42 45.45 10.59Q45.45 11.51 45.62 12.3Q45.79 13.09 45.87 13.76L47.54 11.26L48.45 11.59Q48.87 13.18 49.37 14.97Q49.87 16.76 50.29 18.43L51.46 15.84L52.12 16.01L53.63 23.27L54.38 22.18L55.04 22.43L59.88 37.11Q60.63 39.2 60.63 40.86Q60.63 42.37 59.8 43.08Q58.96 43.78 57.05 43.78H50.37Q50.79 45.2 51 46.49Q51.21 47.79 51.21 48.7Q51.21 50.37 50.46 51.29Q51.62 51.46 52.21 51.71Q52.79 51.96 53.13 52.21Q53.29 52.37 53.71 53.13Q54.13 53.88 54.46 55.21Q55.88 55.54 57.71 56.67Q59.55 57.8 61.42 59.13Q63.3 60.46 64.72 61.63Q64.47 61.72 63.93 61.8Q63.38 61.88 62.8 62.05L65.05 64.3Q64.88 64.38 64.55 64.47Q64.22 64.55 63.8 64.72L67.72 68.97Q67.3 68.97 66.59 69.01Q65.89 69.06 65.3 69.06Q65.72 70.06 66.76 71.47Q67.8 72.89 69.31 73.89L67.22 76.48Q65.55 75.31 64.22 74.14Q62.88 72.97 62.22 71.39L61.3 71.89Q60.46 68.8 59.42 66.05Q58.38 63.3 55.71 60.8Q55.96 62.22 56.13 63.88Q56.29 65.55 56.29 67.22Q56.29 68.64 56.13 70.01Q55.96 71.39 55.71 72.64Q57.21 73.98 58.46 76.77Q59.71 79.56 60.63 82.4Q61.55 85.24 61.97 86.99L61.13 87.74L59.46 86.32L60.88 90.74L59.96 91.41L58.71 90.07L59.71 94.66L58.96 95.49L57.96 95.16Q59.05 96.83 60.3 98.25Q61.55 99.66 62.72 100.91L61.22 103Q58.8 101.58 56.88 100Q54.96 98.41 53.21 96.24L50.79 96.74L50.21 96.24Q51.12 94.58 52.12 92.41Q53.13 90.24 53.88 87.99Q54.63 85.74 54.63 84.07Q54.63 82.4 54.17 80.98Q53.71 79.56 53.29 78.65Q51.12 82.32 47.95 84.57Q44.78 86.82 41.78 87.82Q41.28 88.82 40.28 90.16Q39.28 91.49 38.15 92.45Q37.03 93.41 36.11 93.41Q35.19 93.41 34.07 92.45Q32.94 91.49 31.98 90.16Q31.02 88.82 30.52 87.82Q27.52 86.82 24.35 84.61Q21.18 82.4 19.01 78.73Q18.6 79.56 18.14 81.02Q17.68 82.48 17.68 84.07Q17.68 85.74 18.43 87.99Q19.18 90.24 20.22 92.41Q21.27 94.58 22.1 96.24L21.52 96.74L19.1 96.24Q17.35 98.41 15.47 100Q13.59 101.58 11.09 103ZM50.04 42.45H57.05Q59.3 42.45 59.3 40.86Q59.3 39.53 58.55 37.53Q57.71 34.61 56.5 31.07Q55.29 27.52 54.38 24.68L53.38 26.27L52.79 26.1L51.37 19.35L50.37 21.85L49.71 21.77Q49.29 19.93 48.66 17.72Q48.04 15.51 47.54 13.68L45.95 16.18L45.29 16.09Q44.95 15.18 44.49 13.55Q44.03 11.92 44.03 10.59Q44.03 9.17 44.78 7.5Q45.54 5.84 46.12 4.92L45.62 4.67Q44.78 5.5 43.87 6.92Q42.95 8.34 42.95 9.67Q42.95 10.92 43.2 12.55Q43.45 14.18 43.62 15.26Q43.2 15.09 42.45 14.8Q41.7 14.51 41.12 14.34Q42.53 15.84 44.33 17.93Q46.12 20.01 47.91 22.18Q49.71 24.35 50.87 26.1Q52.37 28.27 53.67 30.94Q54.96 33.61 55.96 36.15Q56.96 38.7 57.55 40.53H49.46Q49.62 40.95 49.75 41.45Q49.87 41.95 50.04 42.45ZM15.26 42.45H22.18Q22.35 41.95 22.52 41.45Q22.68 40.95 22.77 40.53H14.76Q15.34 38.7 16.34 36.15Q17.35 33.61 18.68 30.94Q20.01 28.27 21.52 26.1Q22.68 24.35 24.43 22.18Q26.19 20.01 28.02 17.93Q29.86 15.84 31.19 14.34Q30.61 14.51 29.86 14.8Q29.11 15.09 28.69 15.26Q28.85 14.18 29.11 12.55Q29.36 10.92 29.36 9.67Q29.36 8.34 28.48 6.92Q27.6 5.5 26.69 4.67L26.19 4.92Q26.77 5.84 27.52 7.5Q28.27 9.17 28.27 10.59Q28.27 11.92 27.85 13.55Q27.44 15.18 27.02 16.09L26.35 16.18L24.77 13.68Q24.27 15.51 23.64 17.72Q23.02 19.93 22.6 21.77L21.93 21.85L20.93 19.35L19.51 26.1L18.93 26.27L18.01 24.68Q17.01 27.52 15.84 31.07Q14.68 34.61 13.76 37.53Q13.01 39.53 13.01 40.86Q13.01 42.45 15.26 42.45ZM36.11 29.19Q37.53 29.11 39.57 28.35Q41.62 27.6 42.95 26.77Q42.7 26.19 42.28 25.6Q41.62 24.6 40.61 23.35Q39.61 22.1 38.95 22.1Q38.86 22.1 38.53 22.85Q38.2 23.6 37.86 24.35H34.36Q34.11 23.6 33.78 22.85Q33.44 22.1 33.36 22.1Q32.77 22.1 31.73 23.35Q30.69 24.6 30.02 25.6Q29.86 25.85 29.65 26.14Q29.44 26.44 29.27 26.77Q30.69 27.6 32.73 28.35Q34.78 29.11 36.11 29.19ZM27.94 34.69Q29.36 34.03 31.19 33.53Q33.03 33.03 36.11 33.03Q39.28 33.03 41.12 33.53Q42.95 34.03 44.28 34.69V32.52Q44.28 31.44 44.16 30.4Q44.03 29.36 43.62 28.27Q42.03 29.19 39.82 29.98Q37.61 30.77 36.11 30.86Q34.61 30.77 32.44 29.98Q30.27 29.19 28.6 28.27Q27.94 30.52 27.94 32.52ZM30.44 32.94Q29.77 32.94 29.27 32.48Q28.77 32.02 28.77 31.27Q28.77 30.61 29.27 30.15Q29.77 29.69 30.44 29.69Q31.11 29.69 31.61 30.15Q32.11 30.61 32.11 31.27Q32.11 32.02 31.61 32.48Q31.11 32.94 30.44 32.94ZM41.87 32.94Q40.2 32.94 40.2 31.27Q40.2 30.61 40.66 30.15Q41.12 29.69 41.87 29.69Q42.53 29.69 42.99 30.15Q43.45 30.61 43.45 31.27Q43.45 32.02 42.99 32.48Q42.53 32.94 41.87 32.94ZM30.44 31.94Q31.11 31.94 31.11 31.27Q31.11 30.69 30.44 30.69Q29.86 30.69 29.86 31.27Q29.86 31.94 30.44 31.94ZM41.87 31.94Q42.45 31.94 42.45 31.27Q42.45 30.69 41.87 30.69Q41.2 30.69 41.2 31.27Q41.2 31.94 41.87 31.94ZM36.11 35.94Q37.36 35.94 39.11 35.9Q40.86 35.86 42.87 35.36Q41.7 34.86 40.07 34.57Q38.45 34.28 36.11 34.28Q33.86 34.28 32.23 34.57Q30.61 34.86 29.36 35.36Q31.36 35.86 33.15 35.9Q34.94 35.94 36.11 35.94ZM36.11 52.96Q38.03 52.96 40.32 52.75Q42.62 52.54 44.7 52.08Q46.79 51.62 48.16 50.79Q49.54 49.96 49.54 48.7Q49.54 47.54 49.12 45.62Q48.7 43.7 48.16 41.7Q47.62 39.7 47.16 38.24Q46.7 36.78 46.54 36.53Q46.45 36.11 46.04 36.03Q43.2 37.28 40.49 37.45Q37.78 37.61 36.11 37.61Q34.44 37.61 31.82 37.45Q29.19 37.28 26.27 36.03Q25.77 36.19 25.69 36.53Q25.6 36.78 25.1 38.24Q24.6 39.7 24.06 41.7Q23.52 43.7 23.1 45.62Q22.68 47.54 22.68 48.7Q22.68 49.96 24.06 50.79Q25.44 51.62 27.56 52.08Q29.69 52.54 31.98 52.75Q34.28 52.96 36.11 52.96ZM37.03 87.24Q39.2 86.99 42.2 85.82Q45.2 84.65 48.04 82.36Q50.87 80.06 52.75 76.35Q54.63 72.64 54.63 67.22Q54.63 63.55 54.13 60.55Q53.63 57.55 53.04 55.67Q52.46 53.79 52.12 53.54Q51.79 53.29 50.79 53Q49.79 52.71 47.87 52.87Q45.37 53.38 42.87 54.42Q40.36 55.46 38.7 57.17Q37.03 58.88 37.03 61.38ZM35.28 87.24V61.38Q35.28 58.88 33.57 57.17Q31.86 55.46 29.36 54.42Q26.85 53.38 24.35 52.87Q22.43 52.71 21.47 53Q20.51 53.29 20.18 53.54Q19.93 53.79 19.31 55.67Q18.68 57.55 18.18 60.55Q17.68 63.55 17.68 67.22Q17.68 72.64 19.56 76.35Q21.43 80.06 24.27 82.36Q27.1 84.65 30.06 85.82Q33.03 86.99 35.28 87.24ZM36.11 57.96Q37.11 56.04 39.11 54.63Q38.45 54.71 37.7 54.67Q36.94 54.63 36.11 54.63Q35.28 54.63 34.57 54.67Q33.86 54.71 33.19 54.63Q34.11 55.29 34.9 56.13Q35.69 56.96 36.11 57.96ZM5.34 74.64Q7 73.39 8.17 72.06Q9.34 70.72 9.67 69.39L10.34 69.56Q11.26 66.3 12.72 63.59Q14.18 60.88 16.93 58.63Q17.1 57.71 17.35 56.88Q15.76 57.46 13.76 58.8Q11.76 60.13 10.42 61.05L11.59 61.55L9.09 63.97Q9.59 64.22 10.09 64.38L7.17 67.72Q7.59 67.64 8.05 67.55Q8.5 67.47 8.67 67.47Q8.59 68.72 7.5 70.76Q6.42 72.81 4.75 73.98ZM66.97 74.64 67.55 73.98Q65.89 72.81 64.84 70.76Q63.8 68.72 63.63 67.47Q63.8 67.47 64.26 67.55Q64.72 67.64 65.14 67.72L62.22 64.38Q62.72 64.22 63.22 63.97L60.71 61.55L61.88 61.05Q60.55 60.05 58.55 58.75Q56.54 57.46 54.88 56.88Q55.04 57.21 55.17 57.71Q55.29 58.21 55.38 58.71V58.63Q58.13 60.88 59.63 63.59Q61.13 66.3 61.97 69.56L62.63 69.39Q63.05 70.72 64.18 72.06Q65.3 73.39 66.97 74.64ZM11.84 101.25Q13.93 100 15.39 98.33Q16.84 96.66 18.35 94.83L19.93 95.16Q18.68 92.66 17.47 89.78Q16.26 86.9 16.26 84.07Q16.26 81.65 17.01 79.73Q17.76 77.81 18.1 77.23Q17.51 75.73 17.01 74.23Q16.09 75.31 15.18 77.31Q14.26 79.31 13.47 81.52Q12.67 83.73 12.17 85.57L13.51 84.65L14.43 85.32L13.09 89.24L14.68 87.9L15.34 88.57L14.09 94.33L16.26 93.16L16.93 93.66Q15.84 95.58 14.55 97.5Q13.26 99.41 11.51 100.83ZM60.46 101.25 60.8 100.83Q59.05 99.41 57.8 97.5Q56.54 95.58 55.38 93.66L56.04 93.16L58.21 94.33L56.96 88.57L57.63 87.9L59.21 89.24L57.88 85.32L58.8 84.65L60.13 85.57Q59.63 83.73 58.84 81.52Q58.05 79.31 57.13 77.31Q56.21 75.31 55.29 74.23Q55.04 74.98 54.75 75.73Q54.46 76.48 54.13 77.15Q54.46 77.73 55.25 79.69Q56.04 81.65 56.04 84.07Q56.04 86.9 54.83 89.78Q53.63 92.66 52.37 95.16L53.96 94.83Q55.46 96.66 56.92 98.33Q58.38 100 60.46 101.25ZM36.11 91.99Q36.94 91.99 38.03 90.82Q39.11 89.66 39.86 88.4Q37.78 88.9 36.11 88.9Q34.53 88.9 32.36 88.4Q33.19 89.66 34.23 90.82Q35.28 91.99 36.11 91.99Z" fill="url(#kheperGrad_rosettaHdr)"/></svg>
         <span id="rosettaModalTitleText">PRISMA™ Rosetta Codex · 23+7 Languages</span>
       </div>
       <div class="rosetta-controls">
@@ -1906,8 +2233,8 @@
   <script>
     function kheperSvg(uid, cls = "kheper-svg") {
       const gid = "kheperGrad_" + uid;
-      return `<svg class="${cls}" viewBox="0 0 44 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">`
-        + `<defs><linearGradient id="${gid}" x1="4" y1="4" x2="40" y2="60" gradientUnits="userSpaceOnUse">`
+      return `<svg class="${cls}" viewBox="0 0 72.31 106.0" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">`
+        + `<defs><linearGradient id="${gid}" x1="0" y1="0" x2="72.31" y2="106.0" gradientUnits="userSpaceOnUse">`
         + `<stop offset="0%" style="stop-color:var(--kheper-1)"/>`
         + `<stop offset="20%" style="stop-color:var(--kheper-2)"/>`
         + `<stop offset="38%" style="stop-color:var(--kheper-3)"/>`
@@ -1916,22 +2243,7 @@
         + `<stop offset="88%" style="stop-color:var(--kheper-6)"/>`
         + `<stop offset="100%" style="stop-color:var(--kheper-7)"/>`
         + `</linearGradient></defs>`
-        + `<g transform="translate(4.1, 0) skewX(-7.5)">`
-        + `<circle cx="22" cy="6.2" r="2.2" fill="url(#${gid})"/>`
-        + `<path d="M16.8 16.4 C16.6 13.0 18.8 10.6 22 10.6 C25.2 10.6 27.4 13.0 27.2 16.4 C25.5 15.6 23.8 15.3 22 15.3 C20.2 15.3 18.5 15.6 16.8 16.4 Z" fill="url(#${gid})"/>`
-        + `<path d="M13.4 25.4 C13.5 19.6 16.8 16.8 22 16.8 C27.2 16.8 30.5 19.6 30.6 25.4 C30.6 27.0 29.9 28.2 28.8 28.9 C26.6 27.9 24.4 27.5 22 27.5 C19.6 27.5 17.4 27.9 15.2 28.9 C14.1 28.2 13.4 27.0 13.4 25.4 Z" fill="url(#${gid})"/>`
-        + `<polygon points="20.1,29.4 23.9,29.4 22,33.2" fill="url(#${gid})"/>`
-        + `<path d="M14.8 30.4 C16.9 29.6 18.6 29.4 19.6 29.7 L21.2 34.0 L21.2 55.6 C16.4 54.6 13.2 47.8 13.3 38.6 C13.4 35.0 13.9 32.0 14.8 30.4 Z" fill="url(#${gid})"/>`
-        + `<path d="M29.2 30.4 C27.1 29.6 25.4 29.4 24.4 29.7 L22.8 34.0 L22.8 55.6 C27.6 54.6 30.8 47.8 30.7 38.6 C30.6 35.0 30.1 32.0 29.2 30.4 Z" fill="url(#${gid})"/>`
-        + `<path d="M14.6 21.0 C9.6 19.2 7.8 14.2 10.2 8.8 C11.5 6.0 14.4 4.8 17.4 5.5" stroke="url(#${gid})" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>`
-        + `<path d="M9.1 14.4 L6.7 13.4 M9.8 10.8 L7.6 9.2" stroke="url(#${gid})" stroke-width="1.6" stroke-linecap="round"/>`
-        + `<path d="M29.4 21.0 C34.4 19.2 36.2 14.2 33.8 8.8 C32.5 6.0 29.6 4.8 26.6 5.5" stroke="url(#${gid})" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>`
-        + `<path d="M34.9 14.4 L37.3 13.4 M34.2 10.8 L36.4 9.2" stroke="url(#${gid})" stroke-width="1.6" stroke-linecap="round"/>`
-        + `<path d="M13.2 31.6 C8.4 32.2 6.8 36.2 7.8 41.6 C8.3 44.0 9.4 45.6 10.8 46.8" stroke="url(#${gid})" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>`
-        + `<path d="M30.8 31.6 C35.6 32.2 37.2 36.2 36.2 41.6 C35.7 44.0 34.6 45.6 33.2 46.8" stroke="url(#${gid})" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>`
-        + `<path d="M14.4 45.4 C10.4 48.6 9.8 54.0 12.2 58.2 C13.6 60.2 16.0 60.8 18.4 59.8" stroke="url(#${gid})" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>`
-        + `<path d="M29.6 45.4 C33.6 48.6 34.2 54.0 31.8 58.2 C30.4 60.2 28.0 60.8 25.6 59.8" stroke="url(#${gid})" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>`
-        + `</g></svg>`;
+        + `<path d="M11.09 103 9.59 100.91Q10.76 99.66 12.01 98.25Q13.26 96.83 14.34 95.16L13.34 95.49L12.59 94.66L13.59 90.07L12.34 91.41L11.42 90.74L12.84 86.32L11.17 87.74L10.34 86.99Q10.76 85.24 11.63 82.4Q12.51 79.56 13.8 76.81Q15.09 74.06 16.59 72.64Q16.34 71.39 16.18 70.01Q16.01 68.64 16.01 67.22Q16.01 63.72 16.51 60.88Q13.84 63.38 12.8 66.09Q11.76 68.8 11.01 71.89L10.09 71.39Q9.42 72.97 8.13 74.14Q6.84 75.31 5.09 76.48L3 73.89Q4.5 72.89 5.59 71.47Q6.67 70.06 7 69.06Q6.42 69.06 5.71 69.01Q5 68.97 4.58 68.97L8.5 64.72Q8.17 64.55 7.8 64.47Q7.42 64.38 7.25 64.3L9.51 62.05Q8.92 61.88 8.38 61.8Q7.84 61.72 7.59 61.63Q9.01 60.46 10.84 59.13Q12.67 57.8 14.55 56.67Q16.43 55.54 17.85 55.21Q18.6 52.71 19.1 52.21Q19.51 51.96 20.1 51.71Q20.68 51.46 21.85 51.29Q21.1 50.37 21.1 48.7Q21.1 47.79 21.31 46.49Q21.52 45.2 21.85 43.78H15.26Q13.34 43.78 12.51 43.08Q11.67 42.37 11.67 40.86Q11.67 39.2 12.42 37.11L17.26 22.43L17.93 22.18L18.68 23.27L20.18 16.01L20.85 15.84L22.02 18.43Q22.43 16.76 22.93 14.97Q23.43 13.18 23.85 11.59L24.85 11.26L26.44 13.76Q26.85 12.34 26.85 10.59Q26.85 9.42 25.98 7.63Q25.1 5.84 24.27 4.5L26.85 3Q27.27 3.25 28.19 4.33Q29.11 5.42 29.9 6.84Q30.69 8.25 30.69 9.67Q30.69 11.26 30.65 12.01Q30.61 12.76 30.52 13.18Q30.94 13.01 31.4 12.88Q31.86 12.76 32.19 12.67L32.69 14.43Q31.44 15.84 29.61 17.93Q27.77 20.01 25.94 22.39Q24.1 24.77 22.6 26.94Q21.52 28.6 20.35 30.81Q19.18 33.03 18.26 35.24Q17.35 37.45 16.68 39.11H23.18Q23.6 37.86 23.89 36.94Q24.18 36.03 24.27 35.86L24.18 35.94Q24.52 35.19 25.14 34.73Q25.77 34.28 26.35 34.11V32.52Q26.35 30.44 26.89 28.48Q27.44 26.52 28.6 24.68Q29.44 23.52 30.81 21.97Q32.19 20.43 33.36 20.43Q33.94 20.43 34.53 21.22Q35.11 22.02 35.44 22.77H36.78Q37.2 22.02 37.78 21.22Q38.36 20.43 38.95 20.43Q40.11 20.43 41.49 21.97Q42.87 23.52 43.7 24.68Q44.87 26.52 45.41 28.48Q45.95 30.44 45.95 32.52V34.11Q46.54 34.28 47.12 34.73Q47.7 35.19 48.04 35.94V35.86Q48.12 36.03 48.41 36.94Q48.7 37.86 49.12 39.11H55.63Q55.04 37.45 54.08 35.24Q53.13 33.03 52 30.81Q50.87 28.6 49.71 26.94Q48.29 24.77 46.41 22.39Q44.53 20.01 42.74 17.93Q40.95 15.84 39.61 14.43L40.11 12.67Q40.45 12.76 40.91 12.88Q41.37 13.01 41.78 13.18Q41.7 12.76 41.66 12.01Q41.62 11.26 41.62 9.67Q41.62 8.25 42.41 6.84Q43.2 5.42 44.16 4.33Q45.12 3.25 45.45 3L48.04 4.5Q47.2 5.84 46.33 7.63Q45.45 9.42 45.45 10.59Q45.45 11.51 45.62 12.3Q45.79 13.09 45.87 13.76L47.54 11.26L48.45 11.59Q48.87 13.18 49.37 14.97Q49.87 16.76 50.29 18.43L51.46 15.84L52.12 16.01L53.63 23.27L54.38 22.18L55.04 22.43L59.88 37.11Q60.63 39.2 60.63 40.86Q60.63 42.37 59.8 43.08Q58.96 43.78 57.05 43.78H50.37Q50.79 45.2 51 46.49Q51.21 47.79 51.21 48.7Q51.21 50.37 50.46 51.29Q51.62 51.46 52.21 51.71Q52.79 51.96 53.13 52.21Q53.29 52.37 53.71 53.13Q54.13 53.88 54.46 55.21Q55.88 55.54 57.71 56.67Q59.55 57.8 61.42 59.13Q63.3 60.46 64.72 61.63Q64.47 61.72 63.93 61.8Q63.38 61.88 62.8 62.05L65.05 64.3Q64.88 64.38 64.55 64.47Q64.22 64.55 63.8 64.72L67.72 68.97Q67.3 68.97 66.59 69.01Q65.89 69.06 65.3 69.06Q65.72 70.06 66.76 71.47Q67.8 72.89 69.31 73.89L67.22 76.48Q65.55 75.31 64.22 74.14Q62.88 72.97 62.22 71.39L61.3 71.89Q60.46 68.8 59.42 66.05Q58.38 63.3 55.71 60.8Q55.96 62.22 56.13 63.88Q56.29 65.55 56.29 67.22Q56.29 68.64 56.13 70.01Q55.96 71.39 55.71 72.64Q57.21 73.98 58.46 76.77Q59.71 79.56 60.63 82.4Q61.55 85.24 61.97 86.99L61.13 87.74L59.46 86.32L60.88 90.74L59.96 91.41L58.71 90.07L59.71 94.66L58.96 95.49L57.96 95.16Q59.05 96.83 60.3 98.25Q61.55 99.66 62.72 100.91L61.22 103Q58.8 101.58 56.88 100Q54.96 98.41 53.21 96.24L50.79 96.74L50.21 96.24Q51.12 94.58 52.12 92.41Q53.13 90.24 53.88 87.99Q54.63 85.74 54.63 84.07Q54.63 82.4 54.17 80.98Q53.71 79.56 53.29 78.65Q51.12 82.32 47.95 84.57Q44.78 86.82 41.78 87.82Q41.28 88.82 40.28 90.16Q39.28 91.49 38.15 92.45Q37.03 93.41 36.11 93.41Q35.19 93.41 34.07 92.45Q32.94 91.49 31.98 90.16Q31.02 88.82 30.52 87.82Q27.52 86.82 24.35 84.61Q21.18 82.4 19.01 78.73Q18.6 79.56 18.14 81.02Q17.68 82.48 17.68 84.07Q17.68 85.74 18.43 87.99Q19.18 90.24 20.22 92.41Q21.27 94.58 22.1 96.24L21.52 96.74L19.1 96.24Q17.35 98.41 15.47 100Q13.59 101.58 11.09 103ZM50.04 42.45H57.05Q59.3 42.45 59.3 40.86Q59.3 39.53 58.55 37.53Q57.71 34.61 56.5 31.07Q55.29 27.52 54.38 24.68L53.38 26.27L52.79 26.1L51.37 19.35L50.37 21.85L49.71 21.77Q49.29 19.93 48.66 17.72Q48.04 15.51 47.54 13.68L45.95 16.18L45.29 16.09Q44.95 15.18 44.49 13.55Q44.03 11.92 44.03 10.59Q44.03 9.17 44.78 7.5Q45.54 5.84 46.12 4.92L45.62 4.67Q44.78 5.5 43.87 6.92Q42.95 8.34 42.95 9.67Q42.95 10.92 43.2 12.55Q43.45 14.18 43.62 15.26Q43.2 15.09 42.45 14.8Q41.7 14.51 41.12 14.34Q42.53 15.84 44.33 17.93Q46.12 20.01 47.91 22.18Q49.71 24.35 50.87 26.1Q52.37 28.27 53.67 30.94Q54.96 33.61 55.96 36.15Q56.96 38.7 57.55 40.53H49.46Q49.62 40.95 49.75 41.45Q49.87 41.95 50.04 42.45ZM15.26 42.45H22.18Q22.35 41.95 22.52 41.45Q22.68 40.95 22.77 40.53H14.76Q15.34 38.7 16.34 36.15Q17.35 33.61 18.68 30.94Q20.01 28.27 21.52 26.1Q22.68 24.35 24.43 22.18Q26.19 20.01 28.02 17.93Q29.86 15.84 31.19 14.34Q30.61 14.51 29.86 14.8Q29.11 15.09 28.69 15.26Q28.85 14.18 29.11 12.55Q29.36 10.92 29.36 9.67Q29.36 8.34 28.48 6.92Q27.6 5.5 26.69 4.67L26.19 4.92Q26.77 5.84 27.52 7.5Q28.27 9.17 28.27 10.59Q28.27 11.92 27.85 13.55Q27.44 15.18 27.02 16.09L26.35 16.18L24.77 13.68Q24.27 15.51 23.64 17.72Q23.02 19.93 22.6 21.77L21.93 21.85L20.93 19.35L19.51 26.1L18.93 26.27L18.01 24.68Q17.01 27.52 15.84 31.07Q14.68 34.61 13.76 37.53Q13.01 39.53 13.01 40.86Q13.01 42.45 15.26 42.45ZM36.11 29.19Q37.53 29.11 39.57 28.35Q41.62 27.6 42.95 26.77Q42.7 26.19 42.28 25.6Q41.62 24.6 40.61 23.35Q39.61 22.1 38.95 22.1Q38.86 22.1 38.53 22.85Q38.2 23.6 37.86 24.35H34.36Q34.11 23.6 33.78 22.85Q33.44 22.1 33.36 22.1Q32.77 22.1 31.73 23.35Q30.69 24.6 30.02 25.6Q29.86 25.85 29.65 26.14Q29.44 26.44 29.27 26.77Q30.69 27.6 32.73 28.35Q34.78 29.11 36.11 29.19ZM27.94 34.69Q29.36 34.03 31.19 33.53Q33.03 33.03 36.11 33.03Q39.28 33.03 41.12 33.53Q42.95 34.03 44.28 34.69V32.52Q44.28 31.44 44.16 30.4Q44.03 29.36 43.62 28.27Q42.03 29.19 39.82 29.98Q37.61 30.77 36.11 30.86Q34.61 30.77 32.44 29.98Q30.27 29.19 28.6 28.27Q27.94 30.52 27.94 32.52ZM30.44 32.94Q29.77 32.94 29.27 32.48Q28.77 32.02 28.77 31.27Q28.77 30.61 29.27 30.15Q29.77 29.69 30.44 29.69Q31.11 29.69 31.61 30.15Q32.11 30.61 32.11 31.27Q32.11 32.02 31.61 32.48Q31.11 32.94 30.44 32.94ZM41.87 32.94Q40.2 32.94 40.2 31.27Q40.2 30.61 40.66 30.15Q41.12 29.69 41.87 29.69Q42.53 29.69 42.99 30.15Q43.45 30.61 43.45 31.27Q43.45 32.02 42.99 32.48Q42.53 32.94 41.87 32.94ZM30.44 31.94Q31.11 31.94 31.11 31.27Q31.11 30.69 30.44 30.69Q29.86 30.69 29.86 31.27Q29.86 31.94 30.44 31.94ZM41.87 31.94Q42.45 31.94 42.45 31.27Q42.45 30.69 41.87 30.69Q41.2 30.69 41.2 31.27Q41.2 31.94 41.87 31.94ZM36.11 35.94Q37.36 35.94 39.11 35.9Q40.86 35.86 42.87 35.36Q41.7 34.86 40.07 34.57Q38.45 34.28 36.11 34.28Q33.86 34.28 32.23 34.57Q30.61 34.86 29.36 35.36Q31.36 35.86 33.15 35.9Q34.94 35.94 36.11 35.94ZM36.11 52.96Q38.03 52.96 40.32 52.75Q42.62 52.54 44.7 52.08Q46.79 51.62 48.16 50.79Q49.54 49.96 49.54 48.7Q49.54 47.54 49.12 45.62Q48.7 43.7 48.16 41.7Q47.62 39.7 47.16 38.24Q46.7 36.78 46.54 36.53Q46.45 36.11 46.04 36.03Q43.2 37.28 40.49 37.45Q37.78 37.61 36.11 37.61Q34.44 37.61 31.82 37.45Q29.19 37.28 26.27 36.03Q25.77 36.19 25.69 36.53Q25.6 36.78 25.1 38.24Q24.6 39.7 24.06 41.7Q23.52 43.7 23.1 45.62Q22.68 47.54 22.68 48.7Q22.68 49.96 24.06 50.79Q25.44 51.62 27.56 52.08Q29.69 52.54 31.98 52.75Q34.28 52.96 36.11 52.96ZM37.03 87.24Q39.2 86.99 42.2 85.82Q45.2 84.65 48.04 82.36Q50.87 80.06 52.75 76.35Q54.63 72.64 54.63 67.22Q54.63 63.55 54.13 60.55Q53.63 57.55 53.04 55.67Q52.46 53.79 52.12 53.54Q51.79 53.29 50.79 53Q49.79 52.71 47.87 52.87Q45.37 53.38 42.87 54.42Q40.36 55.46 38.7 57.17Q37.03 58.88 37.03 61.38ZM35.28 87.24V61.38Q35.28 58.88 33.57 57.17Q31.86 55.46 29.36 54.42Q26.85 53.38 24.35 52.87Q22.43 52.71 21.47 53Q20.51 53.29 20.18 53.54Q19.93 53.79 19.31 55.67Q18.68 57.55 18.18 60.55Q17.68 63.55 17.68 67.22Q17.68 72.64 19.56 76.35Q21.43 80.06 24.27 82.36Q27.1 84.65 30.06 85.82Q33.03 86.99 35.28 87.24ZM36.11 57.96Q37.11 56.04 39.11 54.63Q38.45 54.71 37.7 54.67Q36.94 54.63 36.11 54.63Q35.28 54.63 34.57 54.67Q33.86 54.71 33.19 54.63Q34.11 55.29 34.9 56.13Q35.69 56.96 36.11 57.96ZM5.34 74.64Q7 73.39 8.17 72.06Q9.34 70.72 9.67 69.39L10.34 69.56Q11.26 66.3 12.72 63.59Q14.18 60.88 16.93 58.63Q17.1 57.71 17.35 56.88Q15.76 57.46 13.76 58.8Q11.76 60.13 10.42 61.05L11.59 61.55L9.09 63.97Q9.59 64.22 10.09 64.38L7.17 67.72Q7.59 67.64 8.05 67.55Q8.5 67.47 8.67 67.47Q8.59 68.72 7.5 70.76Q6.42 72.81 4.75 73.98ZM66.97 74.64 67.55 73.98Q65.89 72.81 64.84 70.76Q63.8 68.72 63.63 67.47Q63.8 67.47 64.26 67.55Q64.72 67.64 65.14 67.72L62.22 64.38Q62.72 64.22 63.22 63.97L60.71 61.55L61.88 61.05Q60.55 60.05 58.55 58.75Q56.54 57.46 54.88 56.88Q55.04 57.21 55.17 57.71Q55.29 58.21 55.38 58.71V58.63Q58.13 60.88 59.63 63.59Q61.13 66.3 61.97 69.56L62.63 69.39Q63.05 70.72 64.18 72.06Q65.3 73.39 66.97 74.64ZM11.84 101.25Q13.93 100 15.39 98.33Q16.84 96.66 18.35 94.83L19.93 95.16Q18.68 92.66 17.47 89.78Q16.26 86.9 16.26 84.07Q16.26 81.65 17.01 79.73Q17.76 77.81 18.1 77.23Q17.51 75.73 17.01 74.23Q16.09 75.31 15.18 77.31Q14.26 79.31 13.47 81.52Q12.67 83.73 12.17 85.57L13.51 84.65L14.43 85.32L13.09 89.24L14.68 87.9L15.34 88.57L14.09 94.33L16.26 93.16L16.93 93.66Q15.84 95.58 14.55 97.5Q13.26 99.41 11.51 100.83ZM60.46 101.25 60.8 100.83Q59.05 99.41 57.8 97.5Q56.54 95.58 55.38 93.66L56.04 93.16L58.21 94.33L56.96 88.57L57.63 87.9L59.21 89.24L57.88 85.32L58.8 84.65L60.13 85.57Q59.63 83.73 58.84 81.52Q58.05 79.31 57.13 77.31Q56.21 75.31 55.29 74.23Q55.04 74.98 54.75 75.73Q54.46 76.48 54.13 77.15Q54.46 77.73 55.25 79.69Q56.04 81.65 56.04 84.07Q56.04 86.9 54.83 89.78Q53.63 92.66 52.37 95.16L53.96 94.83Q55.46 96.66 56.92 98.33Q58.38 100 60.46 101.25ZM36.11 91.99Q36.94 91.99 38.03 90.82Q39.11 89.66 39.86 88.4Q37.78 88.9 36.11 88.9Q34.53 88.9 32.36 88.4Q33.19 89.66 34.23 90.82Q35.28 91.99 36.11 91.99Z" fill="url(#${gid})"/></svg>`;
     }
 
     const ICONS = {
@@ -1941,6 +2253,7 @@
       sliders: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><line x1="2.5" y1="6" x2="7.8" y2="6"/><line x1="12.2" y1="6" x2="21.5" y2="6"/><circle cx="10" cy="6" r="2.2"/><line x1="2.5" y1="12" x2="13.8" y2="12"/><line x1="18.2" y1="12" x2="21.5" y2="12"/><circle cx="16" cy="12" r="2.2"/><line x1="2.5" y1="18" x2="5.8" y2="18"/><line x1="10.2" y1="18" x2="21.5" y2="18"/><circle cx="8" cy="18" r="2.2"/></svg>`,
       camera: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6.8" width="20" height="12.8" rx="2.2"/><path d="M 8.2,6.8 L 9.6,4.2 H 14.4 L 15.8,6.8"/><path d="M 4.5,6.8 V 5.3 H 6.6 V 6.8"/><circle cx="12" cy="13.2" r="4.1"/><circle cx="12" cy="13.2" r="2.2"/><circle cx="18.5" cy="9.6" r="0.7" fill="currentColor"/></svg>`,
       fileDoc: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.8H6.5A1.8 1.8 0 0 0 4.7 4.6v14.8a1.8 1.8 0 0 0 1.8 1.8h11a1.8 1.8 0 0 0 1.8-1.8V8.1L14 2.8z"/><polyline points="14 2.8 14 8.2 19.3 8.2"/><line x1="8.2" y1="12.5" x2="15.8" y2="12.5"/><line x1="8.2" y1="16" x2="13.8" y2="16"/></svg>`,
+      devices: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 14.3H3.6A1.6 1.6 0 0 1 2 12.7V6.1A1.6 1.6 0 0 1 3.6 4.5h11.3a1.6 1.6 0 0 1 1.6 1.6v1.4"/><line x1="1" y1="17.2" x2="12.5" y2="17.2"/><rect x="14.2" y="7.8" width="7.8" height="12.2" rx="1.6"/><line x1="17.3" y1="17.6" x2="18.9" y2="17.6"/></svg>`,
       cloudOff: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18.5 17.5H6.5a4.5 4.5 0 0 1-.8-8.9 6 6 0 0 1 11.6-1.4 4 4 0 0 1 1.2 7.8"/><line x1="3.5" y1="20.5" x2="20.5" y2="3.5"/></svg>`,
       zeroCost: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><path d="M14.8 9.2a2.8 2.8 0 0 0-2.8-1.7c-1.7 0-2.8.9-2.8 2.2 0 3 5.6 1.6 5.6 4.6 0 1.3-1.1 2.2-2.8 2.2a2.8 2.8 0 0 1-2.8-1.7"/><line x1="12" y1="5.5" x2="12" y2="18.5"/><line x1="4.2" y1="19.8" x2="19.8" y2="4.2"/></svg>`,
       shieldCheck: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l8 3.3v5.8c0 5.3-3.4 9.6-8 11.2-4.6-1.6-8-5.9-8-11.2V5.8L12 2.5z"/><polyline points="8.5 12.2 11 14.7 15.8 9.6"/></svg>`,
@@ -2151,12 +2464,15 @@
       </div>`
     };
 
+    const IS_BETA_LIVE = false;
+    const GUMROAD_URL = "#REEMPLAZAR-CON-URL-GUMROAD";
+
     const CONTENT = {
       en: {
         pageTitle: "Aula Viva®",
         heading: `${kheperSvg("hdrEn", "kheper-svg kheper-hdr")}<span>Aula Viva<span class="reg">®</span></span>`,
         descriptor: "PRISMA™ — Multidimensional illumination of human learning assisted by local AI",
-        tabs: { vision: "Vision", architecture: "Architecture", ethos: "Ethos", prototype: "Interactive sandbox", interface: "On-device interface" },
+        tabs: { vision: "Vision", architecture: "Architecture", ethos: "Ethos", prototype: "Interactive sandbox", interface: "How PRISMA™ works" },
         lblState: "Educability condition:",
         exitFocus: "← Back to menu",
         enterFocus: "⤢ Back to visualization",
@@ -2241,12 +2557,51 @@
         thAxis: "Dimension (ℝ⁸) · Δ (dB)",
         thCitation: "Traceable evidence",
         idleText: "Click &ldquo;Visualize projection&rdquo; to project the vector coordinates.",
-        interfaceTitle: "On-device capture interface",
-        interfaceDesc: "Local Streamlit execution environment running offline SLM qualitative inference directly on educator hardware, ensuring zero cloud dependency and strict student data sovereignty.",
-        interfaceStatus: "Coming soon for local download and deployment · Apache 2.0",
-        interfaceGuideLink: "See how PRISMA™ will work →",
-        interfaceVisorLink: "Open PRISMA™ Visor →",
-        footer: `<strong>Aula Viva®</strong> by Víctor Stern Rodríguez &nbsp;·&nbsp; <a href="mailto:victor@aulaviva.lat">victor@aulaviva.lat</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/company/aulaviva-lat" target="_blank" rel="noopener noreferrer">LinkedIn</a> &nbsp;·&nbsp; <a href="https://www.facebook.com/aulaviva.lat" target="_blank" rel="noopener noreferrer">Facebook</a> &nbsp;·&nbsp; <button type="button" id="rosettaFooterBtn" onclick="openRosettaCodex()">${kheperSvg("ftrEn", "kheper-svg kheper-inline")}<span>PRISMA™ Rosetta Codex · 23+7 Languages</span></button><br>ASPIRE® · PRISMA™ · SSRN: <a href="https://doi.org/10.2139/ssrn.7310080" target="_blank" rel="noopener noreferrer">10.2139/ssrn.7310080</a> · INDAUTOR 03-2026-040710022300-01 · © 2026 Grupo SiEFH S.A.S.`,
+        interfaceTitle: "How PRISMA™ works",
+        interfaceHtml: `
+          <div class="beta-callout-banner">🧪 <strong>Public Beta:</strong> PRISMA™ is in final community calibration ahead of the institutional v1.0 release — 100% offline, zero cloud dependency, and complete student data sovereignty.</div>
+          <div class="dl-box">
+            <div class="dl-box-title">Classroom Edition (Public Beta · macOS, Windows &amp; Linux)</div>
+            <p style="margin-bottom:10px; font-size:0.88rem;">Built to protect teacher well-being and free up time from administrative overload: capture brief classroom observations, visualize ℝ⁸ growth, and prepare editable <strong>Official Report</strong> drafts (Word / .docx) aligned with SEP/NEM, IB, CCH, Cambridge, or custom institutional criteria—all 100% offline with an automatic installer tailored to your computer's RAM (EN/ES).</p>
+            <div class="dl-actions">
+              ${IS_BETA_LIVE
+                ? `<a class="dl-btn-primary" href="${GUMROAD_URL}" target="_blank" rel="noopener noreferrer">Download PRISMA™</a>`
+                : `<span class="dl-btn-disabled">Public Beta download opening soon</span>`
+              }
+              <a class="dl-btn-secondary" href="start.html">Step-by-step setup guide</a>
+              <button type="button" class="dl-btn-secondary" onclick="openQrModal()">↗ Share / QR</button>
+            </div>
+            <div class="dl-tier-grid">
+              <div class="dl-tier-card">
+                <span class="dl-tier-badge">Mobile · iOS &amp; Android</span>
+                <strong>PRISMA 2B · Recommended for phones &amp; tablets</strong>
+                PRISMA-Core · Qwen3.5-2B (~1.27 GB). Runs directly on mobile devices without cloud servers.
+              </div>
+              <div class="dl-tier-card">
+                <span class="dl-tier-badge">Computer · Standard</span>
+                <strong>PRISMA 4B · Recommended for under 16 GB RAM</strong>
+                PRISMA-Core · Qwen3.5-4B (~2.71 GB). Fast, light, and calibrated for standard classroom laptops.
+              </div>
+              <div class="dl-tier-card">
+                <span class="dl-tier-badge">Computer · Extended</span>
+                <strong>PRISMA 9B · Recommended for 16 GB RAM or more</strong>
+                PRISMA-Core · Qwen3.5-9B (~5.63 GB). Deeper interpretive nuance and expanded multilingual note support.
+              </div>
+            </div>
+            <p class="dl-footnote">Free for personal use (educators and learners), with optional voluntary contribution. Looking for school-wide annual licensing (batch Official Reports, multi-cycle archive &amp; air-gapped deployment) or our Educational Equity Program? Contact <a href="mailto:prisma@aulaviva.lat">prisma@aulaviva.lat</a></p>
+          </div>
+          <div class="visor-explainer-box">
+            <p><strong>PRISMA™ Mobile &amp; PRISMA™ Visor (100% offline):</strong> ${IS_BETA_LIVE
+              ? `We are developing the unified native iOS and Android app so PRISMA-Core 2B runs directly on your phone with no intermediate apps. In the meantime, <strong>PRISMA™ Visor</strong> is a mobile viewer that works right in your phone's browser even in airplane mode: today you can already analyze your classroom note with PRISMA-Core 2B on your phone using PocketPal AI and paste the result into the viewer (via <em>Enter JSON</em>) to get the ℝ⁸ vector map and educability safeguard—or run the demo right now with María's interactive case.`
+              : `We are developing the unified native iOS and Android app so PRISMA-Core 2B runs directly on your phone with no intermediate apps. Direct mobile analysis with PRISMA-Core 2B (PocketPal AI) is coming soon. In the meantime, <strong>PRISMA™ Visor</strong> works right in your phone's browser even in airplane mode: today you can paste any PRISMA™ JSON output (via <em>Enter JSON</em>) or explore María's interactive demo right now.`
+            }</p>
+            <div class="dl-actions">
+              <a class="dl-btn-primary" href="visor.html">Open PRISMA™ Visor (Mobile Offline) →</a>
+              <a class="dl-btn-secondary" href="start.html#mobile">PRISMA™ Mobile →</a>
+            </div>
+          </div>
+        `,
+        footer: `<strong>Aula Viva®</strong> by Víctor Stern Rodríguez &nbsp;·&nbsp; <a href="mailto:victor@aulaviva.lat">victor@aulaviva.lat</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/company/aulaviva-lat" target="_blank" rel="noopener noreferrer">LinkedIn</a> &nbsp;·&nbsp; <a href="https://www.facebook.com/aulaviva.lat" target="_blank" rel="noopener noreferrer">Facebook</a> &nbsp;·&nbsp; <a href="https://github.com/vicstern/PRISMA_App" target="_blank" rel="noopener noreferrer">GitHub</a> &nbsp;·&nbsp; <button type="button" id="rosettaFooterBtn" onclick="openRosettaCodex()">${kheperSvg("ftrEn", "kheper-svg kheper-inline")}<span>PRISMA™ Rosetta Codex · 23+7 Languages</span></button><br>ASPIRE® · PRISMA™ · SSRN: <a href="https://doi.org/10.2139/ssrn.7310080" target="_blank" rel="noopener noreferrer">10.2139/ssrn.7310080</a> · INDAUTOR 03-2026-040710022300-01 · © 2026 Grupo SiEFH S.A.S.`,
         codexBtnLabel: "PRISMA™ Rosetta Codex · 23+7 Languages",
         codexRiddle: "Twenty-three visible human tongues and one master key hidden in plain sight at the portal. Seven hidden tongues, each with two secret keys. Can you find them?"        
       },
@@ -2254,7 +2609,7 @@
         pageTitle: "Aula Viva®",
         heading: `${kheperSvg("hdrEs", "kheper-svg kheper-hdr")}<span>Aula Viva<span class="reg">®</span></span>`,
         descriptor: "PRISMA™ — Iluminación multidimensional del aprendizaje humano asistida por IA local",
-        tabs: { vision: "Visión", architecture: "Arquitectura", ethos: "Ethos", prototype: "Sandbox interactivo", interface: "Interfaz en dispositivo" },
+        tabs: { vision: "Visión", architecture: "Arquitectura", ethos: "Ethos", prototype: "Sandbox interactivo", interface: "Cómo funciona PRISMA™" },
         lblState: "Condición de educabilidad:",
         exitFocus: "← Volver al menú",
         enterFocus: "⤢ Volver a la visualización",
@@ -2339,12 +2694,51 @@
         thAxis: "Dimensión (ℝ⁸) · Δ (dB)",
         thCitation: "Evidencia trazable",
         idleText: "Presiona &ldquo;Visualizar proyección&rdquo; para proyectar las coordenadas vectoriales.",
-        interfaceTitle: "Interfaz de captura en el dispositivo",
-        interfaceDesc: "Entorno local Streamlit ejecutando inferencia cualitativa con SLMs directamente en el equipo del educador, garantizando cero dependencia de la nube y soberanía total de datos.",
-        interfaceStatus: "Próximamente disponible para descarga y despliegue local · Apache 2.0",
-        interfaceGuideLink: "Ver cómo funcionará PRISMA™ →",
-        interfaceVisorLink: "Abrir PRISMA™ Visor →",
-        footer: `<strong>Aula Viva®</strong> por Víctor Stern Rodríguez &nbsp;·&nbsp; <a href="mailto:victor@aulaviva.lat">victor@aulaviva.lat</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/company/aulaviva-lat" target="_blank" rel="noopener noreferrer">LinkedIn</a> &nbsp;·&nbsp; <a href="https://www.facebook.com/aulaviva.lat" target="_blank" rel="noopener noreferrer">Facebook</a> &nbsp;·&nbsp; <button type="button" id="rosettaFooterBtn" onclick="openRosettaCodex()">${kheperSvg("ftrEs", "kheper-svg kheper-inline")}<span>Códice Rosetta PRISMA™ · 23+7 Idiomas</span></button><br>ASPIRE® · PRISMA™ · SSRN: <a href="https://doi.org/10.2139/ssrn.7310080" target="_blank" rel="noopener noreferrer">10.2139/ssrn.7310080</a> · INDAUTOR 03-2026-040710022300-01 · © 2026 Grupo SiEFH S.A.S.`,
+        interfaceTitle: "Cómo funciona PRISMA™",
+        interfaceHtml: `
+          <div class="beta-callout-banner">🧪 <strong>Public Beta:</strong> PRISMA™ está en fase final de calibración comunitaria previa al lanzamiento institucional v1.0 — 100 % sin conexión, sin nube y con soberanía total de los datos del alumnado.</div>
+          <div class="dl-box">
+            <div class="dl-box-title">Edición de Aula (Public Beta · macOS, Windows y Linux)</div>
+            <p style="margin-bottom:10px; font-size:0.88rem;">Diseñado para cuidar el bienestar docente y aliviar la carga administrativa: registra breves observaciones en el aula, visualiza el crecimiento en ℝ⁸ y prepara borradores editables de <strong>Reportes Oficiales</strong> (Word / .docx) alineados a SEP/NEM, IB, CCH, Cambridge o criterios institucionales propios — todo 100 % sin conexión y con un instalador automático ajustado a la RAM de tu equipo (ES/EN).</p>
+            <div class="dl-actions">
+              ${IS_BETA_LIVE
+                ? `<a class="dl-btn-primary" href="${GUMROAD_URL}" target="_blank" rel="noopener noreferrer">Descargar PRISMA™</a>`
+                : `<span class="dl-btn-disabled">Descarga de Public Beta disponible próximamente</span>`
+              }
+              <a class="dl-btn-secondary" href="start.html">Guía de instalación paso a paso</a>
+              <button type="button" class="dl-btn-secondary" onclick="openQrModal()">↗ Compartir / QR</button>
+            </div>
+            <div class="dl-tier-grid">
+              <div class="dl-tier-card">
+                <span class="dl-tier-badge">Celular · iOS y Android</span>
+                <strong>PRISMA 2B · Recomendado para teléfonos y tabletas</strong>
+                PRISMA-Core · Qwen3.5-2B (~1.27 GB). Corre directamente en dispositivos móviles sin servidores en la nube.
+              </div>
+              <div class="dl-tier-card">
+                <span class="dl-tier-badge">Computadora · Estándar</span>
+                <strong>PRISMA 4B · Recomendado para menos de 16 GB RAM</strong>
+                PRISMA-Core · Qwen3.5-4B (~2.71 GB). Rápido, ligero y calibrado para laptops escolares estándar.
+              </div>
+              <div class="dl-tier-card">
+                <span class="dl-tier-badge">Computadora · Ampliado</span>
+                <strong>PRISMA 9B · Recomendado para 16 GB RAM o más</strong>
+                PRISMA-Core · Qwen3.5-9B (~5.63 GB). Mayor profundidad analítica y cobertura multilingüe ampliada.
+              </div>
+            </div>
+            <p class="dl-footnote">Gratuito para uso personal (docentes y estudiantes), con aportación voluntaria opcional. ¿Buscas licencia institucional anual por plantel (Reportes Oficiales por lote, archivo multi-ciclo y despliegue 100 % sin internet) o nuestro Programa de Equidad Educativa? Escribe a <a href="mailto:prisma@aulaviva.lat">prisma@aulaviva.lat</a></p>
+          </div>
+          <div class="visor-explainer-box">
+            <p><strong>PRISMA™ Mobile y PRISMA™ Visor (100 % sin conexión):</strong> ${IS_BETA_LIVE
+              ? `Estamos desarrollando la app nativa unificada para iOS y Android para que PRISMA-Core 2B corra directo en tu teléfono sin apps intermedias. Mientras llega, <strong>PRISMA™ Visor</strong> es un visor móvil que funciona en el navegador de tu celular incluso en modo avión: hoy ya puedes hacer el análisis de tu nota docente con PRISMA-Core 2B en tu teléfono usando PocketPal AI y pegar el resultado en el visor (en el botón de <em>Ingresar JSON</em>) para obtener el mapa vectorial en ℝ⁸ y el semáforo de educabilidad —o correr la demo ahora mismo con el caso interactivo de María.`
+              : `Estamos desarrollando la app nativa unificada para iOS y Android para que PRISMA-Core 2B corra directo en tu teléfono sin apps intermedias. Análisis móvil directo con PRISMA-Core 2B (PocketPal AI): próximamente. Mientras tanto, <strong>PRISMA™ Visor</strong> funciona en el navegador de tu celular incluso en modo avión: hoy ya puedes pegar cualquier salida JSON de PRISMA™ (en <em>Ingresar JSON</em>) o correr la demo ahora mismo con el caso interactivo de María.`
+            }</p>
+            <div class="dl-actions">
+              <a class="dl-btn-primary" href="visor.html">Abrir PRISMA™ Visor (Móvil offline) →</a>
+              <a class="dl-btn-secondary" href="start.html#mobile">PRISMA™ Mobile →</a>
+            </div>
+          </div>
+        `,
+        footer: `<strong>Aula Viva®</strong> por Víctor Stern Rodríguez &nbsp;·&nbsp; <a href="mailto:victor@aulaviva.lat">victor@aulaviva.lat</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/company/aulaviva-lat" target="_blank" rel="noopener noreferrer">LinkedIn</a> &nbsp;·&nbsp; <a href="https://www.facebook.com/aulaviva.lat" target="_blank" rel="noopener noreferrer">Facebook</a> &nbsp;·&nbsp; <a href="https://github.com/vicstern/PRISMA_App" target="_blank" rel="noopener noreferrer">GitHub</a> &nbsp;·&nbsp; <button type="button" id="rosettaFooterBtn" onclick="openRosettaCodex()">${kheperSvg("ftrEs", "kheper-svg kheper-inline")}<span>Códice Rosetta PRISMA™ · 23+7 Idiomas</span></button><br>ASPIRE® · PRISMA™ · SSRN: <a href="https://doi.org/10.2139/ssrn.7310080" target="_blank" rel="noopener noreferrer">10.2139/ssrn.7310080</a> · INDAUTOR 03-2026-040710022300-01 · © 2026 Grupo SiEFH S.A.S.`,
         codexBtnLabel: "Códice Rosetta PRISMA™ · 23+7 Idiomas",
         codexRiddle: "«Veintitrés lenguas humanas visibles y una llave maestra escondida a plena luz en el portal. Siete lenguas escondidas, cada una con dos llaves secretas. ¿Puedes encontrarlas?»"        
       }
@@ -2579,6 +2973,8 @@
 
     const GALLERY_COPY = {
       en: {
+        heading: "On-device captures",
+        subtitle: "Real screens of PRISMA™ running 100% offline on computer and mobile. Switch device or step below, and click any capture to zoom in and explore details.",
         devDesktop: "Computer (Desktop)",
         devMobile: "Mobile (iOS · Android)",
         stepsDesktop: {
@@ -2603,6 +2999,8 @@
         missingPreview: "Preview image not found in local folder:"
       },
       es: {
+        heading: "Capturas en el dispositivo",
+        subtitle: "Pantallas reales de PRISMA™ operando 100 % sin conexión en computadora y celular. Cambia de dispositivo o paso abajo y haz clic en cualquier captura para ampliarla y recorrer los detalles.",
         devDesktop: "Computadora",
         devMobile: "Celular (iOS · Android)",
         stepsDesktop: {
@@ -2651,8 +3049,9 @@
     }
 
     function setGalleryDevice(dev) {
-      galleryDevice = (dev === "mobile") ? "mobile" : "desktop";
-      if (galleryDevice === "mobile" && galleryStep === "03") {
+      const nextDev = (dev === "mobile") ? "mobile" : "desktop";
+      if (nextDev !== galleryDevice) {
+        galleryDevice = nextDev;
         galleryStep = "01";
       }
       updateThemeScreenshots();
@@ -2678,6 +3077,10 @@
         galleryStep = "01";
       }
 
+      const headEl = document.getElementById("galleryHeading");
+      if (headEl) headEl.innerHTML = `${hIcon('camera')}<span>${g.heading}</span>`;
+      const subEl = document.getElementById("gallerySubtitle");
+      if (subEl) subEl.textContent = g.subtitle;
       const btnDesk = document.getElementById("galDevDesktop");
       const btnMob = document.getElementById("galDevMobile");
       if (btnDesk) {
@@ -2734,7 +3137,7 @@
             `img/screenshot${galleryStep}-${loc}-${theme}.png`,
             `img/screenshot${galleryStep}-${loc}-${otherTheme}.png`,
             `img/screenshot${galleryStep}-${otherLoc}-${theme}.png`,
-            "screenshot.png"
+            "img/screenshot.png"
           ], showMissing);
         } else {
           applyImgWithFallback(img, [
@@ -2944,7 +3347,7 @@
       document.getElementById("tab-btn-architecture").innerHTML = `${ICONS.building}<span>${data.tabs.architecture}</span>`;
       document.getElementById("tab-btn-ethos").innerHTML = `${ICONS.atomHeart}<span>${data.tabs.ethos}</span>`;
       document.getElementById("tab-btn-prototype").innerHTML = `${ICONS.sliders}<span>${data.tabs.prototype}</span>`;
-      document.getElementById("tab-btn-interface").innerHTML = `${ICONS.camera}<span>${data.tabs.interface}</span>`;
+      document.getElementById("tab-btn-interface").innerHTML = `${ICONS.devices}<span>${data.tabs.interface}</span>`;
       document.getElementById("vision-content").innerHTML = data.vision;
       document.getElementById("architecture-content").innerHTML = data.architecture;
       document.getElementById("ethos-content").innerHTML = data.ethos;
@@ -2953,13 +3356,10 @@
       document.getElementById("th-axis").textContent = data.thAxis;
       document.getElementById("th-citation").textContent = data.thCitation;
       document.getElementById("lblState").textContent = data.lblState;
-      document.getElementById("interfaceTitle").innerHTML = `${hIcon('camera')}<span>${data.interfaceTitle}</span>`;
-      document.getElementById("interfaceDesc").textContent = data.interfaceDesc;
-      document.getElementById("interfaceStatus").textContent = data.interfaceStatus;
-      const gLink = document.getElementById("interfaceGuideLink");
-      if (gLink) gLink.textContent = data.interfaceGuideLink;
-      const vLink = document.getElementById("interfaceVisorLink");
-      if (vLink) vLink.textContent = data.interfaceVisorLink;
+      document.getElementById("interfaceTitle").innerHTML = `${hIcon('devices')}<span>${data.interfaceTitle}</span>`;
+      const ic = document.getElementById("interfaceContent");
+      if (ic) ic.innerHTML = data.interfaceHtml;
+      if (typeof updateQrModalLocale === "function") updateQrModalLocale();
       document.getElementById("footerText").innerHTML = data.footer;
       document.getElementById("rosettaModalTitleText").textContent = data.codexBtnLabel;
       const riddleEl = document.getElementById("rosettaStickyRiddle");
@@ -3599,6 +3999,10 @@
 
     window.addEventListener("keydown", function(e) {
       if (e.key === "Escape") {
+        const lb = document.getElementById("imgLightboxModal");
+        if (lb && lb.classList.contains("open")) { closeGalleryLightbox(); return; }
+        const qm = document.getElementById("qrShareModal");
+        if (qm && qm.classList.contains("open")) { closeQrModal(); return; }
         if (isMellonActive) {
           exitMellonLore(true);
           return;
@@ -3630,12 +4034,202 @@
       }
     });
 
+    const QR_START_URL = "https://aulaviva.lat/start.html";
+    const QR_MODAL_COPY = {
+      en: {
+        title: "Share / Download PRISMA™",
+        hint: "Scan this QR code (works 100% offline) or share the direct setup & download link",
+        nativeBtn: "Share via device (AirDrop · Messages)",
+        copyBtn: "Copy link",
+        copied: "✓ Link copied",
+        shareText: "PRISMA™ by Aula Viva® — 100% offline local AI qualitative learning analytics in ℝ⁸",
+        zoomIn: "🔍 2x",
+        zoomOut: "⤡ Fit"
+      },
+      es: {
+        title: "Compartir / Descargar PRISMA™",
+        hint: "Escanea este código QR (100 % offline) o envía el enlace directo de descarga e instalación",
+        nativeBtn: "Compartir (AirDrop · WhatsApp · Mensajes)",
+        copyBtn: "Copiar enlace",
+        copied: "✓ Enlace copiado",
+        shareText: "PRISMA™ de Aula Viva® — Analítica cualitativa local 100 % offline en ℝ⁸",
+        zoomIn: "🔍 2x",
+        zoomOut: "⤡ Ajustar"
+      }
+    };
+
+    function updateQrModalLocale() {
+      const c = QR_MODAL_COPY[currentLocale === "es" ? "es" : "en"];
+      const tEl = document.getElementById("qrModalTitle");
+      if (tEl) tEl.textContent = c.title;
+      const hEl = document.getElementById("qrHint");
+      if (hEl) hEl.textContent = c.hint;
+      const nEl = document.getElementById("btnQrNativeShare");
+      if (nEl) nEl.textContent = c.nativeBtn;
+      const cEl = document.getElementById("btnQrCopyUrl");
+      if (cEl) cEl.textContent = c.copyBtn;
+      const zBtn = document.getElementById("btnLightboxZoom");
+      const stg = document.getElementById("lightboxStage");
+      if (zBtn && stg) zBtn.textContent = stg.classList.contains("is-zoomed") ? c.zoomOut : c.zoomIn;
+    }
+
+    function openQrModal() {
+      updateQrModalLocale();
+      const modal = document.getElementById("qrShareModal");
+      const nBtn = document.getElementById("btnQrNativeShare");
+      if (nBtn) nBtn.style.display = navigator.share ? "inline-flex" : "none";
+      if (modal) {
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+      }
+    }
+
+    function closeQrModal() {
+      const modal = document.getElementById("qrShareModal");
+      if (modal) {
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+      }
+    }
+
+    async function triggerQrNativeShare() {
+      if (!navigator.share) return;
+      const c = QR_MODAL_COPY[currentLocale === "es" ? "es" : "en"];
+      try {
+        await navigator.share({ title: "PRISMA™ — Aula Viva®", text: c.shareText, url: QR_START_URL });
+      } catch (e) {}
+    }
+
+    async function copyQrUrl() {
+      const c = QR_MODAL_COPY[currentLocale === "es" ? "es" : "en"];
+      const btn = document.getElementById("btnQrCopyUrl");
+      try {
+        await navigator.clipboard.writeText(QR_START_URL);
+      } catch (e) {
+        const tmp = document.createElement("textarea");
+        tmp.value = QR_START_URL;
+        document.body.appendChild(tmp);
+        tmp.select();
+        document.execCommand("copy");
+        document.body.removeChild(tmp);
+      }
+      if (btn) {
+        btn.textContent = c.copied;
+        setTimeout(() => { btn.textContent = c.copyBtn; }, 1800);
+      }
+    }
+
+    let lbDragging = false, lbDragged = false, lbStartX = 0, lbStartY = 0, lbScrollL = 0, lbScrollT = 0;
+
+    function openGalleryLightbox() {
+      const srcImg = document.getElementById("galleryPreviewImg");
+      const lb = document.getElementById("imgLightboxModal");
+      const lbImg = document.getElementById("lightboxImg");
+      const lbCap = document.getElementById("lightboxCaption");
+      const lbStage = document.getElementById("lightboxStage");
+      if (!srcImg || !lb || !lbImg || !lbStage || srcImg.style.display === "none") return;
+      lbImg.src = srcImg.src;
+      lbImg.alt = srcImg.alt || "PRISMA capture";
+      const capEl = document.getElementById("galleryCaption");
+      if (lbCap) lbCap.textContent = capEl ? capEl.textContent : "";
+      lbStage.classList.remove("is-zoomed", "is-dragging");
+      lbStage.scrollLeft = 0;
+      lbStage.scrollTop = 0;
+      updateQrModalLocale();
+      lb.classList.add("open");
+      lb.setAttribute("aria-hidden", "false");
+    }
+
+    function closeGalleryLightbox() {
+      const lb = document.getElementById("imgLightboxModal");
+      if (lb) {
+        lb.classList.remove("open");
+        lb.setAttribute("aria-hidden", "true");
+      }
+    }
+
+    function toggleLightboxZoom(clickEvt) {
+      const stg = document.getElementById("lightboxStage");
+      const img = document.getElementById("lightboxImg");
+      if (!stg || !img) return;
+      const willZoom = !stg.classList.contains("is-zoomed");
+      let rx = 0.5, ry = 0.5;
+      if (willZoom && clickEvt && clickEvt.clientX !== undefined) {
+        const rect = img.getBoundingClientRect();
+        if (rect.width > 0 && rect.height > 0) {
+          rx = Math.max(0, Math.min(1, (clickEvt.clientX - rect.left) / rect.width));
+          ry = Math.max(0, Math.min(1, (clickEvt.clientY - rect.top) / rect.height));
+        }
+      }
+      stg.classList.toggle("is-zoomed", willZoom);
+      updateQrModalLocale();
+      if (willZoom) {
+        requestAnimationFrame(() => {
+          stg.scrollLeft = Math.max(0, img.offsetWidth * rx - stg.clientWidth / 2);
+          stg.scrollTop = Math.max(0, img.offsetHeight * ry - stg.clientHeight / 2);
+        });
+      } else {
+        stg.scrollLeft = 0;
+        stg.scrollTop = 0;
+      }
+    }
+
+    (function bindGalleryLightbox() {
+      const previewImg = document.getElementById("galleryPreviewImg");
+      if (previewImg) previewImg.addEventListener("click", openGalleryLightbox);
+      const stg = document.getElementById("lightboxStage");
+      const lbImg = document.getElementById("lightboxImg");
+      if (stg && lbImg) {
+        stg.addEventListener("mousedown", function(e) {
+          if (!stg.classList.contains("is-zoomed")) return;
+          lbDragging = true; lbDragged = false;
+          lbStartX = e.clientX; lbStartY = e.clientY;
+          lbScrollL = stg.scrollLeft; lbScrollT = stg.scrollTop;
+          stg.classList.add("is-dragging");
+        });
+        window.addEventListener("mousemove", function(e) {
+          if (!lbDragging) return;
+          const dx = e.clientX - lbStartX; const dy = e.clientY - lbStartY;
+          if (Math.abs(dx) > 5 || Math.abs(dy) > 5) lbDragged = true;
+          stg.scrollLeft = lbScrollL - dx; stg.scrollTop = lbScrollT - dy;
+        });
+        window.addEventListener("mouseup", function() {
+          if (!lbDragging) return;
+          lbDragging = false; stg.classList.remove("is-dragging");
+        });
+        lbImg.addEventListener("click", function(e) {
+          if (lbDragged) { lbDragged = false; return; }
+          toggleLightboxZoom(e);
+        });
+      }
+    })();
+
+    function applyHashTab() {
+      const h = (window.location.hash || "").toLowerCase().replace(/^#/, "");
+      const map = {
+        vision: "vision",
+        architecture: "architecture",
+        ethos: "ethos",
+        sandbox: "prototype",
+        prototype: "prototype",
+        how: "interface",
+        download: "interface",
+        interface: "interface"
+      };
+      const target = map[h];
+      if (!target) return;
+      const btn = document.getElementById("tab-btn-" + target);
+      if (btn && !btn.classList.contains("active")) switchTab(target);
+    }
+    window.addEventListener("hashchange", applyHashTab);
+
     (function initSavedLocale() {
       var savedLang = null;
       try { savedLang = localStorage.getItem("av-lang"); } catch (e) {}
       setLocale(savedLang === "es" || savedLang === "en" ? savedLang : "en");
     })();
     updateSandboxWhisper(selectWhisperIndex(true));
+    applyHashTab();
   </script>
 
 </body>
